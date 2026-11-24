@@ -77,10 +77,10 @@ export function stripKhiApprox(raw) {
 let bridgeCounter = 0;
 
 /**
- * Execute an AlgeoCAS Neuro-Symbolic Tool Call (Arm 3 MCP / Browser SDK Bridge).
+ * Execute a SymGeoCAS Neuro-Symbolic Tool Call (Arm 3 MCP / Browser SDK Bridge).
  */
 export async function executeSymbolicTool(toolCall) {
-  const { cas } = await getAlgeoCAS();
+  const { cas } = await getSymGeoCAS();
   const t0 = performance.now();
   const name = String(toolCall?.tool || toolCall?.name || 'eval_cas').trim();
   const args = toolCall?.args || toolCall?.arguments || {};

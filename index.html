@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SymGeo Studio 계산기 스위트 2D+3D — Giac(WASM) · Three.js · BVH</title>
+  <title>SymGeo Studio 2D+3D — Giac(WASM) · Three.js · BVH</title>
   <link rel="stylesheet" href="./node_modules/katex/dist/katex.min.css" />
   <link rel="stylesheet" href="./src/styles.css" />
   <script type="importmap">
@@ -21,7 +21,7 @@
 <body>
   <!-- Application Top Navigation Bar -->
   <header class="ggb-header">
-    <div id="brandTrigger" class="brand-area" title="SymGeo Studio 계산기 스위트">
+    <div id="brandTrigger" class="brand-area" title="SymGeo Studio 2D+3D">
       <div class="brand-mark">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="7" cy="17" r="3"></circle>
@@ -30,7 +30,7 @@
           <path d="M3 20c5-1 8-5 11-11"></path>
         </svg>
       </div>
-      <span class="brand-text">SymGeo Studio 스위트</span>
+      <span class="brand-text">SymGeo Studio 2D+3D</span>
       <span id="engineStatus" class="cas-ready-pill is-loading">Giac CAS 준비 중...</span>
     </div>
 
@@ -510,11 +510,11 @@
         </section>
 
         <section id="atab-license" class="adm-section">
-          <h3 style="margin-bottom:8px;">2D+3D 하이브리드 오픈소스 라이선스 및 클린룸 검증 요약</h3>
+          <h3 style="margin-bottom:8px;">오픈소스 라이선스 구성 안내</h3>
           <ul style="padding-left:18px; line-height:1.7; font-size:13.5px; color:#334155;">
-            <li><strong>Giac/Xcas WebAssembly (<code>@basthon/xcas-wasm</code>):</strong> <code>GPL-3.0-or-later</code> (대수 연산·단면 방정식·회전체 부피 정확해 계산).</li>
-            <li><strong>Three.js + three-mesh-bvh + three-bvh-csg + KaTeX:</strong> 전원 <code>MIT License</code> (실시간 BVH 단면 절단, CSG 부울 연산, 2-Pass 반투명 렌더링, <code>.glb/.stl</code> 내보내기).</li>
-            <li><strong>클린룸 자체 설계:</strong> 비영리(<code>NC</code>) 제한이 있는 외부 코드(번들, Spirulae NC 셰이더 등)를 단 1바이트도 포함하지 않습니다.</li>
+            <li><strong>Giac/Xcas WebAssembly (<code>@basthon/xcas-wasm</code>):</strong> <code>GPL-3.0-or-later</code> (대수 연산, 단면 방정식, 회전체 부피 정확해 계산).</li>
+            <li><strong>Three.js + three-mesh-bvh + three-bvh-csg + KaTeX:</strong> <code>MIT License</code> (실시간 BVH 단면 절단, CSG 불리언 연산, 2-Pass 반투명 렌더링, <code>.glb/.stl</code> 내보내기).</li>
+            <li><strong>전체 오픈소스 배포:</strong> UI, 수식 조판, 2D/3D 기하 커널 및 검증 SDK 전체가 OSI 승인 오픈소스 라이선스(<code>GPL-3.0-or-later</code> 및 <code>MIT</code>)로 제공됩니다.</li>
           </ul>
         </section>
       </div>
