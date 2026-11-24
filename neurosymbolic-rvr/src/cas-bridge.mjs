@@ -38,16 +38,15 @@ export async function getSymGeoCAS() {
   };
 
   const t0 = performance.now();
-  casModule = await import('file:///C:/dev/apps/symgeo-studio/src/cas-engine.js');
+  casModule = await import(new URL('../../src/cas-engine.js', import.meta.url).href);
   await casModule.initGiacEngine(
-    'file:///C:/dev/apps/symgeo-studio/node_modules/@basthon/xcas-wasm/src/index.js'
+    new URL('../../node_modules/@basthon/xcas-wasm/src/index.js', import.meta.url).href
   );
   const coldInitMs = Number((performance.now() - t0).toFixed(3));
   initStats = { coldInitMs };
   return { cas: casModule, initStats };
 }
 
-export const getAlgeoCAS = getSymGeoCAS;
 
 /**
  * Sanitize identifier underscores in Giac commands (Giac treats '_' as MKSA unit operator, except c_0, c_1).

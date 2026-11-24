@@ -5,23 +5,25 @@ import { createRequire } from 'module';
 import * as THREE from 'three';
 import { MeshBVH } from 'three-mesh-bvh';
 import { Brush, Evaluator, SUBTRACTION } from 'three-bvh-csg';
+import path from 'path';
 import { extractImplicitSurfaceMesh } from './src/marching-cubes.js';
+const REPO_ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 // 1. Static DOM ID & ImportMap File Existence Audit
-const html = fs.readFileSync('C:/dev/apps/symgeo-studio/index.html', 'utf8');
-const appJs = fs.readFileSync('C:/dev/apps/symgeo-studio/src/app.js', 'utf8');
+const html = fs.readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8');
+const appJs = fs.readFileSync(path.join(REPO_ROOT, 'src/app.js'), 'utf8');
 const idsInJs = [...appJs.matchAll(/getElementById\('([^']+)'\)/g)].map((m) => m[1]);
 const missingIds = [...new Set(idsInJs)].filter((id) => !html.includes(`id="${id}"`));
 console.log('Checked DOM IDs:', new Set(idsInJs).size, 'Missing:', missingIds);
 assert.strictEqual(missingIds.length, 0, `Missing DOM IDs: ${missingIds.join(', ')}`);
 
 const requiredAssets = [
-  'C:/dev/apps/symgeo-studio/node_modules/three/build/three.module.js',
-  'C:/dev/apps/symgeo-studio/node_modules/three/examples/jsm/controls/OrbitControls.js',
-  'C:/dev/apps/symgeo-studio/node_modules/three/examples/jsm/exporters/GLTFExporter.js',
-  'C:/dev/apps/symgeo-studio/node_modules/three/examples/jsm/exporters/STLExporter.js',
-  'C:/dev/apps/symgeo-studio/node_modules/three-mesh-bvh/build/index.module.js',
-  'C:/dev/apps/symgeo-studio/node_modules/three-bvh-csg/build/index.module.js'
+  path.join(REPO_ROOT, 'node_modules/three/build/three.module.js'),
+  path.join(REPO_ROOT, 'node_modules/three/examples/jsm/controls/OrbitControls.js'),
+  path.join(REPO_ROOT, 'node_modules/three/examples/jsm/exporters/GLTFExporter.js'),
+  path.join(REPO_ROOT, 'node_modules/three/examples/jsm/exporters/STLExporter.js'),
+  path.join(REPO_ROOT, 'node_modules/three-mesh-bvh/build/index.module.js'),
+  path.join(REPO_ROOT, 'node_modules/three-bvh-csg/build/index.module.js')
 ];
 for (const p of requiredAssets) {
   assert.ok(fs.existsSync(p), `Missing asset: ${p}`);

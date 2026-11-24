@@ -42,7 +42,7 @@ export async function initGiacEngine(wasmModuleUrl = '../node_modules/@basthon/x
 
     rawCaseval = giacModule.cwrap('caseval', 'string', ['string']);
 
-    // Configure Giac for exact symbolic real algebra (GeoGebra CAS style)
+    // Configure Giac for exact symbolic real algebra (real symbolic mode)
     rawCaseval('xcas_mode(0)');
     rawCaseval('approx_mode:=0');
     rawCaseval('complex_mode:=0');
@@ -201,7 +201,7 @@ export function normalizeMathInput(input) {
 }
 
 /**
- * Prettify Giac's raw `latex(...)` string into clean textbook KICE / GeoGebra LaTeX.
+ * Prettify Giac's raw `latex(...)` string into clean textbook standard mathematical LaTeX.
  */
 export function prettifyGiacLatex(rawTex) {
   if (!rawTex) return '';
@@ -284,7 +284,7 @@ export function giacToLatex(giacExpr) {
 }
 
 /**
- * Parse a user input line into one of 4 GeoGebra object types:
+ * Parse a user input line into one of 4 object types:
  * 1. 'slider'   : e.g. `a = 2` (single letter != x,y assigned to constant)
  * 2. 'explicit' : e.g. `f(x) = x^3 - 3x + 1` or `y = x^2 - 2` or bare `x^3 - 3x`
  * 3. 'implicit' : e.g. `x^2 + y^2 = 8` or `c1: x^2/4 + y^2/9 = 1`
@@ -1050,7 +1050,7 @@ export function computeDefiniteIntegral(rhsExpr, aExact, bExact, params = {}) {
 }
 
 /**
- * Compute Exact + Numeric Table of Values (GeoGebra Table View)
+ * Compute Exact + Numeric Table of Values (Table View)
  */
 export function computeTableOfValues(explicitObjs, startX = -2, endX = 3, stepX = 1, params = {}) {
   const rows = [];
@@ -1355,7 +1355,7 @@ export function analyzeImplicit3D(lhsExpr, rhsExpr, params = {}) {
 }
 
 /**
- * GeoGebra `AlgoIntersectPlaneQuadric` Equivalent in Giac WASM:
+ * Exact 3D Plane-Quadric Symbolic Intersection in Giac WASM:
  * Symbolically computes the exact cross-section curve, exact Sphere-Plane circle center/radius/area,
  * Conic Section reduced equation, or Plane-Plane 3D intersection line!
  */

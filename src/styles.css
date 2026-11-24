@@ -36,7 +36,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* GeoGebra Calculator Suite Clean Light Header (48px, Zero Visual Noise) */
+/* Clean Light Header (48px) */
 .ggb-header {
   height: var(--header-h);
   background: #ffffff;
@@ -189,7 +189,7 @@ html, body {
   position: relative;
 }
 
-/* GeoGebra Calculator Suite Left App Rail (66px) */
+/* Left App Rail (66px) */
 .ggb-rail {
   width: var(--rail-w);
   height: 100%;
@@ -268,7 +268,7 @@ html, body {
   display: flex;
 }
 
-/* 1. GeoGebra Algebra Stream */
+/* 1. Algebra Stream */
 .ggb-input-bar {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
@@ -348,7 +348,7 @@ html, body {
   white-space: nowrap;
 }
 
-/*GeoGebra Stacked Algebra Rows*/
+/*Stacked Algebra Rows*/
 .algebra-rows {
   flex: 1;
   overflow-y: auto;
@@ -386,7 +386,7 @@ html, body {
   flex: 1;
 }
 
-/* Signature GeoGebra Colored Marble Toggle */
+/* Colored Marble Toggle */
 .ggb-marble {
   width: 18px;
   height: 18px;
@@ -587,7 +587,7 @@ html, body {
   padding: 5px 8px;
 }
 
-/* 2. GeoGebra Tools Tab Pane */
+/* 2. Tools Tab Pane */
 .tools-scroll {
   flex: 1;
   overflow-y: auto;
@@ -687,7 +687,7 @@ html, body {
   background: #ffffff;
 }
 
-/* 3. GeoGebra Table of Values Pane */
+/* 3. Table of Values Pane */
 .table-pane-wrap {
   flex: 1;
   display: flex;
@@ -1001,7 +1001,7 @@ html, body {
   margin-left: 2px;
 }
 
-/* Bottom-Left Floating Keyboard Open Button (GeoGebra signature!) */
+/* Bottom-Left Floating Keyboard Open Button  */
 .floating-kbd-fab {
   position: absolute;
   left: 16px;
@@ -1025,7 +1025,7 @@ html, body {
   color: var(--ggb-indigo);
 }
 
-/* Bottom-Floating WolframAlpha + GeoGebra Virtual Math Keyboard */
+/* Bottom-Floating Virtual Math Keyboard */
 .virtual-kbd-dock {
   position: absolute;
   left: 50%;
@@ -1274,7 +1274,7 @@ html, body {
   border: 1px solid #334155;
 }
 
-/* GeoGebra 2D / 2D+3D / 3D Segmented View Switcher */
+/* 2D / 2D+3D / 3D Segmented View Switcher */
 .view-mode-seg {
   display: inline-flex;
   background: var(--bg-subtle);

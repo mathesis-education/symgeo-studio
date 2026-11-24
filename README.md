@@ -37,7 +37,7 @@ npm run benchmark  # Runs 24-task accuracy & N=30 latency/scaling benchmarks
 
 ## License
 
-Released under **GNU General Public License v3.0 or later (`GPL-3.0-or-later`)**. Clean-room implementation containing zero proprietary GeoGebra source code or `CC BY-NC` assets. See [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+Released under **GNU General Public License v3.0 or later (`GPL-3.0-or-later`)**. See [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ---
 

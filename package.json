@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node test_cas.mjs",
-    "benchmark": "node benchmark_track3.mjs"
+    "benchmark": "node benchmark_studio.mjs"
   },
   "dependencies": {
     "@basthon/xcas-wasm": "0.1.5",

@@ -1,4 +1,4 @@
-import { getAlgeoCAS, stripKhiApprox } from './cas-bridge.mjs';
+import { getSymGeoCAS, stripKhiApprox } from './cas-bridge.mjs';
 
 /**
  * Normalize common LaTeX / Unicode / natural math strings emitted by LLMs into valid Giac exact syntax.
@@ -94,7 +94,7 @@ function splitTopLevelList(str) {
 }
 
 export async function checkScalarSymbolicEqual(candRaw, gtRaw) {
-  const { cas } = await getAlgeoCAS();
+  const { cas } = await getSymGeoCAS();
   const cNorm = latexOrTextToGiac(candRaw);
   const gNorm = latexOrTextToGiac(gtRaw);
   if (!cNorm) return false;
@@ -133,7 +133,7 @@ export async function checkScalarSymbolicEqual(candRaw, gtRaw) {
 }
 
 export async function evalGiacNumeric(exprRaw) {
-  const { cas } = await getAlgeoCAS();
+  const { cas } = await getSymGeoCAS();
   const norm = latexOrTextToGiac(exprRaw);
   if (!norm || norm === 'none') return null;
   try {

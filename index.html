@@ -19,7 +19,7 @@
   <script defer src="./node_modules/katex/dist/katex.min.js"></script>
 </head>
 <body>
-  <!-- Clean GeoGebra-Style Light Header (48px, Zero Student-View Admin Clutter) -->
+  <!-- Application Top Navigation Bar -->
   <header class="ggb-header">
     <div id="brandTrigger" class="brand-area" title="SymGeo Studio 계산기 스위트">
       <div class="brand-mark">
@@ -34,7 +34,7 @@
       <span id="engineStatus" class="cas-ready-pill is-loading">Giac CAS 준비 중...</span>
     </div>
 
-    <!-- GeoGebra 2D / 2D+3D / 3D View Switcher -->
+    <!-- 2D / 2D+3D / 3D View Switcher -->
     <div class="view-mode-seg" role="tablist" aria-label="차원 뷰 전환">
       <button class="vmode-btn is-active" data-vmode="2d">2D 평면</button>
       <button class="vmode-btn" data-vmode="split">2D+3D 연동</button>
@@ -68,7 +68,7 @@
 
   <!-- Zero-Scroll 100% Viewport Main Workspace -->
   <main class="ggb-workspace">
-    <!-- GeoGebra Calculator Suite Left App Rail -->
+    <!-- Left App Rail -->
     <nav class="ggb-rail" aria-label="도구 모음 전환">
       <button class="rail-btn is-active" data-pane="algebra">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -115,7 +115,7 @@
 
     <!-- Left Multi-Tab Side Panel -->
     <aside id="sidePanel" class="ggb-side-panel">
-      <!-- TAB 1: Unified 2D & 3D GeoGebra Algebra & CAS Stream -->
+      <!-- TAB 1: Unified 2D & 3D Algebra & CAS Stream -->
       <section id="pane-algebra" class="tab-pane is-active">
         <div class="ggb-input-bar">
           <div class="ggb-plus-row">
@@ -139,7 +139,7 @@
         <div id="algebraList" class="algebra-rows"></div>
       </section>
 
-      <!-- TAB 2: GeoGebra 2D & 3D Geometry / Calculus / CSG Tools -->
+      <!-- TAB 2: 2D & 3D Geometry / Calculus / CSG Tools -->
       <section id="pane-tools" class="tab-pane">
         <div class="tools-scroll">
           <div>
@@ -258,7 +258,7 @@
         </div>
       </section>
 
-      <!-- TAB 3: GeoGebra Table of Values -->
+      <!-- TAB 3: Table of Values -->
       <section id="pane-table" class="tab-pane">
         <div class="table-pane-wrap">
           <div class="table-config-bar">
@@ -364,12 +364,12 @@
 
       <div id="canvasHint" class="canvas-hint-banner is-hidden"></div>
 
-      <!-- GeoGebra Bottom-Left Floating Virtual Keyboard Trigger -->
+      <!-- Bottom-Left Floating Virtual Keyboard Trigger -->
       <button id="openVkbdFab" class="floating-kbd-fab" title="울프람알파·지오지브라 스타일 수식 입력기 열기">
         <span>⌨ 수식 입력기</span>
       </button>
 
-      <!-- Bottom-Floating WolframAlpha + GeoGebra Virtual Math Keyboard -->
+      <!-- Bottom-Floating Virtual Math Keyboard -->
       <div id="virtualKbdDock" class="virtual-kbd-dock is-hidden">
         <div class="vkbd-head">
           <div class="vkbd-tabs">
@@ -514,7 +514,7 @@
           <ul style="padding-left:18px; line-height:1.7; font-size:13.5px; color:#334155;">
             <li><strong>Giac/Xcas WebAssembly (<code>@basthon/xcas-wasm</code>):</strong> <code>GPL-3.0-or-later</code> (대수 연산·단면 방정식·회전체 부피 정확해 계산).</li>
             <li><strong>Three.js + three-mesh-bvh + three-bvh-csg + KaTeX:</strong> 전원 <code>MIT License</code> (실시간 BVH 단면 절단, CSG 부울 연산, 2-Pass 반투명 렌더링, <code>.glb/.stl</code> 내보내기).</li>
-            <li><strong>클린룸 자체 설계:</strong> 비영리(<code>NC</code>) 제한이 있는 외부 코드(GeoGebra 번들, Spirulae NC 셰이더 등)를 단 1바이트도 포함하지 않습니다.</li>
+            <li><strong>클린룸 자체 설계:</strong> 비영리(<code>NC</code>) 제한이 있는 외부 코드(번들, Spirulae NC 셰이더 등)를 단 1바이트도 포함하지 않습니다.</li>
           </ul>
         </section>
       </div>

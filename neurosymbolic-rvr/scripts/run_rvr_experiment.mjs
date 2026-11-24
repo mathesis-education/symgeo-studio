@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { performance } from 'perf_hooks';
-import { getAlgeoCAS, executeSymbolicTool } from '../src/cas-bridge.mjs';
+import { getSymGeoCAS, executeSymbolicTool } from '../src/cas-bridge.mjs';
 import { executeNumericTool } from '../src/numeric-sandbox.mjs';
 import { gradeEpisode } from '../src/grader.mjs';
 
-const ROOT = 'C:/dev/research/algeomath-neurosymbolic-track2';
-const BENCH_PATH = path.join(ROOT, 'data/algeorvr_120_benchmark.json');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const BENCH_PATH = path.join(ROOT, 'data/symgeorvr_120_benchmark.json');
 const RUNS_DIR = path.join(ROOT, 'data/runs');
 const PRIMARY_JSONL = path.join(RUNS_DIR, 'episodes_primary.jsonl');
 const STOCH_JSONL = path.join(RUNS_DIR, 'episodes_stochastic_k5.jsonl');
@@ -129,8 +130,8 @@ Respond ONLY with valid JSON:
   "student_diagnosis": "2-3 sentence mathematical diagnosis"
 }`;
 
-const PROMPT_ARM3_TURN1 = `You are a Neuro-Symbolic Mathematics Tutor operating a Reasoning–Verification–Reanalysis (RVR) loop anchored by client-side AlgeoCAS (compiled C++17 Giac WebAssembly exact Computer Algebra System).
-Available exact symbolic tools in AlgeoCAS:
+const PROMPT_ARM3_TURN1 = `You are a Neuro-Symbolic Mathematics Tutor operating a Reasoning–Verification–Reanalysis (RVR) loop anchored by client-side SymGeoCAS (compiled C++17 Giac WebAssembly exact Computer Algebra System).
+Available exact symbolic tools in SymGeoCAS:
 1. "solve_intersections": {"exprA": "y = ...", "exprB": "y = ..."} -> exact rational/radical intersections including even-multiplicity tangencies!
 2. "analyze_function": {"expr": "f(x)"} -> exact derivatives, extrema, exact inflection x-coordinates via k-th derivative Taylor parity (k=3..12), and nonInflectionWarnings for even-order flat points!
 3. "slice_3d": {"surface": "x^2+y^2+z^2=16", "plane": "x+2*y+2*z=3"} -> exact 3D sphere-plane circle center/radius/area or eliminated conic equation!
@@ -141,7 +142,7 @@ Available exact symbolic tools in AlgeoCAS:
 8. "vector_field_3d": {"vecExpr": "[P, Q, R]"} -> exact symbolic divExact and curlExact!
 9. "eval_cas": {"command": "any valid Giac CAS command, e.g. simplify(...), solve(...), int(...), desolve([y''+4*y=8*sin(2*x), y(0)=0, y'(0)=0], x, y), laplace(exp(3*t)*cos(2*t), t, s), residue(exp(2*z)/(z-1)^4, z, 1)"} (IMPORTANT: never use underscores '_' in variable names in Giac; use pure alphanumeric names like k, a, x, y, z, t, s).
 
-In Turn 1 (Reasoning + Symbolic Verification Query), state your initial hypothesis BEFORE running CAS, and call AlgeoCAS to verify. Respond ONLY with valid JSON:
+In Turn 1 (Reasoning + Symbolic Verification Query), state your initial hypothesis BEFORE running CAS, and call SymGeoCAS to verify. Respond ONLY with valid JSON:
 {
   "initial_reasoning": "brief initial derivation",
   "initial_exact_answer": "initial exact answer hypothesis (same format as final_exact_answer)",
@@ -152,14 +153,14 @@ In Turn 1 (Reasoning + Symbolic Verification Query), state your initial hypothes
   }
 }`;
 
-const PROMPT_ARM3_RVR = `You have received the deterministic symbolic certificate from client-side AlgeoCAS (Giac C++ WASM).
+const PROMPT_ARM3_RVR = `You have received the deterministic symbolic certificate from client-side SymGeoCAS (Giac C++ WASM).
 Execute the RVR (Reasoning–Verification–Reanalysis) step:
-- If the AlgeoCAS call returned an error or you need one additional symbolic simplification/evaluation (e.g., substituting x=pi/4 or multiplying projected ellipse area by sqrt(1+m^2+n^2)), you MAY issue ONE follow-up "tool_call" JSON: {"tool_call": {"tool": "eval_cas", "args": {"command": "..."}}}.
-- Otherwise, compare your Turn-1 initial_exact_answer against the AlgeoCAS symbolic certificate. Whenever they differ, trust the verified exact symbolic mathematics, reanalyze why the discrepancy occurred, and output the final verified JSON:
+- If the SymGeoCAS call returned an error or you need one additional symbolic simplification/evaluation (e.g., substituting x=pi/4 or multiplying projected ellipse area by sqrt(1+m^2+n^2)), you MAY issue ONE follow-up "tool_call" JSON: {"tool_call": {"tool": "eval_cas", "args": {"command": "..."}}}.
+- Otherwise, compare your Turn-1 initial_exact_answer against the SymGeoCAS symbolic certificate. Whenever they differ, trust the verified exact symbolic mathematics, reanalyze why the discrepancy occurred, and output the final verified JSON:
 ${FORMAT_RULES}
 {
   "rvr_discrepancy_detected": true,
-  "reanalysis_notes": "exact comparison between Turn-1 hypothesis and AlgeoCAS symbolic certificate",
+  "reanalysis_notes": "exact comparison between Turn-1 hypothesis and SymGeoCAS symbolic certificate",
   "final_exact_answer": "verified exact algebraic string or sorted array or 'none'",
   "numeric_approx": 0.0,
   "misconception_verdict": "MISCONCEPTION or VALID",
@@ -435,7 +436,7 @@ async function runSingleEpisode(providerCfg, arm, item, temperature = 0, runIdx 
     };
   }
 
-  // Arm 3: Client-Side AlgeoCAS Giac WASM Neuro-Symbolic RVR Loop (up to 3 LLM turns / 2 symbolic tool calls)
+  // Arm 3: Client-Side SymGeoCAS Giac WASM Neuro-Symbolic RVR Loop (up to 3 LLM turns / 2 symbolic tool calls)
   const messages = [
     { role: 'system', content: PROMPT_ARM3_TURN1 },
     { role: 'user', content: userText }
@@ -471,7 +472,7 @@ async function runSingleEpisode(providerCfg, arm, item, temperature = 0, runIdx 
     { role: 'assistant', content: JSON.stringify(p1) },
     {
       role: 'user',
-      content: `Client-Side AlgeoCAS (Giac C++ WASM) Symbolic Certificate #1:\n${JSON.stringify(symObs1)}\n\nPerform RVR check: either issue ONE follow-up tool_call if needed or output the final verified JSON.`
+      content: `Client-Side SymGeoCAS (Giac C++ WASM) Symbolic Certificate #1:\n${JSON.stringify(symObs1)}\n\nPerform RVR check: either issue ONE follow-up tool_call if needed or output the final verified JSON.`
     }
   ];
 
@@ -493,7 +494,7 @@ async function runSingleEpisode(providerCfg, arm, item, temperature = 0, runIdx 
     rvrMsgs.push({ role: 'assistant', content: JSON.stringify(pFinal) });
     rvrMsgs.push({
       role: 'user',
-      content: `Client-Side AlgeoCAS Symbolic Certificate #2:\n${JSON.stringify(symObs2)}\n\nNow output ONLY the final verified JSON (no more tool_call).`
+      content: `Client-Side SymGeoCAS Symbolic Certificate #2:\n${JSON.stringify(symObs2)}\n\nNow output ONLY the final verified JSON (no more tool_call).`
     });
     const r3 = await invokeModel(providerCfg, rvrMsgs, temperature);
     llmTurns++;
@@ -573,7 +574,7 @@ async function runPool(tasks, concurrency, onDone) {
 // Dry-Test Mode (runs 100% inside BypassSandbox: false to verify pipeline)
 // ============================================================================
 if (process.argv.includes('--dry-test')) {
-  await getAlgeoCAS();
+  await getSymGeoCAS();
   const bench = JSON.parse(fs.readFileSync(BENCH_PATH, 'utf8'));
   const trickyJson = '```json\n{\n  "final_exact_answer": "\\frac{15\\pi}{2}",\n  "numeric_approx": 23.561945,\n  "misconception_verdict": "MISCONCEPTION",\n  "student_diagnosis": "Using orthogonal distance d_perp = 3/3 = 1 gives r = sqrt(15) and exact area 15*pi/2."\n}\n```';
   const parsed = parseLLMJson(trickyJson);
@@ -588,9 +589,9 @@ if (process.argv.includes('--dry-test')) {
 // ============================================================================
 // Live Multi-Model Execution (OpenAI + Gemini + Local Ollama RTX 5090)
 // ============================================================================
-await getAlgeoCAS();
+await getSymGeoCAS();
 const benchmark = JSON.parse(fs.readFileSync(BENCH_PATH, 'utf8'));
-const arms = ['Arm1_PureCoT', 'Arm2_NumericFloat', 'Arm3_AlgeoCAS_RVR'];
+const arms = ['Arm1_PureCoT', 'Arm2_NumericFloat', 'Arm3_SymGeoCAS_RVR'];
 
 // 1. Discover & Smoke-Verify Providers Safely
 const activeProviders = [];
@@ -708,7 +709,7 @@ await Promise.all(
   })
 );
 
-// 3. Run Multi-Run Stochastic Stability Subsample (AN-04: 24 stratified core items x 2 arms x k=5 runs at temp=0.7)
+// 3. Run Multi-Run Stochastic Stability Subsample: 24 stratified core items x 2 arms x k=5 runs at temp=0.7)
 const coreSubfamilies = [
   'A1_Tangential_Radical_Intersections',
   'A2_HigherOrder_Inflection_Parity',
@@ -726,7 +727,7 @@ for (const sf of coreSubfamilies) {
 const stochProv = activeProviders[0];
 const doneStoch = loadCompletedKeys(STOCH_JSONL);
 const stochJobs = [];
-for (const arm of ['Arm1_PureCoT', 'Arm3_AlgeoCAS_RVR']) {
+for (const arm of ['Arm1_PureCoT', 'Arm3_SymGeoCAS_RVR']) {
   for (const item of core24) {
     for (let r = 1; r <= 5; r++) {
       const key = `${stochProv.slug}__${arm}__${item.id}__r${r}`;

@@ -1,8 +1,8 @@
 import { performance } from 'perf_hooks';
 import { createRequire } from 'module';
-import { extractImplicitSurfaceMesh } from 'file:///C:/dev/apps/algeomath-giac-cas/src/marching-cubes.js';
+import { extractImplicitSurfaceMesh } from '../../src/marching-cubes.js';
 
-const requireFromApp = createRequire('file:///C:/dev/apps/algeomath-giac-cas/package.json');
+const requireFromApp = createRequire(new URL('../../package.json', import.meta.url));
 const THREE = requireFromApp('three');
 const { MeshBVH } = requireFromApp('three-mesh-bvh');
 

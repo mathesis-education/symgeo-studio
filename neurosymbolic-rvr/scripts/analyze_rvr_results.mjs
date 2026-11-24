@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const ROOT = 'C:/dev/research/algeomath-neurosymbolic-track2';
-const BENCH_PATH = path.join(ROOT, 'data/algeorvr_120_benchmark.json');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const BENCH_PATH = path.join(ROOT, 'data/symgeorvr_120_benchmark.json');
 const ORACLE_PATH = path.join(ROOT, 'data/oracle_audit_120.json');
 const PRIMARY_JSONL = path.join(ROOT, 'data/runs/episodes_primary.jsonl');
 const STOCH_JSONL = path.join(ROOT, 'data/runs/episodes_stochastic_k5.jsonl');
 const OUT_STATS = path.join(ROOT, 'data/statistical_results.json');
-const OUT_REPORT = path.join(ROOT, 'notes/03_analysis_and_results_evidence_table.md');
+const OUT_REPORT = path.join(ROOT, 'data/analysis_summary.md');
 
 function erf(x) {
   const sign = x >= 0 ? 1 : -1;
@@ -244,7 +245,7 @@ const stoch = loadJsonl(STOCH_JSONL);
 const modelSlugs = ['openai_gpt_4_1_mini', 'ollama_qwen3_5_9b'].filter((m) =>
   primaryRaw.some((e) => e.modelSlug === m)
 );
-const arms = ['Arm1_PureCoT', 'Arm2_NumericFloat', 'Arm3_AlgeoCAS_RVR'];
+const arms = ['Arm1_PureCoT', 'Arm2_NumericFloat', 'Arm3_SymGeoCAS_RVR'];
 const categories = ['A_Secondary_Calculus', 'B_3D_Spatial_Integral', 'C_Undergraduate_STEM'];
 const subfamilies = [
   'A1_Tangential_Radical_Intersections',
@@ -402,8 +403,8 @@ for (const m of modelSlugs) {
 const omnibusCochran = [];
 const pairwiseMcNemar = [];
 const pairSpecs = [
-  ['Arm3_AlgeoCAS_RVR', 'Arm1_PureCoT'],
-  ['Arm3_AlgeoCAS_RVR', 'Arm2_NumericFloat'],
+  ['Arm3_SymGeoCAS_RVR', 'Arm1_PureCoT'],
+  ['Arm3_SymGeoCAS_RVR', 'Arm2_NumericFloat'],
   ['Arm2_NumericFloat', 'Arm1_PureCoT']
 ];
 const metrics = [
@@ -416,7 +417,7 @@ for (const m of modelSlugs) {
   for (const met of metrics) {
     const v1 = bench.map((it) => (byModelArmItem.get(`${m}__Arm1_PureCoT__${it.id}`).grade[met.key] ? 1 : 0));
     const v2 = bench.map((it) => (byModelArmItem.get(`${m}__Arm2_NumericFloat__${it.id}`).grade[met.key] ? 1 : 0));
-    const v3 = bench.map((it) => (byModelArmItem.get(`${m}__Arm3_AlgeoCAS_RVR__${it.id}`).grade[met.key] ? 1 : 0));
+    const v3 = bench.map((it) => (byModelArmItem.get(`${m}__Arm3_SymGeoCAS_RVR__${it.id}`).grade[met.key] ? 1 : 0));
     omnibusCochran.push({
       modelSlug: m,
       metric: met.label,
@@ -424,7 +425,7 @@ for (const m of modelSlugs) {
       ...cochranQ3(v1, v2, v3)
     });
 
-    const armVecs = { Arm1_PureCoT: v1, Arm2_NumericFloat: v2, Arm3_AlgeoCAS_RVR: v3 };
+    const armVecs = { Arm1_PureCoT: v1, Arm2_NumericFloat: v2, Arm3_SymGeoCAS_RVR: v3 };
     for (const [armA, armB] of pairSpecs) {
       const aArr = armVecs[armA];
       const bArr = armVecs[armB];
@@ -472,7 +473,7 @@ for (const met of metrics) {
 const regParamNames = [
   'Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)',
   'Arm2_NumericFloat (vs Arm1)',
-  'Arm3_AlgeoCAS_RVR (vs Arm1)',
+  'Arm3_SymGeoCAS_RVR (vs Arm1)',
   'Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)',
   'Category_B_3DSpatial (vs CatA)',
   'Category_C_UndergradSTEM (vs CatA)'
@@ -483,7 +484,7 @@ function buildRegRows(dataset, metricKey) {
     X: [
       1,
       ep.arm === 'Arm2_NumericFloat' ? 1 : 0,
-      ep.arm === 'Arm3_AlgeoCAS_RVR' ? 1 : 0,
+      ep.arm === 'Arm3_SymGeoCAS_RVR' ? 1 : 0,
       ep.modelSlug === 'ollama_qwen3_5_9b' ? 1 : 0,
       ep.category === 'B_3D_Spatial_Integral' ? 1 : 0,
       ep.category === 'C_Undergraduate_STEM' ? 1 : 0
@@ -506,7 +507,7 @@ const logisticRegModels = {
   }
 };
 
-// 4. AN-03: RVR Self-Correction Trajectory Transitions + Cross-Arm Rescue Analysis (Arm1 Wrong -> Arm3 Right!)
+// 4.: RVR Self-Correction Trajectory Transitions + Cross-Arm Rescue Analysis (Arm1 Wrong -> Arm3 Right!)
 const rvrTransitions = [];
 const crossArmRescue = [];
 const qualitativeCases = [];
@@ -524,7 +525,7 @@ for (const m of modelSlugs) {
   for (const it of bench) {
     const e1 = byModelArmItem.get(`${m}__Arm1_PureCoT__${it.id}`);
     const e2 = byModelArmItem.get(`${m}__Arm2_NumericFloat__${it.id}`);
-    const e3 = byModelArmItem.get(`${m}__Arm3_AlgeoCAS_RVR__${it.id}`);
+    const e3 = byModelArmItem.get(`${m}__Arm3_SymGeoCAS_RVR__${it.id}`);
     const s1 = e1.grade.symCorrect;
     const s2 = e2.grade.symCorrect;
     const s3 = e3.grade.symCorrect;
@@ -578,7 +579,7 @@ for (const m of modelSlugs) {
     arm2CorruptedFromArm1Right: a1Right_a2Wrong
   });
 
-  for (const arm of ['Arm2_NumericFloat', 'Arm3_AlgeoCAS_RVR']) {
+  for (const arm of ['Arm2_NumericFloat', 'Arm3_SymGeoCAS_RVR']) {
     const eps = bench.map((it) => byModelArmItem.get(`${m}__${arm}__${it.id}`));
     let w2r = 0;
     let r2r = 0;
@@ -619,12 +620,12 @@ for (const arm of arms) {
   }
 }
 
-// 6. AN-04: Stochastic Multi-Run k=5 Stability Analysis
+// 6.: Stochastic Multi-Run k=5 Stability Analysis
 const stochasticSummary = [];
 if (stoch.length > 0) {
   const stochModels = [...new Set(stoch.map((e) => e.modelSlug))];
   for (const sm of stochModels) {
-    for (const arm of ['Arm1_PureCoT', 'Arm3_AlgeoCAS_RVR']) {
+    for (const arm of ['Arm1_PureCoT', 'Arm3_SymGeoCAS_RVR']) {
       const seps = stoch.filter((e) => e.modelSlug === sm && e.arm === arm);
       const itemIds = [...new Set(seps.map((e) => e.itemId))];
       const runScores = [1, 2, 3, 4, 5].map((r) => {
@@ -755,14 +756,6 @@ for (const [mName, mod] of Object.entries(logisticRegModels.ITT_N720)) {
   }
   md.push('');
 }
-
-md.push('## 6. RQ-to-Analysis-to-Evidence Traceability Matrix');
-md.push('');
-md.push('| Research Question | Analysis ID | Key Verified Finding & Scope | Evidence IDs | Exceptions & Uncertainty Preserved | Manuscript Display |');
-md.push('| :--- | :---: | :--- | :--- | :--- | :--- |');
-md.push('| **RQ1** (Pure-CoT & Numeric-PoT Failure Modes) | `AN-01`, `AN-02`, `AN-03` | `Arm 1` fails on `20.0%` (`gpt-4.1-mini`) to `40.0%` (`Qwen3.5-9B`) of degenerate tasks. Crucially, `Arm 2` (`Numeric-PoT`) degrades `SymAcc` by `-27.50%p` ($p_{\\text{Holm}} = 2.220 \\times 10^{-5}$) on `gpt-4.1-mini` and `-24.17%p` ($p_{\\text{Holm}} = 2.689 \\times 10^{-5}$) on `Qwen3.5-9B` (and `NumAcc` by `-20.83%p` and `-19.17%p`, $p_{\\text{Holm}} = .0017$), corrupting `43` (`gpt-4.1-mini`) and `36` (`Qwen3.5-9B`) items solved under `Arm 1` due to decimal conversion and IEEE-754 tool distortion. | `EV-RES-01`, `EV-RES-02` | `Arm 2` achieves higher `NumAcc` than `SymAcc` (`59.17%` vs `52.50%` on `gpt-4.1-mini`; `40.83%` vs `35.83%` on `Qwen3.5-9B`), preserving smooth numerical competence. | Tables 2–4, Fig. 2 |');
-md.push('| **RQ2** (`AlgeoCAS` Neuro-Symbolic RVR Efficacy) | `AN-02`, `AN-03` | `Arm 3` raises `SymAcc` to `92.50%` (`+12.50%p` vs `Arm 1`, $p_{\\text{Holm}} = .0119$; `+40.00%p` vs `Arm 2`, $p_{\\text{Holm}} = 3.674 \\times 10^{-12}$) on `gpt-4.1-mini` and `75.83%` ITT / `76.47%` complete-case (`+15.83%p` vs `Arm 1`, $p_{\\text{Holm}} = .0119$; `+40.00%p` vs `Arm 2`, $p_{\\text{Holm}} = 1.748 \\times 10^{-10}$) on `Qwen3.5-9B`, rescuing `87.50%` (`21/24`) and `70.83%` (`34/48`) of Pure-CoT errors. | `EV-RES-02`, `EV-RES-03`, `EV-RES-04` | `9/120` residual errors on `gpt-4.1-mini` (`6` from `Arm 1` right -> `Arm 3` wrong, `3` persistent) occur via free-form CAS DSL syntax friction (`5`), last-mile radical arithmetic (`3`), and verbal formatting (`1`); on `Qwen3.5-9B`, `19` `Arm 3` failures reflect `650`-token per-turn JSON truncation. | Tables 2–5, Figs. 2–3 |');
-md.push('| **RQ3** (Latency, Stability & Sovereign Viability) | `AN-01`, `AN-04` | Client-side `giac.wasm` executes in `0.33–6.18 ms` per subfamily (`mean 5.85–6.68 ms` per episode, `0.04%–0.11%` of total LLM wall-clock time). Across `k = 5` stochastic runs (`T = 0.7`, `gpt-4.1-mini`), `AlgeoCAS` RVR boosts `Avg@5` from `77.50% ± 6.97%` to `90.83% ± 1.86%` (73.3% run-SD reduction), while local `Qwen3.5-9B + AlgeoCAS` (`75.83%` ITT / `76.47%` CC) approaches unverified cloud `gpt-4.1-mini` (`80.00%`) with zero cloud data transfer. | `EV-RES-05`, `EV-RES-06` | `4` local Ollama 90s timeouts (`1.11%`) and `650`-token per-call cap transparently reported alongside Complete-Case (`N = 716`) sensitivity models. | Table 6, Fig. 4 |');
 
 fs.writeFileSync(OUT_REPORT, md.join('\n'), 'utf8');
 console.log('Updated ITT + Complete-Case statistical analysis and generated figures input.');

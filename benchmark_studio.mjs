@@ -785,7 +785,7 @@ const meshScaling = [16, 24, 32, 40, 48].map((res) => {
 });
 
 const mem = process.memoryUsage();
-const wasmSizeBytes = fs.statSync('C:/dev/apps/symgeo-studio/node_modules/@basthon/xcas-wasm/src/giac.wasm').size;
+const wasmSizeBytes = fs.statSync(fileURLToPath(new URL('./node_modules/@basthon/xcas-wasm/src/giac.wasm', import.meta.url))).size;
 
 const summary = {
   generatedAt: new Date().toISOString(),

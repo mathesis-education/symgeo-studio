@@ -1,5 +1,5 @@
 /**
- * Clean-Room Crack-Free Isosurface Extractor (Kuhn 6-Tetrahedra Decomposition)
+ * Crack-Free Isosurface Extractor (Kuhn 6-Tetrahedra Decomposition)
  *
  * Converts any 3D implicit scalar field F(x, y, z) = 0 into smooth, outward-oriented
  * triangle positions & gradient normals ready for THREE.BufferGeometry, BVH plane slicing,

@@ -966,7 +966,7 @@ function removeObject(id) {
 }
 
 /**
- * Render Unified 2D + 3D GeoGebra Algebra Stream
+ * Render Unified 2D + 3D Algebra Stream
  */
 function renderAlgebraPanel() {
   updateToolSelectors();

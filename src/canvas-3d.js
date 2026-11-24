@@ -2,7 +2,7 @@
  * SymGeo Studio 3D Spatial Geometry & Symbolic Algebra Viewport (`src/canvas-3d.js`)
  *
  * Hybrid Architecture (Proposal 1):
- * - Three.js WebGL2 Z-Up Mathematical Coordinate System (matching GeoGebra 3D & Korean Textbooks)
+ * - Three.js WebGL2 Z-Up Mathematical Coordinate System (Z-up right-handed mathematical convention)
  * - Two-Pass Back/Front Culling Transparency for artifact-free overlapping planes & surfaces
  * - Real-time `three-mesh-bvh` Plane Cross-Section Slicing (`shapecast` contour + cutaway clipping)
  * - `three-bvh-csg` Tinkercad-style Solid Booleans (Union, Subtract, Intersect)
@@ -104,7 +104,7 @@ export class SpatialGraph3D {
     this.axesGroup.clear();
     const L = 5.0;
 
-    // Subtle GeoGebra-style XY Gray Grid on z = 0
+    // Subtle XY Gray Grid on z = 0
     const grid = new THREE.GridHelper(10, 10, 0x94a3b8, 0xe2e8f0);
     grid.rotation.x = Math.PI / 2; // Rotate from XZ to XY plane!
     grid.material.transparent = true;
@@ -208,7 +208,7 @@ export class SpatialGraph3D {
   }
 
   /**
-   * GeoGebra-style Two-Pass Translucent Mesh (BackSide then FrontSide) to prevent alpha sorting glitches
+   * Two-Pass Translucent Mesh (BackSide then FrontSide) to prevent alpha sorting glitches
    */
   _createTwoPassTranslucentMesh(geometry, colorHex, opacity = 0.72, clipPlanes = []) {
     const group = new THREE.Group();

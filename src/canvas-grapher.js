@@ -1,6 +1,5 @@
 /**
- * GeoGebra-Class Interactive 2D High-DPI Graphing & Symbolic Geometry Canvas
- * (100% Clean-Room Implementation — Zero GeoGebra proprietary code/assets)
+ * Interactive 2D High-DPI Graphing & Symbolic Geometry Canvas
  *
  * Features:
  * - Explicit y = f(x) curves with discontinuity / vertical asymptote jump suppression
@@ -595,7 +594,7 @@ export class DynamicGraphCanvas {
       ctx.stroke();
     }
 
-    // 2. Shaded Definite Integrals (GeoGebra Integral Area style)
+    // 2. Shaded Definite Integrals (Integral Area style)
     for (const area of this.shadedIntegrals) {
       if (!area.visible || !area.evaluator) continue;
       this._drawShadedIntegral(ctx, area);
