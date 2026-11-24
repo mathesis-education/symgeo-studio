@@ -1,0 +1,2585 @@
+{
+  "generatedAt": "2026-11-18T15:12:42.626Z",
+  "totalExecutedPrimaryEpisodes": 716,
+  "totalIttPrimaryEpisodes": 720,
+  "timeoutImputedCount": 4,
+  "timeoutKeys": [
+    "ollama_qwen3_5_9b__Arm2_NumericFloat__B61",
+    "ollama_qwen3_5_9b__Arm2_NumericFloat__B70",
+    "ollama_qwen3_5_9b__Arm2_NumericFloat__C104",
+    "ollama_qwen3_5_9b__Arm3_AlgeoCAS_RVR__B70"
+  ],
+  "totalStochasticEpisodes": 240,
+  "modelSnapshots": {
+    "openai_gpt_4_1_mini": "gpt-4.1-mini-2025-04-14",
+    "ollama_qwen3_5_9b": "qwen3.5:9b"
+  },
+  "oracleBaseline": {
+    "generatedAt": "2026-11-18T13:49:54.648Z",
+    "totalItems": 120,
+    "graderSelfTestPass": "120/120",
+    "verdictDistribution": {
+      "MISCONCEPTION": 96,
+      "VALID": 24
+    },
+    "giacColdInitMs": 75.076,
+    "rawGiacSymbolicPass": "120/120 (100.0%)",
+    "rawIEEE754NumericPass": "50/120 (41.7%)",
+    "rawIEEE754SymbolicPass": "0/120 (0.0%)",
+    "wasmSubfamilyLatencies": [
+      {
+        "subfamily": "A1_Intersections",
+        "nRuns": 30,
+        "meanMs": 0.602,
+        "sdMs": 0.077,
+        "medianMs": 0.566,
+        "p95Ms": 0.752,
+        "minMs": 0.526,
+        "maxMs": 0.855
+      },
+      {
+        "subfamily": "A2_InflectionParity",
+        "nRuns": 30,
+        "meanMs": 6.184,
+        "sdMs": 0.173,
+        "medianMs": 6.148,
+        "p95Ms": 6.623,
+        "minMs": 5.979,
+        "maxMs": 6.692
+      },
+      {
+        "subfamily": "B1_3DPlaneSlice",
+        "nRuns": 30,
+        "meanMs": 1.512,
+        "sdMs": 0.243,
+        "medianMs": 1.503,
+        "p95Ms": 2.156,
+        "minMs": 1.204,
+        "maxMs": 2.177
+      },
+      {
+        "subfamily": "B2_SolidRevolution",
+        "nRuns": 30,
+        "meanMs": 0.991,
+        "sdMs": 0.035,
+        "medianMs": 0.984,
+        "p95Ms": 1.09,
+        "minMs": 0.955,
+        "maxMs": 1.12
+      },
+      {
+        "subfamily": "C1_JordanAndDiffGeom",
+        "nRuns": 30,
+        "meanMs": 0.328,
+        "sdMs": 0.076,
+        "medianMs": 0.31,
+        "p95Ms": 0.513,
+        "minMs": 0.282,
+        "maxMs": 0.673
+      },
+      {
+        "subfamily": "C2_ODELaplaceResidue",
+        "nRuns": 30,
+        "meanMs": 1.021,
+        "sdMs": 0.09,
+        "medianMs": 0.995,
+        "p95Ms": 1.282,
+        "minMs": 0.938,
+        "maxMs": 1.292
+      }
+    ]
+  },
+  "modelArmSummary": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "modelSnapshot": "gpt-4.1-mini-2025-04-14",
+      "arm": "Arm1_PureCoT",
+      "n": 120,
+      "completedN": 120,
+      "timeouts": 0,
+      "symK": 96,
+      "symAccPct": 80,
+      "completeCaseSymAccPct": 80,
+      "sym95CI": [
+        71.96,
+        86.18
+      ],
+      "numK": 96,
+      "numAccPct": 80,
+      "completeCaseNumAccPct": 80,
+      "num95CI": [
+        71.96,
+        86.18
+      ],
+      "diagK": 78,
+      "diagFidPct": 65,
+      "completeCaseDiagFidPct": 65,
+      "diag95CI": [
+        56.12,
+        72.95
+      ],
+      "verdictK": 92,
+      "verdictAccPct": 76.67,
+      "meanLlmMs": 5785.9,
+      "medianLlmMs": 5415.9,
+      "meanToolMs": 0,
+      "p95ToolMs": 0,
+      "toolSharePct": 0,
+      "meanLlmTurns": 1,
+      "threeTurnCount": 0,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 36,
+          "symAcc": 90,
+          "numK": 36,
+          "numAcc": 90,
+          "diagK": 36,
+          "diagFid": 90
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 34,
+          "symAcc": 85,
+          "numK": 34,
+          "numAcc": 85,
+          "diagK": 21,
+          "diagFid": 52.5
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 26,
+          "symAcc": 65,
+          "numK": 26,
+          "numAcc": 65,
+          "diagK": 21,
+          "diagFid": 52.5
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 20,
+          "symAcc": 100,
+          "numK": 20,
+          "numAcc": 100,
+          "diagK": 20,
+          "diagFid": 100
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 16,
+          "symAcc": 80,
+          "numK": 16,
+          "numAcc": 80,
+          "diagK": 16,
+          "diagFid": 80
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 18,
+          "symAcc": 90,
+          "numK": 18,
+          "numAcc": 90,
+          "diagK": 12,
+          "diagFid": 60
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 16,
+          "symAcc": 80,
+          "numK": 16,
+          "numAcc": 80,
+          "diagK": 9,
+          "diagFid": 45
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 11,
+          "symAcc": 55,
+          "numK": 11,
+          "numAcc": 55,
+          "diagK": 9,
+          "diagFid": 45
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 12,
+          "diagFid": 60
+        }
+      }
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "modelSnapshot": "gpt-4.1-mini-2025-04-14",
+      "arm": "Arm2_NumericFloat",
+      "n": 120,
+      "completedN": 120,
+      "timeouts": 0,
+      "symK": 63,
+      "symAccPct": 52.5,
+      "completeCaseSymAccPct": 52.5,
+      "sym95CI": [
+        43.63,
+        61.22
+      ],
+      "numK": 71,
+      "numAccPct": 59.17,
+      "completeCaseNumAccPct": 59.17,
+      "num95CI": [
+        50.22,
+        67.54
+      ],
+      "diagK": 51,
+      "diagFidPct": 42.5,
+      "completeCaseDiagFidPct": 42.5,
+      "diag95CI": [
+        34.02,
+        51.44
+      ],
+      "verdictK": 92,
+      "verdictAccPct": 76.67,
+      "meanLlmMs": 5366.5,
+      "medianLlmMs": 5253.8,
+      "meanToolMs": 0.186,
+      "p95ToolMs": 0.467,
+      "toolSharePct": 0.0035,
+      "meanLlmTurns": 2,
+      "threeTurnCount": 0,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 15,
+          "symAcc": 37.5,
+          "numK": 16,
+          "numAcc": 40,
+          "diagK": 15,
+          "diagFid": 37.5
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 23,
+          "symAcc": 57.5,
+          "numK": 29,
+          "numAcc": 72.5,
+          "diagK": 17,
+          "diagFid": 42.5
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 25,
+          "symAcc": 62.5,
+          "numK": 26,
+          "numAcc": 65,
+          "diagK": 19,
+          "diagFid": 47.5
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 6,
+          "symAcc": 30,
+          "numK": 7,
+          "numAcc": 35,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 9,
+          "symAcc": 45,
+          "numK": 9,
+          "numAcc": 45,
+          "diagK": 9,
+          "diagFid": 45
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 11,
+          "diagFid": 55
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 8,
+          "symAcc": 40,
+          "numK": 14,
+          "numAcc": 70,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 11,
+          "symAcc": 55,
+          "numK": 12,
+          "numAcc": 60,
+          "diagK": 11,
+          "diagFid": 55
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 14,
+          "symAcc": 70,
+          "numK": 14,
+          "numAcc": 70,
+          "diagK": 8,
+          "diagFid": 40
+        }
+      }
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "modelSnapshot": "gpt-4.1-mini-2025-04-14",
+      "arm": "Arm3_AlgeoCAS_RVR",
+      "n": 120,
+      "completedN": 120,
+      "timeouts": 0,
+      "symK": 111,
+      "symAccPct": 92.5,
+      "completeCaseSymAccPct": 92.5,
+      "sym95CI": [
+        86.36,
+        96
+      ],
+      "numK": 111,
+      "numAccPct": 92.5,
+      "completeCaseNumAccPct": 92.5,
+      "num95CI": [
+        86.36,
+        96
+      ],
+      "diagK": 93,
+      "diagFidPct": 77.5,
+      "completeCaseDiagFidPct": 77.5,
+      "diag95CI": [
+        69.24,
+        84.05
+      ],
+      "verdictK": 97,
+      "verdictAccPct": 80.83,
+      "meanLlmMs": 6012,
+      "medianLlmMs": 5772.6,
+      "meanToolMs": 6.679,
+      "p95ToolMs": 13.597,
+      "toolSharePct": 0.111,
+      "meanLlmTurns": 2.017,
+      "threeTurnCount": 2,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 37,
+          "symAcc": 92.5,
+          "numK": 37,
+          "numAcc": 92.5,
+          "diagK": 37,
+          "diagFid": 92.5
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 39,
+          "symAcc": 97.5,
+          "numK": 39,
+          "numAcc": 97.5,
+          "diagK": 29,
+          "diagFid": 72.5
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 35,
+          "symAcc": 87.5,
+          "numK": 35,
+          "numAcc": 87.5,
+          "diagK": 27,
+          "diagFid": 67.5
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 17,
+          "symAcc": 85,
+          "numK": 17,
+          "numAcc": 85,
+          "diagK": 17,
+          "diagFid": 85
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 20,
+          "symAcc": 100,
+          "numK": 20,
+          "numAcc": 100,
+          "diagK": 20,
+          "diagFid": 100
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 19,
+          "symAcc": 95,
+          "numK": 19,
+          "numAcc": 95,
+          "diagK": 13,
+          "diagFid": 65
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 20,
+          "symAcc": 100,
+          "numK": 20,
+          "numAcc": 100,
+          "diagK": 16,
+          "diagFid": 80
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 20,
+          "symAcc": 100,
+          "numK": 20,
+          "numAcc": 100,
+          "diagK": 17,
+          "diagFid": 85
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 10,
+          "diagFid": 50
+        }
+      }
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "modelSnapshot": "qwen3.5:9b",
+      "arm": "Arm1_PureCoT",
+      "n": 120,
+      "completedN": 120,
+      "timeouts": 0,
+      "symK": 72,
+      "symAccPct": 60,
+      "completeCaseSymAccPct": 60,
+      "sym95CI": [
+        51.06,
+        68.32
+      ],
+      "numK": 72,
+      "numAccPct": 60,
+      "completeCaseNumAccPct": 60,
+      "num95CI": [
+        51.06,
+        68.32
+      ],
+      "diagK": 59,
+      "diagFidPct": 49.17,
+      "completeCaseDiagFidPct": 49.17,
+      "diag95CI": [
+        40.39,
+        58
+      ],
+      "verdictK": 66,
+      "verdictAccPct": 55,
+      "meanLlmMs": 10966.9,
+      "medianLlmMs": 10737.1,
+      "meanToolMs": 0,
+      "p95ToolMs": 0,
+      "toolSharePct": 0,
+      "meanLlmTurns": 1,
+      "threeTurnCount": 0,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 28,
+          "symAcc": 70,
+          "numK": 28,
+          "numAcc": 70,
+          "diagK": 28,
+          "diagFid": 70
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 23,
+          "symAcc": 57.5,
+          "numK": 23,
+          "numAcc": 57.5,
+          "diagK": 14,
+          "diagFid": 35
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 21,
+          "symAcc": 52.5,
+          "numK": 21,
+          "numAcc": 52.5,
+          "diagK": 17,
+          "diagFid": 42.5
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 13,
+          "symAcc": 65,
+          "numK": 13,
+          "numAcc": 65,
+          "diagK": 13,
+          "diagFid": 65
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 15,
+          "diagFid": 75
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 8,
+          "symAcc": 40,
+          "numK": 8,
+          "numAcc": 40,
+          "diagK": 5,
+          "diagFid": 25
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 9,
+          "diagFid": 45
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 6,
+          "symAcc": 30,
+          "numK": 6,
+          "numAcc": 30,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 15,
+          "symAcc": 75,
+          "numK": 15,
+          "numAcc": 75,
+          "diagK": 11,
+          "diagFid": 55
+        }
+      }
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "modelSnapshot": "qwen3.5:9b",
+      "arm": "Arm2_NumericFloat",
+      "n": 120,
+      "completedN": 117,
+      "timeouts": 3,
+      "symK": 43,
+      "symAccPct": 35.83,
+      "completeCaseSymAccPct": 36.75,
+      "sym95CI": [
+        27.82,
+        44.73
+      ],
+      "numK": 49,
+      "numAccPct": 40.83,
+      "completeCaseNumAccPct": 41.88,
+      "num95CI": [
+        32.46,
+        49.78
+      ],
+      "diagK": 35,
+      "diagFidPct": 29.17,
+      "completeCaseDiagFidPct": 29.91,
+      "diag95CI": [
+        21.78,
+        37.84
+      ],
+      "verdictK": 72,
+      "verdictAccPct": 60,
+      "meanLlmMs": 17175.7,
+      "medianLlmMs": 17044.7,
+      "meanToolMs": 1.5,
+      "p95ToolMs": 12.113,
+      "toolSharePct": 0.0087,
+      "meanLlmTurns": 2,
+      "threeTurnCount": 0,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 17,
+          "symAcc": 42.5,
+          "numK": 19,
+          "numAcc": 47.5,
+          "diagK": 16,
+          "diagFid": 40
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 7,
+          "symAcc": 17.5,
+          "numK": 7,
+          "numAcc": 17.5,
+          "diagK": 5,
+          "diagFid": 12.5
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 19,
+          "symAcc": 47.5,
+          "numK": 23,
+          "numAcc": 57.5,
+          "diagK": 14,
+          "diagFid": 35
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 6,
+          "symAcc": 30,
+          "numK": 8,
+          "numAcc": 40,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 11,
+          "symAcc": 55,
+          "numK": 11,
+          "numAcc": 55,
+          "diagK": 10,
+          "diagFid": 50
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 4,
+          "symAcc": 20,
+          "numK": 4,
+          "numAcc": 20,
+          "diagK": 2,
+          "diagFid": 10
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 3,
+          "symAcc": 15,
+          "numK": 3,
+          "numAcc": 15,
+          "diagK": 3,
+          "diagFid": 15
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 7,
+          "symAcc": 35,
+          "numK": 7,
+          "numAcc": 35,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 12,
+          "symAcc": 60,
+          "numK": 16,
+          "numAcc": 80,
+          "diagK": 8,
+          "diagFid": 40
+        }
+      }
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "modelSnapshot": "qwen3.5:9b",
+      "arm": "Arm3_AlgeoCAS_RVR",
+      "n": 120,
+      "completedN": 119,
+      "timeouts": 1,
+      "symK": 91,
+      "symAccPct": 75.83,
+      "completeCaseSymAccPct": 76.47,
+      "sym95CI": [
+        67.45,
+        82.61
+      ],
+      "numK": 91,
+      "numAccPct": 75.83,
+      "completeCaseNumAccPct": 76.47,
+      "num95CI": [
+        67.45,
+        82.61
+      ],
+      "diagK": 76,
+      "diagFidPct": 63.33,
+      "completeCaseDiagFidPct": 63.87,
+      "diag95CI": [
+        54.42,
+        71.42
+      ],
+      "verdictK": 83,
+      "verdictAccPct": 69.17,
+      "meanLlmMs": 15447.1,
+      "medianLlmMs": 14718.2,
+      "meanToolMs": 5.845,
+      "p95ToolMs": 8.6,
+      "toolSharePct": 0.0378,
+      "meanLlmTurns": 2,
+      "threeTurnCount": 0,
+      "byCategory": {
+        "A_Secondary_Calculus": {
+          "n": 40,
+          "symK": 38,
+          "symAcc": 95,
+          "numK": 38,
+          "numAcc": 95,
+          "diagK": 37,
+          "diagFid": 92.5
+        },
+        "B_3D_Spatial_Integral": {
+          "n": 40,
+          "symK": 21,
+          "symAcc": 52.5,
+          "numK": 21,
+          "numAcc": 52.5,
+          "diagK": 12,
+          "diagFid": 30
+        },
+        "C_Undergraduate_STEM": {
+          "n": 40,
+          "symK": 32,
+          "symAcc": 80,
+          "numK": 32,
+          "numAcc": 80,
+          "diagK": 27,
+          "diagFid": 67.5
+        }
+      },
+      "bySubfamily": {
+        "A1_Tangential_Radical_Intersections": {
+          "n": 20,
+          "symK": 19,
+          "symAcc": 95,
+          "numK": 19,
+          "numAcc": 95,
+          "diagK": 18,
+          "diagFid": 90
+        },
+        "A2_HigherOrder_Inflection_Parity": {
+          "n": 20,
+          "symK": 19,
+          "symAcc": 95,
+          "numK": 19,
+          "numAcc": 95,
+          "diagK": 19,
+          "diagFid": 95
+        },
+        "B1_3D_Plane_Slice_Conics": {
+          "n": 20,
+          "symK": 9,
+          "symAcc": 45,
+          "numK": 9,
+          "numAcc": 45,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "B2_Solids_Revolution_Improper_Integrals": {
+          "n": 20,
+          "symK": 12,
+          "symAcc": 60,
+          "numK": 12,
+          "numAcc": 60,
+          "diagK": 6,
+          "diagFid": 30
+        },
+        "C1_DiffGeom_Curvature_Defective_Jordan": {
+          "n": 20,
+          "symK": 19,
+          "symAcc": 95,
+          "numK": 19,
+          "numAcc": 95,
+          "diagK": 17,
+          "diagFid": 85
+        },
+        "C2_Vector_ODE_Laplace_Residue": {
+          "n": 20,
+          "symK": 13,
+          "symAcc": 65,
+          "numK": 13,
+          "numAcc": 65,
+          "diagK": 10,
+          "diagFid": 50
+        }
+      }
+    }
+  ],
+  "omnibusCochran": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "SymAcc",
+      "nMatched": 120,
+      "Q": 54.8182,
+      "df": 2,
+      "pValue": 1.2484842391602662e-12
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "NumAcc",
+      "nMatched": 120,
+      "Q": 40.1639,
+      "df": 2,
+      "pValue": 1.898945294398846e-9
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "DiagFid",
+      "nMatched": 120,
+      "Q": 38.8286,
+      "df": 2,
+      "pValue": 3.7023957964583926e-9
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "SymAcc",
+      "nMatched": 120,
+      "Q": 46.7467,
+      "df": 2,
+      "pValue": 7.064644451974768e-11
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "NumAcc",
+      "nMatched": 120,
+      "Q": 36.3562,
+      "df": 2,
+      "pValue": 1.2745568533196872e-8
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "DiagFid",
+      "nMatched": 120,
+      "Q": 35.8592,
+      "df": 2,
+      "pValue": 1.634118114242752e-8
+    }
+  ],
+  "pairwiseMcNemar": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "SymAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 90,
+      "AonlyRight_b": 21,
+      "BonlyRight_c": 6,
+      "bothWrong_n00": 3,
+      "diffPctPoints": 12.5,
+      "diff95BootstrapCI": [
+        4.17,
+        20.83
+      ],
+      "pairedOddsRatio": 3.31,
+      "exactMcNemarP": 0.005924612283706704,
+      "holmAdjustedP": 0.011849224567413408
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "SymAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 61,
+      "AonlyRight_b": 50,
+      "BonlyRight_c": 2,
+      "bothWrong_n00": 7,
+      "diffPctPoints": 40,
+      "diff95BootstrapCI": [
+        30.83,
+        49.17
+      ],
+      "pairedOddsRatio": 20.2,
+      "exactMcNemarP": 6.123990203832347e-13,
+      "holmAdjustedP": 3.674394122299408e-12
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "SymAcc",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 53,
+      "AonlyRight_b": 10,
+      "BonlyRight_c": 43,
+      "bothWrong_n00": 14,
+      "diffPctPoints": -27.5,
+      "diff95BootstrapCI": [
+        -38.33,
+        -16.67
+      ],
+      "pairedOddsRatio": 0.24,
+      "exactMcNemarP": 0.000005550520889130578,
+      "holmAdjustedP": 0.000022202083556522312
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "NumAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 90,
+      "AonlyRight_b": 21,
+      "BonlyRight_c": 6,
+      "bothWrong_n00": 3,
+      "diffPctPoints": 12.5,
+      "diff95BootstrapCI": [
+        4.17,
+        20.83
+      ],
+      "pairedOddsRatio": 3.31,
+      "exactMcNemarP": 0.005924612283706704,
+      "holmAdjustedP": 0.011849224567413408
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "NumAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 68,
+      "AonlyRight_b": 43,
+      "BonlyRight_c": 3,
+      "bothWrong_n00": 6,
+      "diffPctPoints": 33.33,
+      "diff95BootstrapCI": [
+        24.17,
+        42.5
+      ],
+      "pairedOddsRatio": 12.43,
+      "exactMcNemarP": 4.621938387572325e-10,
+      "holmAdjustedP": 2.773163032543395e-9
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "NumAcc",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 59,
+      "AonlyRight_b": 12,
+      "BonlyRight_c": 37,
+      "bothWrong_n00": 12,
+      "diffPctPoints": -20.83,
+      "diff95BootstrapCI": [
+        -31.67,
+        -10
+      ],
+      "pairedOddsRatio": 0.33,
+      "exactMcNemarP": 0.00046975731800813264,
+      "holmAdjustedP": 0.001723428169498212
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "DiagFid",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 67,
+      "AonlyRight_b": 26,
+      "BonlyRight_c": 11,
+      "bothWrong_n00": 16,
+      "diffPctPoints": 12.5,
+      "diff95BootstrapCI": [
+        3.33,
+        22.5
+      ],
+      "pairedOddsRatio": 2.3,
+      "exactMcNemarP": 0.020073851919733154,
+      "holmAdjustedP": 0.04014770383946631
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "DiagFid",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 46,
+      "AonlyRight_b": 47,
+      "BonlyRight_c": 5,
+      "bothWrong_n00": 22,
+      "diffPctPoints": 35,
+      "diff95BootstrapCI": [
+        25,
+        45
+      ],
+      "pairedOddsRatio": 8.64,
+      "exactMcNemarP": 1.2848229147266567e-9,
+      "holmAdjustedP": 7.70893748835994e-9
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "metric": "DiagFid",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 39,
+      "AonlyRight_b": 12,
+      "BonlyRight_c": 39,
+      "bothWrong_n00": 30,
+      "diffPctPoints": -22.5,
+      "diff95BootstrapCI": [
+        -33.33,
+        -11.67
+      ],
+      "pairedOddsRatio": 0.32,
+      "exactMcNemarP": 0.00019803945133745458,
+      "holmAdjustedP": 0.0005941183540123637
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "SymAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 57,
+      "AonlyRight_b": 34,
+      "BonlyRight_c": 15,
+      "bothWrong_n00": 14,
+      "diffPctPoints": 15.83,
+      "diff95BootstrapCI": [
+        5,
+        27.5
+      ],
+      "pairedOddsRatio": 2.23,
+      "exactMcNemarP": 0.009399241523872951,
+      "holmAdjustedP": 0.011849224567413408
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "SymAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 38,
+      "AonlyRight_b": 53,
+      "BonlyRight_c": 5,
+      "bothWrong_n00": 24,
+      "diffPctPoints": 40,
+      "diff95BootstrapCI": [
+        29.17,
+        50
+      ],
+      "pairedOddsRatio": 9.73,
+      "exactMcNemarP": 3.496476719266871e-11,
+      "holmAdjustedP": 1.7482383596334356e-10
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "SymAcc",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 36,
+      "AonlyRight_b": 7,
+      "BonlyRight_c": 36,
+      "bothWrong_n00": 41,
+      "diffPctPoints": -24.17,
+      "diff95BootstrapCI": [
+        -34.17,
+        -14.17
+      ],
+      "pairedOddsRatio": 0.21,
+      "exactMcNemarP": 0.000008963039363152268,
+      "holmAdjustedP": 0.000026889118089456805
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "NumAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 57,
+      "AonlyRight_b": 34,
+      "BonlyRight_c": 15,
+      "bothWrong_n00": 14,
+      "diffPctPoints": 15.83,
+      "diff95BootstrapCI": [
+        5,
+        27.5
+      ],
+      "pairedOddsRatio": 2.23,
+      "exactMcNemarP": 0.009399241523872951,
+      "holmAdjustedP": 0.011849224567413408
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "NumAcc",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 42,
+      "AonlyRight_b": 49,
+      "BonlyRight_c": 7,
+      "bothWrong_n00": 22,
+      "diffPctPoints": 35,
+      "diff95BootstrapCI": [
+        24.17,
+        45
+      ],
+      "pairedOddsRatio": 6.6,
+      "exactMcNemarP": 7.455210310203303e-9,
+      "holmAdjustedP": 3.7276051551016514e-8
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "NumAcc",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 40,
+      "AonlyRight_b": 9,
+      "BonlyRight_c": 32,
+      "bothWrong_n00": 39,
+      "diffPctPoints": -19.17,
+      "diff95BootstrapCI": [
+        -29.17,
+        -8.33
+      ],
+      "pairedOddsRatio": 0.29,
+      "exactMcNemarP": 0.000430857042374553,
+      "holmAdjustedP": 0.001723428169498212
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "DiagFid",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 42,
+      "AonlyRight_b": 34,
+      "BonlyRight_c": 17,
+      "bothWrong_n00": 27,
+      "diffPctPoints": 14.17,
+      "diff95BootstrapCI": [
+        2.5,
+        25.83
+      ],
+      "pairedOddsRatio": 1.97,
+      "exactMcNemarP": 0.024092907698449385,
+      "holmAdjustedP": 0.04014770383946631
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "DiagFid",
+      "comparison": "Arm3_AlgeoCAS_RVR vs Arm2_NumericFloat",
+      "n": 120,
+      "bothRight_n11": 29,
+      "AonlyRight_b": 47,
+      "BonlyRight_c": 6,
+      "bothWrong_n00": 38,
+      "diffPctPoints": 34.17,
+      "diff95BootstrapCI": [
+        24.17,
+        44.17
+      ],
+      "pairedOddsRatio": 7.31,
+      "exactMcNemarP": 5.8053224449850926e-9,
+      "holmAdjustedP": 2.9026612224925464e-8
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "metric": "DiagFid",
+      "comparison": "Arm2_NumericFloat vs Arm1_PureCoT",
+      "n": 120,
+      "bothRight_n11": 28,
+      "AonlyRight_b": 7,
+      "BonlyRight_c": 31,
+      "bothWrong_n00": 54,
+      "diffPctPoints": -20,
+      "diff95BootstrapCI": [
+        -29.17,
+        -10
+      ],
+      "pairedOddsRatio": 0.24,
+      "exactMcNemarP": 0.00011616700794547798,
+      "holmAdjustedP": 0.0004646680317819119
+    }
+  ],
+  "logisticRegModels": {
+    "SymAcc": {
+      "nObs": 720,
+      "nClusters": 120,
+      "logLik": -398.31,
+      "coefficients": [
+        {
+          "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+          "beta": 1.6476,
+          "robustSE": 0.2189,
+          "z": 7.528,
+          "pValue": 5.184741524999481e-14,
+          "oddsRatio": 5.195,
+          "or95CI": [
+            3.383,
+            7.977
+          ]
+        },
+        {
+          "term": "Arm2_NumericFloat (vs Arm1)",
+          "beta": -1.1503,
+          "robustSE": 0.184,
+          "z": -6.25,
+          "pValue": 4.120531693629914e-10,
+          "oddsRatio": 0.317,
+          "or95CI": [
+            0.221,
+            0.454
+          ]
+        },
+        {
+          "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+          "beta": 0.8602,
+          "robustSE": 0.232,
+          "z": 3.708,
+          "pValue": 0.00020893295341384288,
+          "oddsRatio": 2.364,
+          "or95CI": [
+            1.5,
+            3.724
+          ]
+        },
+        {
+          "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+          "beta": -0.9376,
+          "robustSE": 0.1707,
+          "z": -5.494,
+          "pValue": 3.933134096190116e-8,
+          "oddsRatio": 0.392,
+          "or95CI": [
+            0.28,
+            0.547
+          ]
+        },
+        {
+          "term": "Category_B_3DSpatial (vs CatA)",
+          "beta": -0.5363,
+          "robustSE": 0.2413,
+          "z": -2.223,
+          "pValue": 0.026226099943757464,
+          "oddsRatio": 0.585,
+          "or95CI": [
+            0.365,
+            0.939
+          ]
+        },
+        {
+          "term": "Category_C_UndergradSTEM (vs CatA)",
+          "beta": -0.2988,
+          "robustSE": 0.293,
+          "z": -1.02,
+          "pValue": 0.30771039206548534,
+          "oddsRatio": 0.742,
+          "or95CI": [
+            0.418,
+            1.317
+          ]
+        }
+      ]
+    },
+    "NumAcc": {
+      "nObs": 720,
+      "nClusters": 120,
+      "logLik": -399.87,
+      "coefficients": [
+        {
+          "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+          "beta": 1.62,
+          "robustSE": 0.2157,
+          "z": 7.51,
+          "pValue": 5.950795411990839e-14,
+          "oddsRatio": 5.053,
+          "or95CI": [
+            3.311,
+            7.712
+          ]
+        },
+        {
+          "term": "Arm2_NumericFloat (vs Arm1)",
+          "beta": -0.9004,
+          "robustSE": 0.1762,
+          "z": -5.111,
+          "pValue": 3.208286000200289e-7,
+          "oddsRatio": 0.406,
+          "or95CI": [
+            0.288,
+            0.574
+          ]
+        },
+        {
+          "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+          "beta": 0.86,
+          "robustSE": 0.232,
+          "z": 3.707,
+          "pValue": 0.00020973171216565056,
+          "oddsRatio": 2.363,
+          "or95CI": [
+            1.5,
+            3.724
+          ]
+        },
+        {
+          "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+          "beta": -0.9602,
+          "robustSE": 0.1729,
+          "z": -5.553,
+          "pValue": 2.8115938355277592e-8,
+          "oddsRatio": 0.383,
+          "or95CI": [
+            0.273,
+            0.537
+          ]
+        },
+        {
+          "term": "Category_B_3DSpatial (vs CatA)",
+          "beta": -0.4667,
+          "robustSE": 0.2365,
+          "z": -1.973,
+          "pValue": 0.04849929909658224,
+          "oddsRatio": 0.627,
+          "or95CI": [
+            0.394,
+            0.997
+          ]
+        },
+        {
+          "term": "Category_C_UndergradSTEM (vs CatA)",
+          "beta": -0.2519,
+          "robustSE": 0.2863,
+          "z": -0.88,
+          "pValue": 0.378988602189809,
+          "oddsRatio": 0.777,
+          "or95CI": [
+            0.443,
+            1.362
+          ]
+        }
+      ]
+    },
+    "DiagFid": {
+      "nObs": 720,
+      "nClusters": 120,
+      "logLik": -433.3,
+      "coefficients": [
+        {
+          "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+          "beta": 1.424,
+          "robustSE": 0.1923,
+          "z": 7.404,
+          "pValue": 1.3311574065255627e-13,
+          "oddsRatio": 4.154,
+          "or95CI": [
+            2.849,
+            6.055
+          ]
+        },
+        {
+          "term": "Arm2_NumericFloat (vs Arm1)",
+          "beta": -0.9607,
+          "robustSE": 0.1793,
+          "z": -5.358,
+          "pValue": 8.437604093192164e-8,
+          "oddsRatio": 0.383,
+          "or95CI": [
+            0.269,
+            0.544
+          ]
+        },
+        {
+          "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+          "beta": 0.6378,
+          "robustSE": 0.2,
+          "z": 3.189,
+          "pValue": 0.0014276859399613429,
+          "oddsRatio": 1.892,
+          "or95CI": [
+            1.279,
+            2.8
+          ]
+        },
+        {
+          "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+          "beta": -0.6881,
+          "robustSE": 0.1541,
+          "z": -4.466,
+          "pValue": 0.00000797483309378233,
+          "oddsRatio": 0.503,
+          "or95CI": [
+            0.372,
+            0.68
+          ]
+        },
+        {
+          "term": "Category_B_3DSpatial (vs CatA)",
+          "beta": -1.3961,
+          "robustSE": 0.263,
+          "z": -5.308,
+          "pValue": 1.1088509710432959e-7,
+          "oddsRatio": 0.248,
+          "or95CI": [
+            0.148,
+            0.415
+          ]
+        },
+        {
+          "term": "Category_C_UndergradSTEM (vs CatA)",
+          "beta": -0.8831,
+          "robustSE": 0.2647,
+          "z": -3.336,
+          "pValue": 0.0008506634579400485,
+          "oddsRatio": 0.413,
+          "or95CI": [
+            0.246,
+            0.695
+          ]
+        }
+      ]
+    },
+    "CompleteCaseSensitivity": {
+      "SymAcc": {
+        "nObs": 716,
+        "nClusters": 120,
+        "logLik": -395.91,
+        "coefficients": [
+          {
+            "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+            "beta": 1.6206,
+            "robustSE": 0.217,
+            "z": 7.469,
+            "pValue": 8.115730310009894e-14,
+            "oddsRatio": 5.056,
+            "or95CI": [
+              3.305,
+              7.735
+            ]
+          },
+          {
+            "term": "Arm2_NumericFloat (vs Arm1)",
+            "beta": -1.1303,
+            "robustSE": 0.1829,
+            "z": -6.18,
+            "pValue": 6.450582290540297e-10,
+            "oddsRatio": 0.323,
+            "or95CI": [
+              0.226,
+              0.462
+            ]
+          },
+          {
+            "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+            "beta": 0.8823,
+            "robustSE": 0.2323,
+            "z": 3.799,
+            "pValue": 0.00014534181390646328,
+            "oddsRatio": 2.417,
+            "or95CI": [
+              1.533,
+              3.81
+            ]
+          },
+          {
+            "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+            "beta": -0.9142,
+            "robustSE": 0.1705,
+            "z": -5.362,
+            "pValue": 8.239507309770744e-8,
+            "oddsRatio": 0.401,
+            "or95CI": [
+              0.287,
+              0.56
+            ]
+          },
+          {
+            "term": "Category_B_3DSpatial (vs CatA)",
+            "beta": -0.5073,
+            "robustSE": 0.2448,
+            "z": -2.073,
+            "pValue": 0.03821643495064708,
+            "oddsRatio": 0.602,
+            "or95CI": [
+              0.373,
+              0.973
+            ]
+          },
+          {
+            "term": "Category_C_UndergradSTEM (vs CatA)",
+            "beta": -0.2909,
+            "robustSE": 0.293,
+            "z": -0.993,
+            "pValue": 0.3209177485966621,
+            "oddsRatio": 0.748,
+            "or95CI": [
+              0.421,
+              1.328
+            ]
+          }
+        ]
+      },
+      "NumAcc": {
+        "nObs": 716,
+        "nClusters": 120,
+        "logLik": -397.19,
+        "coefficients": [
+          {
+            "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+            "beta": 1.5908,
+            "robustSE": 0.2135,
+            "z": 7.45,
+            "pValue": 9.425793479067579e-14,
+            "oddsRatio": 4.907,
+            "or95CI": [
+              3.229,
+              7.458
+            ]
+          },
+          {
+            "term": "Arm2_NumericFloat (vs Arm1)",
+            "beta": -0.8782,
+            "robustSE": 0.1753,
+            "z": -5.009,
+            "pValue": 5.489019790916316e-7,
+            "oddsRatio": 0.416,
+            "or95CI": [
+              0.295,
+              0.586
+            ]
+          },
+          {
+            "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+            "beta": 0.8822,
+            "robustSE": 0.2323,
+            "z": 3.798,
+            "pValue": 0.0001459869863145169,
+            "oddsRatio": 2.416,
+            "or95CI": [
+              1.533,
+              3.809
+            ]
+          },
+          {
+            "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+            "beta": -0.935,
+            "robustSE": 0.1724,
+            "z": -5.423,
+            "pValue": 5.878729159025653e-8,
+            "oddsRatio": 0.393,
+            "or95CI": [
+              0.28,
+              0.55
+            ]
+          },
+          {
+            "term": "Category_B_3DSpatial (vs CatA)",
+            "beta": -0.4354,
+            "robustSE": 0.2409,
+            "z": -1.807,
+            "pValue": 0.07071991701329194,
+            "oddsRatio": 0.647,
+            "or95CI": [
+              0.403,
+              1.037
+            ]
+          },
+          {
+            "term": "Category_C_UndergradSTEM (vs CatA)",
+            "beta": -0.2427,
+            "robustSE": 0.2864,
+            "z": -0.848,
+            "pValue": 0.39661033956287994,
+            "oddsRatio": 0.784,
+            "or95CI": [
+              0.448,
+              1.375
+            ]
+          }
+        ]
+      },
+      "DiagFid": {
+        "nObs": 716,
+        "nClusters": 120,
+        "logLik": -431.96,
+        "coefficients": [
+          {
+            "term": "Intercept (Arm1, OpenAI gpt-4.1-mini, CatA)",
+            "beta": 1.4068,
+            "robustSE": 0.1924,
+            "z": 7.311,
+            "pValue": 2.681188604469753e-13,
+            "oddsRatio": 4.083,
+            "or95CI": [
+              2.8,
+              5.953
+            ]
+          },
+          {
+            "term": "Arm2_NumericFloat (vs Arm1)",
+            "beta": -0.9463,
+            "robustSE": 0.1802,
+            "z": -5.25,
+            "pValue": 1.524200065050607e-7,
+            "oddsRatio": 0.388,
+            "or95CI": [
+              0.273,
+              0.553
+            ]
+          },
+          {
+            "term": "Arm3_AlgeoCAS_RVR (vs Arm1)",
+            "beta": 0.647,
+            "robustSE": 0.2012,
+            "z": 3.216,
+            "pValue": 0.0013003832899457501,
+            "oddsRatio": 1.91,
+            "or95CI": [
+              1.287,
+              2.833
+            ]
+          },
+          {
+            "term": "Model_Qwen3.5-9B_Local (vs gpt-4.1-mini)",
+            "beta": -0.6723,
+            "robustSE": 0.1535,
+            "z": -4.38,
+            "pValue": 0.00001190018955710137,
+            "oddsRatio": 0.511,
+            "or95CI": [
+              0.378,
+              0.69
+            ]
+          },
+          {
+            "term": "Category_B_3DSpatial (vs CatA)",
+            "beta": -1.3773,
+            "robustSE": 0.2634,
+            "z": -5.229,
+            "pValue": 1.7064899793250987e-7,
+            "oddsRatio": 0.252,
+            "or95CI": [
+              0.151,
+              0.423
+            ]
+          },
+          {
+            "term": "Category_C_UndergradSTEM (vs CatA)",
+            "beta": -0.8767,
+            "robustSE": 0.2646,
+            "z": -3.314,
+            "pValue": 0.0009210174841201013,
+            "oddsRatio": 0.416,
+            "or95CI": [
+              0.248,
+              0.699
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "crossArmRescue": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "n": 120,
+      "arm1WrongTotal": 24,
+      "arm3RescuedFromArm1Wrong": 21,
+      "arm3RescuePctOfArm1Errors": 87.5,
+      "arm3RetainedFromArm1Right": 90,
+      "arm3LostFromArm1Right": 6,
+      "arm2RescuedFromArm1Wrong": 10,
+      "arm2CorruptedFromArm1Right": 43
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "n": 120,
+      "arm1WrongTotal": 48,
+      "arm3RescuedFromArm1Wrong": 34,
+      "arm3RescuePctOfArm1Errors": 70.83,
+      "arm3RetainedFromArm1Right": 57,
+      "arm3LostFromArm1Right": 15,
+      "arm2RescuedFromArm1Wrong": 7,
+      "arm2CorruptedFromArm1Right": 36
+    }
+  ],
+  "rvrTransitions": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "arm": "Arm2_NumericFloat",
+      "n": 120,
+      "turn1SymAccPct": 21.67,
+      "finalSymAccPct": 52.5,
+      "netGainPctPoints": 30.83,
+      "wrongToRight_Rescue": 37,
+      "rightToRight_Retain": 26,
+      "rightToWrong_Degrade": 0,
+      "wrongToWrong_Residual": 57,
+      "rescueRateGivenInitialWrongPct": 39.36
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "arm": "Arm3_AlgeoCAS_RVR",
+      "n": 120,
+      "turn1SymAccPct": 32.5,
+      "finalSymAccPct": 92.5,
+      "netGainPctPoints": 60,
+      "wrongToRight_Rescue": 72,
+      "rightToRight_Retain": 39,
+      "rightToWrong_Degrade": 0,
+      "wrongToWrong_Residual": 9,
+      "rescueRateGivenInitialWrongPct": 88.89
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "arm": "Arm2_NumericFloat",
+      "n": 120,
+      "turn1SymAccPct": 22.5,
+      "finalSymAccPct": 35.83,
+      "netGainPctPoints": 13.33,
+      "wrongToRight_Rescue": 20,
+      "rightToRight_Retain": 23,
+      "rightToWrong_Degrade": 4,
+      "wrongToWrong_Residual": 73,
+      "rescueRateGivenInitialWrongPct": 21.51
+    },
+    {
+      "modelSlug": "ollama_qwen3_5_9b",
+      "arm": "Arm3_AlgeoCAS_RVR",
+      "n": 120,
+      "turn1SymAccPct": 40.83,
+      "finalSymAccPct": 75.83,
+      "netGainPctPoints": 35,
+      "wrongToRight_Rescue": 45,
+      "rightToRight_Retain": 46,
+      "rightToWrong_Degrade": 3,
+      "wrongToWrong_Residual": 26,
+      "rescueRateGivenInitialWrongPct": 63.38
+    }
+  ],
+  "errorTaxonomy": {
+    "Arm1_PureCoT": {
+      "PARSE_OR_EMPTY_ERROR": 35,
+      "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION": 3,
+      "MISCONCEPTION_VERDICT_FLIP": 31,
+      "TILTED_PLANE_JACOBIAN_OMITTED": 2,
+      "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS": 2,
+      "NYQUIST_QUADRATURE_ALIASING": 3,
+      "THIRD_DERIVATIVE_TORSION_ERROR": 4,
+      "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN": 8,
+      "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4": 6,
+      "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE": 1,
+      "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION": 1,
+      "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION": 5,
+      "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS": 1,
+      "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE": 1
+    },
+    "Arm2_NumericFloat": {
+      "EVEN_MULTIPLICITY_TANGENCY_MISSED": 18,
+      "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION": 4,
+      "DECIMAL_APPROX_SYMBOLIC_LOSS": 14,
+      "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION": 16,
+      "MISCONCEPTION_VERDICT_FLIP": 20,
+      "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION": 10,
+      "TILTED_PLANE_JACOBIAN_OMITTED": 7,
+      "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS": 4,
+      "NYQUIST_QUADRATURE_ALIASING": 7,
+      "THIRD_DERIVATIVE_TORSION_ERROR": 5,
+      "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN": 11,
+      "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS": 2,
+      "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4": 5,
+      "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE": 1,
+      "PARSE_OR_EMPTY_ERROR": 25,
+      "GENERATION_TIMEOUT_90S": 3,
+      "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS": 1,
+      "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE": 1
+    },
+    "Arm3_AlgeoCAS_RVR": {
+      "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION": 3,
+      "MISCONCEPTION_VERDICT_FLIP": 31,
+      "TILTED_PLANE_JACOBIAN_OMITTED": 2,
+      "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4": 7,
+      "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE": 1,
+      "PARSE_OR_EMPTY_ERROR": 19,
+      "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION": 2,
+      "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS": 1,
+      "GENERATION_TIMEOUT_90S": 1,
+      "SHALLOW_OR_CONTRADICTORY_EXPLANATION": 2,
+      "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS": 1,
+      "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE": 1
+    }
+  },
+  "stochasticSummary": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "arm": "Arm1_PureCoT",
+      "nItems": 24,
+      "kRuns": 5,
+      "totalCalls": 120,
+      "runSymAccsPct": [
+        87.5,
+        70.83,
+        70.83,
+        79.17,
+        79.17
+      ],
+      "avgAt5Pct": 77.5,
+      "runSDPct": 6.97,
+      "ci95HalfWidthPct": 6.11,
+      "majAt5Pct": 79.17,
+      "passAt5Pct": 95.83,
+      "meanWithinItemBernoulliSD": 0.1408
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "arm": "Arm3_AlgeoCAS_RVR",
+      "nItems": 24,
+      "kRuns": 5,
+      "totalCalls": 120,
+      "runSymAccsPct": [
+        91.67,
+        91.67,
+        91.67,
+        91.67,
+        87.5
+      ],
+      "avgAt5Pct": 90.83,
+      "runSDPct": 1.86,
+      "ci95HalfWidthPct": 1.63,
+      "majAt5Pct": 91.67,
+      "passAt5Pct": 95.83,
+      "meanWithinItemBernoulliSD": 0.05
+    }
+  ],
+  "residualArm3Failures": [
+    {
+      "itemId": "A17",
+      "subfamily": "A1_Tangential_Radical_Intersections",
+      "gt": "sqrt(46)",
+      "arm3Ans": "sqrt(65)/2",
+      "toolCall": {
+        "tool": "solve_intersections",
+        "args": {
+          "exprA": "y = 2*x^2 - 5*x - 4",
+          "exprB": "y = x + 3"
+        }
+      },
+      "failureCode": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION"
+    },
+    {
+      "itemId": "A18",
+      "subfamily": "A1_Tangential_Radical_Intersections",
+      "gt": "2*sqrt(55)",
+      "arm3Ans": "sqrt(65)",
+      "toolCall": {
+        "tool": "solve_intersections",
+        "args": {
+          "exprA": "y = x^2 - 2*x - 6",
+          "exprB": "y = 2*x + 1"
+        }
+      },
+      "failureCode": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION"
+    },
+    {
+      "itemId": "A20",
+      "subfamily": "A1_Tangential_Radical_Intersections",
+      "gt": "2*sqrt(13)",
+      "arm3Ans": "sqrt(65)",
+      "toolCall": {
+        "tool": "solve_intersections",
+        "args": {
+          "exprA": "y = 2*x^2 + 3*x - 8",
+          "exprB": "y = -x + 3"
+        }
+      },
+      "failureCode": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION"
+    },
+    {
+      "itemId": "B56",
+      "subfamily": "B1_3D_Plane_Slice_Conics",
+      "gt": "5*pi*sqrt(19)/6",
+      "arm3Ans": "The exact 3D surface area S of the planar elliptical cross-section is the projected ellipse area on the xy-plane multiplied by sqrt(19).",
+      "toolCall": {
+        "tool": "slice_3d",
+        "args": {
+          "surface": "z=3*x^2+3*y^2",
+          "plane": "z=3*x-3*y+1"
+        }
+      },
+      "failureCode": "TILTED_PLANE_JACOBIAN_OMITTED"
+    },
+    {
+      "itemId": "C106",
+      "subfamily": "C2_Vector_ODE_Laplace_Residue",
+      "gt": "pi/6",
+      "arm3Ans": "(1 + x/3)*cos(3*x) + (1/3)*x*sin(3*x)",
+      "toolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "desolve([y''+9*y=6*cos(3*x), y(0)=1, y'(0)=0], x, y)"
+        }
+      },
+      "failureCode": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4"
+    },
+    {
+      "itemId": "C107",
+      "subfamily": "C2_Vector_ODE_Laplace_Residue",
+      "gt": "2*exp(1)",
+      "arm3Ans": "(1 + 1)*e + 1*e = 3*e",
+      "toolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "y = (C1 + C2*x)*exp(x) + A*x^2*exp(x); eq = diff(y,x,2) - 2*diff(y,x) + y - 2*exp(x); solve(subs({diff(y,x): diff(y,x), diff(y,x,2): diff(y,x,2)}, eq) = 0, A); y_sol = (C1 + C2*x)*exp(x) + A*x^2*exp(x); eq1 = y_sol.subs(x,0) = 0; eq2 = diff(y_sol,x).subs(x,0) = 1; sol_constants = solve([eq1, eq2], [C1, C2]); y_final = y_sol.subs(sol_constants); y_final_at_1 = y_final.subs(x,1); simplify(y_final_at_1)"
+        }
+      },
+      "failureCode": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4"
+    },
+    {
+      "itemId": "C108",
+      "subfamily": "C2_Vector_ODE_Laplace_Residue",
+      "gt": "4",
+      "arm3Ans": "2*sin(x) + 2*x*cos(x)",
+      "toolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "desolve([y''+y=4*sin(x), y(0)=0, y'(0)=2], y, x)"
+        }
+      },
+      "failureCode": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4"
+    },
+    {
+      "itemId": "C109",
+      "subfamily": "C2_Vector_ODE_Laplace_Residue",
+      "gt": "6/exp(2)",
+      "arm3Ans": "7*exp(-2)",
+      "toolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "desolve([y'' + 4*y' + 4*y = 6*exp(-2*x), y(0) = 1, y'(0) = 0], x, y)"
+        }
+      },
+      "failureCode": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4"
+    },
+    {
+      "itemId": "C120",
+      "subfamily": "C2_Vector_ODE_Laplace_Residue",
+      "gt": "7/6",
+      "arm3Ans": "3/2",
+      "toolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "factorial3 := 6; f := (z^2 + 1)*exp(z); d3 := diff(f, z, 3); residue := d3 / factorial3; residue_at_0 := subst(z=0, residue); simplify(residue_at_0)"
+        }
+      },
+      "failureCode": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE"
+    }
+  ],
+  "qualitativeCases": [
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "A24",
+      "subfamily": "A2_HigherOrder_Inflection_Parity",
+      "groundTruthExact": "none",
+      "arm2NumericAnswer": "none",
+      "arm3Turn1Hypothesis": "[2]",
+      "arm3ToolCall": {
+        "tool": "analyze_function",
+        "args": {
+          "expr": "x^6-12*x^5+60*x^4-160*x^3+240*x^2-188*x+65"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "analyze_function",
+        "wasmMs": 7.207,
+        "result": {
+          "simplified": "x^6-12*x^5+60*x^4-160*x^3+240*x^2-188*x+65",
+          "roots": [],
+          "extrema": [
+            {
+              "kind": "min",
+              "xExact": "-(2/3)^(1/5)+2",
+              "yExact": "(-10*(2/3)^(1/5)+27)/3"
+            }
+          ],
+          "inflections": [],
+          "nonInflectionWarnings": [
+            {
+              "xExact": "2",
+              "lowestNonzeroOrder": 6,
+              "reason": "f''(x)=0 이나 최초 비영 고계도함수 차수 k*=6(짝수)로 오목·볼록 부호가 바뀌지 않아 변곡점이 아님"
+            }
+          ]
+        }
+      },
+      "arm3VerifiedAnswer": "none",
+      "arm3ReanalysisNotes": "The AlgeoCAS symbolic certificate confirms that f''(x) = 0 at x=2 but the lowest nonzero derivative order k* = 6 is even, so the concavity does not change sign and there is no inflection point at x=2. No other inflection points exist for f(x). This matches the student's conclusion that there are no real inflection points.",
+      "arm3StudentDiagnosis": "The student's reasoning correctly identifies that the second derivative vanishes at x=2 but the lowest nonzero derivative order is even (k*=6), indicating no sign change in concavity and thus no inflection point. This reflects the mathematical invariant that inflection points require an odd order lowest nonzero derivative of f''(x) at the candidate point."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "A32",
+      "subfamily": "A2_HigherOrder_Inflection_Parity",
+      "groundTruthExact": "2",
+      "arm1HallucinatedAnswer": "-1/2",
+      "arm2NumericAnswer": "2",
+      "arm3Turn1Hypothesis": "The unique inflection point x-coordinate is the root of f''(x) = 0 where f'' changes sign, excluding flat stationary points.",
+      "arm3ToolCall": {
+        "tool": "analyze_function",
+        "args": {
+          "expr": "12*x^5-20*x^4-70*x^3-60*x^2+3*x+4"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "analyze_function",
+        "wasmMs": 6.699,
+        "result": {
+          "simplified": "12*x^5-20*x^4-70*x^3-60*x^2+3*x+4",
+          "roots": [
+            {
+              "xExact": "-0.273191231612",
+              "xApprox": -0.273191231612
+            },
+            {
+              "xExact": "0.246062713784",
+              "xApprox": 0.246062713784
+            },
+            {
+              "xExact": "3.63970647021",
+              "xApprox": 3.63970647021
+            }
+          ],
+          "extrema": [
+            {
+              "kind": "max",
+              "xExact": "0.0239842870032",
+              "yExact": "4.03646579611"
+            },
+            {
+              "kind": "min",
+              "xExact": "2.822311869",
+              "yExact": "-1159.2427591"
+            }
+          ],
+          "inflections": [
+            {
+              "xExact": "2",
+              "yExact": "-726",
+              "lowestNonzeroOrder": 3
+            }
+          ],
+          "nonInflectionWarnings": [
+            {
+              "xExact": "-1/2",
+              "lowestNonzeroOrder": 4,
+              "reason": "f''(x)=0 이나 최초 비영 고계도함수 차수 k*=4(짝수)로 오목·볼록 부호가 바뀌지 않아 변곡점이 아님"
+            }
+          ]
+        }
+      },
+      "arm3VerifiedAnswer": "2",
+      "arm3ReanalysisNotes": "The student claimed both x = -1/2 and x = 2 are inflection points because f''(x) = 0 at both points. However, the AlgeoCAS symbolic certificate shows that at x = -1/2, the lowest nonzero derivative order k* is 4 (even), indicating no sign change in concavity, so it is not an inflection point. At x = 2, the lowest nonzero derivative order is 3 (odd), confirming a true inflection point. Thus, only x = 2 is a valid inflection point.",
+      "arm3StudentDiagnosis": "The student overlooked the parity of the lowest nonzero derivative order at the root of f''(x). An inflection point requires an odd order k* for the first nonzero derivative beyond the second derivative, ensuring a concavity sign change. Here, x = -1/2 has even order k* = 4, so no concavity change occurs, making it a flat stationary root rather than an inflection point."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "A35",
+      "subfamily": "A2_HigherOrder_Inflection_Parity",
+      "groundTruthExact": "2",
+      "arm1HallucinatedAnswer": "(12 + 4*sqrt(33))/3",
+      "arm2NumericAnswer": "2",
+      "arm3Turn1Hypothesis": "To be determined by solving f''(x) = 0 and analyzing sign changes",
+      "arm3ToolCall": {
+        "tool": "analyze_function",
+        "args": {
+          "expr": "1/50*x^5-1/5*x^4+4/5*x^3-8/5*x^2+28/5*x-41/25"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "analyze_function",
+        "wasmMs": 4.213,
+        "result": {
+          "simplified": "(x^5-10*x^4+40*x^3-80*x^2+280*x-82)/50",
+          "roots": [
+            {
+              "xExact": "0.317427743063",
+              "xApprox": 0.317427743063
+            }
+          ],
+          "extrema": [],
+          "inflections": [
+            {
+              "xExact": "2",
+              "yExact": "7",
+              "lowestNonzeroOrder": 5
+            }
+          ],
+          "nonInflectionWarnings": []
+        }
+      },
+      "arm3VerifiedAnswer": "2",
+      "arm3ReanalysisNotes": "The AlgeoCAS symbolic certificate shows a unique inflection point at x = 2 with lowest nonzero derivative order 5, indicating a genuine inflection point with concavity sign change. The student's claim of multiple inflection points near x = 2 due to noisy finite-difference approximations is incorrect; the exact symbolic analysis confirms only one inflection point at x = 2.",
+      "arm3StudentDiagnosis": "The student's finite-difference method suffered from floating-point cancellation errors in the linear term of the second derivative near x = 2, causing spurious noisy sign flips. The exact symbolic derivative analysis reveals a single inflection point at x = 2 with a fifth-order lowest nonzero derivative, confirming a true concavity change and invalidating the claim of multiple inflection points."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "A38",
+      "subfamily": "A2_HigherOrder_Inflection_Parity",
+      "groundTruthExact": "[1, 3]",
+      "arm1HallucinatedAnswer": [
+        "(-1 - sqrt(13))/2",
+        "(-1 + sqrt(13))/2",
+        "(3 - sqrt(5))/2",
+        "(3 + sqrt(5))/2"
+      ],
+      "arm2NumericAnswer": "[\"(approximately 2.4978747175)\", \"(approximately 4.2079021039)\"]",
+      "arm3Turn1Hypothesis": "sorted array of all real inflection points x-coordinates of f(x)",
+      "arm3ToolCall": {
+        "tool": "analyze_function",
+        "args": {
+          "expr": "x^6-3*x^5-10*x^4+10*x^3+45*x^2-x+4"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "analyze_function",
+        "wasmMs": 5.049,
+        "result": {
+          "simplified": "x^6-3*x^5-10*x^4+10*x^3+45*x^2-x+4",
+          "roots": [
+            {
+              "xExact": "2.49787471752",
+              "xApprox": 2.49787471752
+            },
+            {
+              "xExact": "4.20790210388",
+              "xApprox": 4.20790210388
+            }
+          ],
+          "extrema": [
+            {
+              "kind": "min",
+              "xExact": "0.0110708620036",
+              "yExact": "3.99445793552"
+            },
+            {
+              "kind": "max",
+              "xExact": "1.71042530901",
+              "yExact": "79.5117792473"
+            },
+            {
+              "kind": "min",
+              "xExact": "3.64390272582",
+              "yExact": "-267.684217262"
+            }
+          ],
+          "inflections": [
+            {
+              "xExact": "1",
+              "yExact": "46",
+              "lowestNonzeroOrder": 3
+            },
+            {
+              "xExact": "3",
+              "yExact": "-134",
+              "lowestNonzeroOrder": 3
+            }
+          ],
+          "nonInflectionWarnings": [
+            {
+              "xExact": "-1",
+              "lowestNonzeroOrder": 4,
+              "reason": "f''(x)=0 이나 최초 비영 고계도함수 차수 k*=4(짝수)로 오목·볼록 부호가 바뀌지 않아 변곡점이 아님"
+            }
+          ]
+        }
+      },
+      "arm3VerifiedAnswer": [
+        "1",
+        "3"
+      ],
+      "arm3ReanalysisNotes": "The student claimed three inflection points at x = -1, 1, and 3 based on three distinct real roots of f''(x). However, the AlgeoCAS analysis shows only two inflection points at x = 1 and x = 3 where the third derivative is nonzero (lowest nonzero derivative order k* = 3, odd), indicating true inflection points. At x = -1, although f''(-1) = 0, the lowest nonzero derivative order is 4 (even), so concavity does not change and it is not an inflection point. Thus, the student's claim is incorrect due to misunderstanding the parity condition for inflection points.",
+      "arm3StudentDiagnosis": "The student incorrectly assumed all roots of f''(x) correspond to inflection points. The key invariant is the parity of the lowest nonzero derivative order k* at the root: only odd k* indicates a change in concavity and thus a true inflection point. Here, x = -1 has even k* = 4, so no inflection occurs there."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B57",
+      "subfamily": "B1_3D_Plane_Slice_Conics",
+      "groundTruthExact": "21*pi*sqrt(2)/4",
+      "arm1HallucinatedAnswer": "(3*pi)/sqrt(2)*3",
+      "arm2NumericAnswer": "(21*pi*sqrt(2))/4",
+      "arm3Turn1Hypothesis": "3 * (7 * pi * sqrt(2) / 4) = (21 * pi * sqrt(2)) / 4",
+      "arm3ToolCall": {
+        "tool": "slice_3d",
+        "args": {
+          "surface": "z = x^2 + 2*y^2",
+          "plane": "z = 2*x + 2*y + 2"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "slice_3d",
+        "wasmMs": 0.622,
+        "result": {
+          "type": "curve3d",
+          "summaryTitle": "z 소거 단면 방정식",
+          "latexMain": "-x^{2}+2 x-2 y^{2}+2 y+2 = 0",
+          "details": [],
+          "durationMs": 1
+        }
+      },
+      "arm3VerifiedAnswer": "(21*pi*sqrt(2))/4",
+      "arm3ReanalysisNotes": "The AlgeoCAS symbolic certificate gives the exact planar ellipse equation after eliminating z as -x^2 + 2x - 2y^2 + 2y + 2 = 0, confirming the student's projected ellipse in the xy-plane. The student reported the 2D projected ellipse area as 7*pi*sqrt(2)/4 but omitted the plane inclination factor sqrt(1 + m^2 + n^2) = 3. The verified exact 3D area is thus 3 times the projected area, i.e., (21*pi*sqrt(2))/4. The student's claim is a misconception because the planar ellipse area on the tilted plane is larger than its xy-projection by the factor sqrt(1 + m^2 + n^2).",
+      "arm3StudentDiagnosis": "The student failed to include the plane inclination factor sqrt(1 + m^2 + n^2) when converting the 2D projected ellipse area in the xy-plane to the true 3D surface area on the tilted cutting plane. This factor accounts for the geometric stretching due to the plane's tilt, and omitting it underestimates the actual elliptical cross-section area."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B58",
+      "subfamily": "B1_3D_Plane_Slice_Conics",
+      "groundTruthExact": "13*pi*sqrt(42)/16",
+      "arm1HallucinatedAnswer": "(5*pi*sqrt(21))/(4*sqrt(2))",
+      "arm2NumericAnswer": "(13*pi*sqrt(2)/16)*sqrt(21)",
+      "arm3Turn1Hypothesis": "13*pi*sqrt(2)/16 * sqrt(21)",
+      "arm3ToolCall": {
+        "tool": "slice_3d",
+        "args": {
+          "surface": "z=2*x^2+4*y^2",
+          "plane": "z=4*x+2*y+1"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "slice_3d",
+        "wasmMs": 0.694,
+        "result": {
+          "type": "curve3d",
+          "summaryTitle": "z 소거 단면 방정식",
+          "latexMain": "-2 x^{2}+4 x-4 y^{2}+2 y+1 = 0",
+          "details": [],
+          "durationMs": 1
+        }
+      },
+      "arm3VerifiedAnswer": "(13*pi*sqrt(2)/16)*sqrt(21)",
+      "arm3ReanalysisNotes": "The AlgeoCAS symbolic certificate confirms the projected ellipse equation on the xy-plane as -2 x^2 + 4 x - 4 y^2 + 2 y + 1 = 0, consistent with the student's elimination of z. The student reported the 2D projected ellipse area as 13*pi*sqrt(2)/16, which matches the ellipse area from this quadratic form. However, the student omitted the necessary plane inclination factor sqrt(1 + m^2 + n^2) = sqrt(1 + 16 + 4) = sqrt(21) to convert the projected area to the true 3D planar elliptical cross-section area. Thus, the student's claim is a misconception due to missing the geometric scaling factor for the tilted plane area.",
+      "arm3StudentDiagnosis": "The student correctly found the projected ellipse area in the xy-plane but failed to multiply by the plane inclination factor sqrt(1 + m^2 + n^2), which accounts for the tilt of the cutting plane. This factor is essential to convert the 2D projected area into the true 3D surface area of the planar elliptical cross-section. Omitting this factor leads to underestimating the actual area."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B68",
+      "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+      "groundTruthExact": "(pi*exp(1)^2-pi)/4",
+      "arm1HallucinatedAnswer": "pi*(e^2 - 5*e + 4)/4",
+      "arm2NumericAnswer": "pi * (2*e - 5)",
+      "arm3Turn1Hypothesis": "pi * int_1^e x*(ln(x))^2 dx",
+      "arm3ToolCall": {
+        "tool": "solid_revolution",
+        "args": {
+          "expr": "sqrt(x)*ln(x)",
+          "a": "1",
+          "b": "exp(1)"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "solid_revolution",
+        "wasmMs": 2.302,
+        "result": {
+          "volExact": "(pi*exp(1)^2-pi)/4",
+          "volApprox": 5.01795292594,
+          "discSum": 0,
+          "numDiscs": 8
+        }
+      },
+      "arm3VerifiedAnswer": "(pi*exp(1)^2 - pi)/4",
+      "arm3ReanalysisNotes": "The student's initial claim suggested the volume integral as pi * int_1^e x*(ln(x))^2 dx, but the AlgeoCAS symbolic certificate gives the exact volume as (pi*exp(1)^2 - pi)/4. This indicates the integral was evaluated and simplified correctly, yielding a closed form involving pi and e squared. The discrepancy arises because the student did not complete the integral evaluation and simplification, and the claim about missing the square or decimal approximation is a misconception.",
+      "arm3StudentDiagnosis": "The student failed to square the function inside the integral for the volume of revolution, leading to an incorrect integral setup. The exact volume requires integrating x*(ln(x))^2, which evaluates to (pi*e^2 - pi)/4, reflecting the importance of correctly applying the disk method formula with the squared function."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B76",
+      "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+      "groundTruthExact": "pi^3/4",
+      "arm1HallucinatedAnswer": "(pi^3)/4 + pi/20000",
+      "arm2NumericAnswer": "pi * (pi^2 / 2 - (sin(100 * pi) / 200)) / 2",
+      "arm3Turn1Hypothesis": "V = pi * int_0^pi (x * sin^2(50*x)) dx = (pi/2) * int_0^pi x dx - (pi/2) * int_0^pi x cos(100*x) dx = (pi/2) * (pi^2/2) - (pi/2) * [ (sin(100*pi)/100^2) + (pi * cos(100*pi)/100) ] = (pi^3)/4 - (pi/2) * [0 + (pi * cos(100*pi)/100)] = (pi^3)/4 - (pi^2/200) * cos(100*pi). Since cos(100*pi) = 1, V = (pi^3)/4 - (pi^2)/200.",
+      "arm3ToolCall": {
+        "tool": "eval_cas",
+        "args": {
+          "command": "pi*int(x*sin(50*x)^2, x, 0, pi)"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "eval_cas",
+        "wasmMs": 205.693,
+        "result": {
+          "command": "pi*int(x*sin(50*x)^2, x, 0, pi)",
+          "exact": "pi*(1/20000*(5000*pi^2-1)+1/20000)",
+          "approx": "7.7515692",
+          "latex": "\\pi  (\\frac{1}{20000}  (5000 \\pi ^{2}-1)+\\frac{1}{20000})"
+        }
+      },
+      "arm3VerifiedAnswer": "pi*( (5000*pi^2 - 1)/20000 + 1/20000 )",
+      "arm3ReanalysisNotes": "The student's initial exact answer was V = (pi^3)/4 - (pi^2)/200, which numerically approximates to about 7.75157. The AlgeoCAS symbolic certificate gives V = pi * ((5000*pi^2 - 1)/20000 + 1/20000) = pi * ( (5000*pi^2)/20000 ) = (pi * 5000 * pi^2)/20000 + pi*(0) = (5000*pi^3)/20000 = (pi^3)/4 - (pi^2)/200 + 1/20000*pi, which simplifies to pi*( (5000*pi^2 - 1 + 1)/20000 ) = (5000*pi^3)/20000 = (pi^3)/4. However, the exact form from AlgeoCAS is pi*( (5000*pi^2 - 1 + 1)/20000 ) = pi*(5000*pi^2/20000) = (pi^3)/4. The extra +1/20000 term inside the parentheses is small but present. The student's answer missed the +1/20000 term inside the parentheses, which corresponds to a small constant addition. The discrepancy arises from the student's omission of the constant term 1/20000 inside the integral evaluation. The AlgeoCAS result is more precise and includes this constant term. Therefore, the student's initial exact answer is slightly incomplete and thus a misconception.",
+      "arm3StudentDiagnosis": "The student’s initial symbolic evaluation omitted a small constant term arising from the integral of x*sin^2(50x). This term is due to the integral of the squared sine function's constant component and the integration by parts of the oscillatory term. The misconception stems from incomplete symbolic integration, missing the constant offset in the integral evaluation."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B77",
+      "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+      "groundTruthExact": "(pi^3+2*pi^2)/4",
+      "arm1HallucinatedAnswer": "pi/2 * (pi^2/2 + pi) + (pi/2) * ( (cos(100*pi) * (100*pi - 1) + 1) / 10000 )",
+      "arm2NumericAnswer": "(pi/2)*(pi^2/2 + pi)",
+      "arm3Turn1Hypothesis": "pi/2 * integral_0^pi (x+1) dx + pi/2 * integral_0^pi (x+1)*cos(100*x) dx",
+      "arm3ToolCall": {
+        "tool": "solid_revolution",
+        "args": {
+          "expr": "sqrt(x+1)*cos(50*x)",
+          "a": "0",
+          "b": "pi"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "solid_revolution",
+        "wasmMs": 128.712,
+        "result": {
+          "volExact": "(pi^3+2*pi^2)/4",
+          "volApprox": 12.6863713706,
+          "discSum": 12.68637137065829,
+          "numDiscs": 8
+        }
+      },
+      "arm3VerifiedAnswer": "(pi^3 + 2*pi^2)/4",
+      "arm3ReanalysisNotes": "The initial hypothesis expressed the volume integral in an unevaluated integral form, while the AlgeoCAS symbolic certificate provides a fully simplified closed-form expression: (pi^3 + 2*pi^2)/4. This exact closed form matches the integral evaluation of pi * integral_0^pi (x+1)*cos^2(50*x) dx after applying the identity cos^2(theta) = (1 + cos(2*theta))/2 and integrating the oscillatory term which averages out to zero over the interval due to high frequency. The student's numerical method with a coarse grid likely failed to capture these oscillations, causing bias. The verified exact volume is (pi^3 + 2*pi^2)/4.",
+      "arm3StudentDiagnosis": "The student's numerical integration suffered from aliasing due to undersampling the high-frequency oscillations of cos(50*x), causing a biased volume estimate. The exact integral simplifies because the oscillatory cosine squared term averages out, and the volume depends primarily on the integral of (x+1)/2 over [0, pi]."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "B80",
+      "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+      "groundTruthExact": "(20000*pi^4+120000*pi^3+240003*pi^2)/120000",
+      "arm1HallucinatedAnswer": "pi/2 * (int_0^pi (x + 2)^2 dx) + pi/2 * (int_0^pi (x + 2)^2 * cos(200x) dx)",
+      "arm2NumericAnswer": "pi * (2*pi^2 + 8*pi + pi/2)",
+      "arm3Turn1Hypothesis": "pi * integral_0^pi ((x+2)^2 * cos^2(100*x)) dx",
+      "arm3ToolCall": {
+        "tool": "solid_revolution",
+        "args": {
+          "expr": "(x+2)*cos(100*x)",
+          "a": "0",
+          "b": "pi"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "solid_revolution",
+        "wasmMs": 4.09,
+        "result": {
+          "volExact": "(20000*pi^4+120000*pi^3+240003*pi^2)/120000",
+          "volApprox": 66.9805807283,
+          "discSum": 66.91691661151496,
+          "numDiscs": 8
+        }
+      },
+      "arm3VerifiedAnswer": "(20000*pi^4+120000*pi^3+240003*pi^2)/120000",
+      "arm3ReanalysisNotes": "The initial reasoning identified the integral form but did not simplify to the closed-form expression provided by AlgeoCAS: (20000*pi^4 + 120000*pi^3 + 240003*pi^2)/120000. The symbolic certificate gives a precise simplified closed form, confirming the exact volume. The student's claim about numerical aliasing causing bias is consistent with the complexity and oscillatory nature of the integrand, which the exact formula confirms is nontrivial to approximate numerically.",
+      "arm3StudentDiagnosis": "The student's diagnosis correctly identifies numerical aliasing due to the high-frequency oscillations of cos(100*x) in the integrand. Coarse numerical grids fail to capture these oscillations accurately, leading to biased volume estimates. The exact symbolic integral confirms the complexity and necessity of careful numerical treatment or symbolic integration."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "C84",
+      "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+      "groundTruthExact": "12/109",
+      "arm1HallucinatedAnswer": "12/649",
+      "arm2NumericAnswer": "( ( (2*1)*(6*1) - (3*1*1)*(12*1*1) ) * 0 + ( (3*1*1)*(2) - (4*1*1*1)*(6*1) ) * 6 + ( (4*1*1*1)*(12*1*1) - (2*1)*(2) ) * 24 ) / ( ((3*1*1)*(12*1*1) - (4*1*1*1)*(6*1))^2 + ((4*1*1*1)*(2) - (2*1)*(12*1*1))^2 + ((2*1)*(6*1) - (3*1*1)*(2))^2 )",
+      "arm3Turn1Hypothesis": "tau(1) = ( (r'(1) x r''(1)) · r'''(1) ) / ||r'(1) x r''(1)||^2",
+      "arm3ToolCall": {
+        "tool": "space_curve_3d",
+        "args": {
+          "vecExpr": "[t^2, t^3, t^4]",
+          "t0": "1"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "space_curve_3d",
+        "wasmMs": 7.859,
+        "result": {
+          "curvatureExact": "2*sqrt(576*t^8+1348*t^6+864*t^4+337*t^2+36)/(256*t^8*abs(t)+288*t^6*abs(t)+209*t^4*abs(t)+72*t^2*abs(t)+16*abs(t))",
+          "torsionExact": "12/(36*t^5+64*t^3+9*t)",
+          "kappaAtT0": "2*sqrt(3161)/841",
+          "tauAtT0": "12/109",
+          "frenet": {
+            "pos": [
+              1,
+              1,
+              1
+            ],
+            "T": [
+              0.3713906763541037,
+              0.5570860145311556,
+              0.7427813527082074
+            ],
+            "N": [
+              -0.7292418913909453,
+              -0.3201549767082198,
+              0.6047371782266375
+            ],
+            "B": [
+              0.5746957711326908,
+              -0.7662610281769211,
+              0.2873478855663454
+            ],
+            "kappaAt": 0.133704568817,
+            "oscRadius": 7.47917598364712
+          }
+        }
+      },
+      "arm3VerifiedAnswer": "12/109",
+      "arm3ReanalysisNotes": "The student's initial claim was about confusion in the torsion denominator power or numerical approximation errors. The AlgeoCAS symbolic certificate gives the exact torsion formula as tau(t) = 12/(36*t^5 + 64*t^3 + 9*t), and at t=1, tau(1) = 12/109. This exact symbolic result differs from any approximate or confused denominator power usage. The student's confusion about ||r' x r''||^3 instead of ||r' x r''||^2 in the denominator is a misconception leading to inaccurate torsion values.",
+      "arm3StudentDiagnosis": "The student confused the torsion denominator power, using ||r' x r''||^3 instead of the correct ||r' x r''||^2, or relied on finite difference approximations for r'''(t), causing inaccurate torsion values. The torsion formula's denominator involves the square of the norm of the cross product of the first and second derivatives, a critical invariant for correct torsion computation."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "C86",
+      "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+      "groundTruthExact": "1/9",
+      "arm1HallucinatedAnswer": "1/5",
+      "arm2NumericAnswer": "1/9",
+      "arm3Turn1Hypothesis": "Using the formula tau(t) = ((r'(t) x r''(t)) · r'''(t)) / ||r'(t) x r''(t)||^2, compute exact derivatives of r(t) = [t, t^2/2, t^3/6], then evaluate at t=2.",
+      "arm3ToolCall": {
+        "tool": "space_curve_3d",
+        "args": {
+          "vecExpr": "[t, t^2/2, t^3/6]",
+          "t0": "2"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "space_curve_3d",
+        "wasmMs": 1.503,
+        "result": {
+          "curvatureExact": "4/(t^4+4*t^2+4)",
+          "torsionExact": "4/(t^4+4*t^2+4)",
+          "kappaAtT0": "1/9",
+          "tauAtT0": "1/9",
+          "frenet": {
+            "pos": [
+              2,
+              2,
+              1.33333333333
+            ],
+            "T": [
+              0.3333333333333333,
+              0.6666666666666666,
+              0.6666666666666666
+            ],
+            "N": [
+              -0.6666666666666666,
+              -0.3333333333333333,
+              0.6666666666666666
+            ],
+            "B": [
+              0.6666666666666666,
+              -0.6666666666666666,
+              0.3333333333333333
+            ],
+            "kappaAt": 0.111111111111,
+            "oscRadius": 9.000000000009
+          }
+        }
+      },
+      "arm3VerifiedAnswer": "1/9",
+      "arm3ReanalysisNotes": "The AlgeoCAS symbolic certificate confirms the torsion formula tau(t) = 4/(t^4 + 4 t^2 + 4) and evaluates tau(2) = 4/(16 + 16 + 4) = 4/36 = 1/9, matching the initial reasoning. The student's numerical approximation or denominator confusion leads to inaccurate torsion values, as the exact symbolic form is simpler and exact.",
+      "arm3StudentDiagnosis": "The student's error arises from either using finite difference approximations for the third derivative r'''(t), which introduces numerical errors, or confusing the torsion denominator's power, using ||r' x r''||^3 instead of the correct ||r' x r''||^2. This leads to inaccurate torsion values, as torsion depends sensitively on the exact derivatives and the correct denominator power."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "C91",
+      "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+      "groundTruthExact": "[3]",
+      "arm2NumericAnswer": [
+        "1",
+        "2"
+      ],
+      "arm3Turn1Hypothesis": "unknown until CAS call",
+      "arm3ToolCall": {
+        "tool": "jordan_matrix",
+        "args": {
+          "matrixExpr": "[[1,1,0],[-2,2,1],[-3,1,3]]"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "jordan_matrix",
+        "wasmMs": 1.699,
+        "result": {
+          "dim": 3,
+          "detExact": "8",
+          "charPoly": "-(x-2)^3",
+          "jordanJ": "[[2,1,0],[0,2,1],[0,0,2]]",
+          "jordanBlockSizes": [
+            "3"
+          ],
+          "geometricMultiplicityTotal": 1,
+          "isDefective": true
+        }
+      },
+      "arm3VerifiedAnswer": [
+        "3"
+      ],
+      "arm3ReanalysisNotes": "The student's claim that M is diagonalizable with all Jordan blocks of size 1 is contradicted by the exact symbolic certificate from AlgeoCAS. The characteristic polynomial is (x-2)^3, indicating a single eigenvalue 2 with algebraic multiplicity 3. The Jordan form is a single Jordan block of size 3, showing geometric multiplicity 1 and that M is defective (not diagonalizable). The student's floating-point eigenvalue solver likely misinterpreted numerical perturbations as distinct eigenvalues, and checking only nullity without considering generalized eigenspaces led to the misconception.",
+      "arm3StudentDiagnosis": "The student failed to recognize the defective nature of M due to the single eigenvalue with algebraic multiplicity 3 but geometric multiplicity 1, resulting in a Jordan block of size 3. Numerical eigenvalue solvers can produce spurious eigenvalue splitting due to perturbations, and checking only nullity(M - lambda*I) ignores the need to analyze generalized eigenspaces and higher powers to determine Jordan block sizes."
+    },
+    {
+      "modelSlug": "openai_gpt_4_1_mini",
+      "itemId": "C94",
+      "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+      "groundTruthExact": "[1, 3]",
+      "arm1HallucinatedAnswer": [
+        "2",
+        "2"
+      ],
+      "arm2NumericAnswer": [
+        "3",
+        "1"
+      ],
+      "arm3Turn1Hypothesis": null,
+      "arm3ToolCall": {
+        "tool": "jordan_matrix",
+        "args": {
+          "matrixExpr": "[[1,1,0,0],[2,1,2,-1],[3,-2,4,-1],[-1,1,0,2]]"
+        }
+      },
+      "arm3CasCertificate": {
+        "ok": true,
+        "tool": "jordan_matrix",
+        "wasmMs": 0.744,
+        "result": {
+          "dim": 4,
+          "detExact": "16",
+          "charPoly": "(x-2)^4",
+          "jordanJ": "[[2,1,0,0],[0,2,1,0],[0,0,2,0],[0,0,0,2]]",
+          "jordanBlockSizes": [
+            "1",
+            "3"
+          ],
+          "geometricMultiplicityTotal": 2,
+          "isDefective": true
+        }
+      },
+      "arm3VerifiedAnswer": [
+        "1",
+        "3"
+      ],
+      "arm3ReanalysisNotes": "The student's claim that M is diagonalizable with all Jordan blocks of size 1 is contradicted by the exact symbolic certificate from AlgeoCAS. The characteristic polynomial is (x-2)^4, indicating a single eigenvalue 2 with algebraic multiplicity 4. The Jordan form has blocks of sizes 3 and 1, showing M is defective and not diagonalizable. The student's floating-point eigenvalue solver likely misinterpreted numerical perturbations as distinct eigenvalues, and checking only nullity without considering higher powers of (M - 2I) led to confusion between block size partitions [3,1] and [2,2].",
+      "arm3StudentDiagnosis": "The student failed to recognize that the algebraic multiplicity of the eigenvalue 2 is 4 and that the geometric multiplicity is 2, indicating a defective Jordan block structure. Numerical eigenvalue perturbations do not guarantee diagonalizability; the Jordan block sizes depend on the ranks of (M - 2I)^k for k>1, which the student overlooked, leading to an incorrect conclusion about the Jordan form."
+    }
+  ]
+}

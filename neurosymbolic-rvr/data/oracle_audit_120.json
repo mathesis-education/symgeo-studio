@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-11-18T13:49:54.648Z",
+  "totalItems": 120,
+  "graderSelfTestPass": "120/120",
+  "verdictDistribution": {
+    "MISCONCEPTION": 96,
+    "VALID": 24
+  },
+  "giacColdInitMs": 75.076,
+  "rawGiacSymbolicPass": "120/120 (100.0%)",
+  "rawIEEE754NumericPass": "50/120 (41.7%)",
+  "rawIEEE754SymbolicPass": "0/120 (0.0%)",
+  "wasmSubfamilyLatencies": [
+    {
+      "subfamily": "A1_Intersections",
+      "nRuns": 30,
+      "meanMs": 0.602,
+      "sdMs": 0.077,
+      "medianMs": 0.566,
+      "p95Ms": 0.752,
+      "minMs": 0.526,
+      "maxMs": 0.855
+    },
+    {
+      "subfamily": "A2_InflectionParity",
+      "nRuns": 30,
+      "meanMs": 6.184,
+      "sdMs": 0.173,
+      "medianMs": 6.148,
+      "p95Ms": 6.623,
+      "minMs": 5.979,
+      "maxMs": 6.692
+    },
+    {
+      "subfamily": "B1_3DPlaneSlice",
+      "nRuns": 30,
+      "meanMs": 1.512,
+      "sdMs": 0.243,
+      "medianMs": 1.503,
+      "p95Ms": 2.156,
+      "minMs": 1.204,
+      "maxMs": 2.177
+    },
+    {
+      "subfamily": "B2_SolidRevolution",
+      "nRuns": 30,
+      "meanMs": 0.991,
+      "sdMs": 0.035,
+      "medianMs": 0.984,
+      "p95Ms": 1.09,
+      "minMs": 0.955,
+      "maxMs": 1.12
+    },
+    {
+      "subfamily": "C1_JordanAndDiffGeom",
+      "nRuns": 30,
+      "meanMs": 0.328,
+      "sdMs": 0.076,
+      "medianMs": 0.31,
+      "p95Ms": 0.513,
+      "minMs": 0.282,
+      "maxMs": 0.673
+    },
+    {
+      "subfamily": "C2_ODELaplaceResidue",
+      "nRuns": 30,
+      "meanMs": 1.021,
+      "sdMs": 0.09,
+      "medianMs": 0.995,
+      "p95Ms": 1.282,
+      "minMs": 0.938,
+      "maxMs": 1.292
+    }
+  ]
+}

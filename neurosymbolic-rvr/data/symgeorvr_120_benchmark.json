@@ -1,0 +1,2839 @@
+[
+  {
+    "id": "A01",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A01)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 9*x^3-24*x^2+16*x-3 and g(x) = 3*x - 1. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = 2, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1/3, 2]",
+    "ground_truth_list": [
+      "1/3",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      0.3333333333,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      2
+    ],
+    "oracle_symbolic_raw": [
+      "1/3",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A02",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A02)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 9*x^3+3*x^2-6*x-1 and g(x) = 2*x + 3. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = 1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-2/3, 1]",
+    "ground_truth_list": [
+      "-2/3",
+      "1"
+    ],
+    "ground_truth_numeric_list": [
+      -0.6666666667,
+      1
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "-2/3",
+      "1"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A03",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A03)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 49*x^3+21*x^2-28*x+6 and g(x) = -4*x + 2. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = -1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-1, 2/7]",
+    "ground_truth_list": [
+      "-1",
+      "2/7"
+    ],
+    "ground_truth_numeric_list": [
+      -1,
+      0.2857142857
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      -1
+    ],
+    "oracle_symbolic_raw": [
+      "-1",
+      "2/7"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A04",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A04)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 49*x^3-56*x^2-70*x-20 and g(x) = 5*x - 2. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student noted that although h(x) = f(x) - g(x) does not change sign across x = -3/7, the two curves still share a tangential intersection of even multiplicity there in addition to the transverse intersection at x = 2.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-3/7, 2]",
+    "ground_truth_list": [
+      "-3/7",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      -0.4285714286,
+      2
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      2
+    ],
+    "oracle_symbolic_raw": [
+      "-3/7",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A05",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A05)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 81*x^3+91*x^2-130*x+33 and g(x) = x^2 - 2*x + 1. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = -2, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-2, 4/9]",
+    "ground_truth_list": [
+      "-2",
+      "4/9"
+    ],
+    "ground_truth_numeric_list": [
+      -2,
+      0.4444444444
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      -2
+    ],
+    "oracle_symbolic_raw": [
+      "-2",
+      "4/9"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A06",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A06)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 81*x^3+8*x^2-62*x-23 and g(x) = -x^2 + 3*x + 2. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = 1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-5/9, 1]",
+    "ground_truth_list": [
+      "-5/9",
+      "1"
+    ],
+    "ground_truth_numeric_list": [
+      -0.5555555556,
+      1
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "-5/9",
+      "1"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A07",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A07)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 121*x^3+57*x^2-58*x+13 and g(x) = 2*x^2 - x + 4. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = -1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-1, 3/11]",
+    "ground_truth_list": [
+      "-1",
+      "3/11"
+    ],
+    "ground_truth_numeric_list": [
+      -1,
+      0.2727272727
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      -1
+    ],
+    "oracle_symbolic_raw": [
+      "-1",
+      "3/11"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A08",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A08)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 121*x^3-154*x^2-156*x-37 and g(x) = 4*x - 5. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student noted that although h(x) = f(x) - g(x) does not change sign across x = -4/11, the two curves still share a tangential intersection of even multiplicity there in addition to the transverse intersection at x = 2.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-4/11, 2]",
+    "ground_truth_list": [
+      "-4/11",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      -0.3636363636,
+      2
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      2
+    ],
+    "oracle_symbolic_raw": [
+      "-4/11",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A09",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A09)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 36*x^3+15*x^2-93*x+49 and g(x) = 3*x^2 + 2*x - 1. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = -2, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-2, 5/6]",
+    "ground_truth_list": [
+      "-2",
+      "5/6"
+    ],
+    "ground_truth_numeric_list": [
+      -2,
+      0.8333333333
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      -2
+    ],
+    "oracle_symbolic_raw": [
+      "-2",
+      "5/6"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A10",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A10)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 64*x^3-18*x^2-34*x-12 and g(x) = -2*x^2 + 5*x - 3. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = 1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-3/8, 1]",
+    "ground_truth_list": [
+      "-3/8",
+      "1"
+    ],
+    "ground_truth_numeric_list": [
+      -0.375,
+      1
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "-3/8",
+      "1"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A11",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A11)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 64*x^3-15*x^2-51*x+23 and g(x) = x^2 + 4*x - 2. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student plotted f(x) and g(x) with a standard sign-change numerical root finder (step 0.05), observed only x = -1, and concluded that the two curves intersect at only one real x-coordinate because h(x) = f(x) - g(x) never changes sign elsewhere.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-1, 5/8]",
+    "ground_truth_list": [
+      "-1",
+      "5/8"
+    ],
+    "ground_truth_numeric_list": [
+      -1,
+      0.625
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [
+      "only one real|single intersection point"
+    ],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      -1
+    ],
+    "oracle_symbolic_raw": [
+      "-1",
+      "5/8"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A12",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Off-grid even-multiplicity tangential intersection (A12)",
+    "problem_prompt": "Find the complete set of all real intersection x-coordinates between f(x) = 81*x^3-279*x^2+109*x-5 and g(x) = -3*x + 7. Return final_exact_answer as a JSON array of exact rational/radical strings sorted in ascending order.",
+    "student_claim": "A student noted that although h(x) = f(x) - g(x) does not change sign across x = 2/9, the two curves still share a tangential intersection of even multiplicity there in addition to the transverse intersection at x = 3.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[2/9, 3]",
+    "ground_truth_list": [
+      "2/9",
+      "3"
+    ],
+    "ground_truth_numeric_list": [
+      0.2222222222,
+      3
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "tangent|multiplicity|double root|squared|even|touch|sign change|f'"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "EVEN_MULTIPLICITY_TANGENCY_MISSED",
+    "oracle_numeric_raw": [
+      3
+    ],
+    "oracle_symbolic_raw": [
+      "2/9",
+      "3"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A13",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A13)",
+    "problem_prompt": "Find the exact larger intersection x-coordinate between f(x) = x^2 - 3*x - 5 and g(x) = 2*x + 3 in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout 6.274917 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(sqrt(57)+5)/2",
+    "ground_truth_numeric": 6.2749172176,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -1.2749172176,
+      6.2749172176
+    ],
+    "oracle_symbolic_raw": "(sqrt(57)+5)/2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A14",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A14)",
+    "problem_prompt": "Find the exact larger intersection x-coordinate between f(x) = 2*x^2 - x - 7 and g(x) = x + 4 in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout 2.897916 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(sqrt(23)+1)/2",
+    "ground_truth_numeric": 2.8979157617,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -1.8979157617,
+      2.8979157617
+    ],
+    "oracle_symbolic_raw": "(sqrt(23)+1)/2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A15",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A15)",
+    "problem_prompt": "Find the exact smaller intersection x-coordinate between f(x) = 3*x^2 + 2*x - 6 and g(x) = -x + 5 in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout -2.479057 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(-sqrt(141)-3)/6",
+    "ground_truth_numeric": -2.4790570145,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -2.4790570145,
+      1.4790570145
+    ],
+    "oracle_symbolic_raw": "(-sqrt(141)-3)/6",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A16",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A16)",
+    "problem_prompt": "Find the exact larger intersection x-coordinate between f(x) = x^2 + 4*x - 9 and g(x) = 3*x + 5 in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student explained that because the quadratic discriminant is a non-square positive integer, any finite decimal readout like 3.2749 is only an approximation and the exact answer must retain the square-root radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(sqrt(57)-1)/2",
+    "ground_truth_numeric": 3.2749172176,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -4.2749172176,
+      3.2749172176
+    ],
+    "oracle_symbolic_raw": "(sqrt(57)-1)/2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A17",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A17)",
+    "problem_prompt": "Let P and Q be the two intersection points of the parabola y = 2*x^2 - 5*x - 4 and the line y = x + 3. Find the exact Euclidean chord length |PQ| in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout 6.782330 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "sqrt(46)",
+    "ground_truth_numeric": 6.7823299831,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -0.8979157617,
+      3.8979157617
+    ],
+    "oracle_symbolic_raw": "sqrt(46)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A18",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A18)",
+    "problem_prompt": "Let P and Q be the two intersection points of the parabola y = x^2 - 2*x - 6 and the line y = 2*x + 1. Find the exact Euclidean chord length |PQ| in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout 14.832397 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "2*sqrt(55)",
+    "ground_truth_numeric": 14.8323969742,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -1.3166247904,
+      5.3166247904
+    ],
+    "oracle_symbolic_raw": "2*sqrt(55)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A19",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A19)",
+    "problem_prompt": "Find the exact smaller intersection x-coordinate between f(x) = 3*x^2 - 4*x - 5 and g(x) = 2*x + 2 in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout -0.825742 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(-sqrt(30)+3)/3",
+    "ground_truth_numeric": -0.8257418584,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -0.8257418584,
+      2.8257418584
+    ],
+    "oracle_symbolic_raw": "(-sqrt(30)+3)/3",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A20",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A1_Tangential_Radical_Intersections",
+    "title": "Exact algebraic radical intersection / chord (A20)",
+    "problem_prompt": "Let P and Q be the two intersection points of the parabola y = 2*x^2 + 3*x - 8 and the line y = -x + 3. Find the exact Euclidean chord length |PQ| in simplified radical form. Return final_exact_answer as an exact symbolic expression using sqrt(...).",
+    "student_claim": "A student copied the calculator readout 7.211103 and claimed this finite decimal is the exact algebraic value rather than a floating-point truncation of an irrational radical.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "2*sqrt(13)",
+    "ground_truth_numeric": 7.2111025509,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "irrational|radical|sqrt|square root|discriminant|approximation|exact"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RADICAL_ALGEBRA_OR_DECIMAL_TRUNCATION",
+    "oracle_numeric_raw": [
+      -3.5495097568,
+      1.5495097568
+    ],
+    "oracle_symbolic_raw": "2*sqrt(13)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A21",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A21)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = x^6-6*x^5+15*x^4-20*x^3+15*x^2-3*x-1. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student solved f''(x) = 0, found the real root x = 1, and concluded that x = 1 is an inflection point of f(x).",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [
+      "is an inflection point"
+    ],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      0.9873046875,
+      1.0047530673
+    ],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A22",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A22)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = x^6+12*x^5+60*x^4+160*x^3+240*x^2+187*x+68. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student solved f''(x) = 0, found the real root x = -2, and concluded that x = -2 is an inflection point of f(x).",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [
+      "is an inflection point"
+    ],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -2.011683974,
+      -1.96874997
+    ],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A23",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A23)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = 16*x^4-32*x^3+24*x^2-2*x-2. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student solved f''(x) = 0, found the real root x = 1/2, and concluded that x = 1/2 is an inflection point of f(x).",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [
+      "is an inflection point"
+    ],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A24",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A24)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = x^6-12*x^5+60*x^4-160*x^3+240*x^2-188*x+65. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student found f''(2) = 0, checked higher derivatives to find the lowest nonzero derivative at x = 2 has even order k* = 6, and concluded f(x) has no inflection points.",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      2
+    ],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A25",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A25)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = 81*x^4+108*x^3+54*x^2+5*x+3. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student solved f''(x) = 0, found the real root x = -1/3, and concluded that x = -1/3 is an inflection point of f(x).",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [
+      "is an inflection point"
+    ],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A26",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Even-order flat stationary point non-inflection (A26)",
+    "problem_prompt": "Determine all real inflection point x-coordinates of f(x) = x^8+8*x^7+28*x^6+56*x^5+70*x^4+56*x^3+28*x^2+10*x. If f(x) has no real inflection points, return \"none\" for final_exact_answer and null for numeric_approx.",
+    "student_claim": "A student solved f''(x) = 0, found the real root x = -1, and concluded that x = -1 is an inflection point of f(x).",
+    "answer_type": "none",
+    "ground_truth_exact": "none",
+    "ground_truth_numeric": null,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|concavity|sign|fourth|sixth|eighth|order|does not change|no inflection"
+    ],
+    "forbidden_patterns": [
+      "is an inflection point"
+    ],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -1.05
+    ],
+    "oracle_symbolic_raw": "none",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A27",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A27)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 3*x^5-5*x^4-10*x^3+30*x^2+2*x-3. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student factored f''(x) = 0 and claimed BOTH x = 1 and x = -1 are inflection points because f''(x) vanishes at both coordinates.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1",
+    "ground_truth_numeric": -1,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -0.999999999
+    ],
+    "oracle_symbolic_raw": "-1",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A28",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A28)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 3*x^5+15*x^4-120*x^2-3*x+1. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student factored f''(x) = 0 and claimed BOTH x = -2 and x = 1 are inflection points because f''(x) vanishes at both coordinates.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "1",
+    "ground_truth_numeric": 1,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -2.0002110752,
+      -1.9999265335,
+      1.0000000001
+    ],
+    "oracle_symbolic_raw": "1",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A29",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A29)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 9*x^5-60*x^4+120*x^3+5*x+2. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student factored f''(x) = 0 and claimed BOTH x = 2 and x = 0 are inflection points because f''(x) vanishes at both coordinates.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "0",
+    "ground_truth_numeric": 0,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      1.6e-9
+    ],
+    "oracle_symbolic_raw": "0",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A30",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A30)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 3*x^5-15*x^4-4*x+5. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student explained that although f''(x) = 0 at both x = 0 and x = 3, f''(x) has an even-multiplicity factor (x - (0))^2 (lowest nonzero derivative order k* = 4, even) so concavity changes only at x = 3.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3",
+    "ground_truth_numeric": 3,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      2.9999999731
+    ],
+    "oracle_symbolic_raw": "3",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A31",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A31)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 27*x^5+15*x^4-50*x^3+30*x^2+x-1. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student factored f''(x) = 0 and claimed BOTH x = 1/3 and x = -1 are inflection points because f''(x) vanishes at both coordinates.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1",
+    "ground_truth_numeric": -1,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -0.9999999968
+    ],
+    "oracle_symbolic_raw": "-1",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A32",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A32)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 12*x^5-20*x^4-70*x^3-60*x^2+3*x+4. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student factored f''(x) = 0 and claimed BOTH x = -1/2 and x = 2 are inflection points because f''(x) vanishes at both coordinates.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "2",
+    "ground_truth_numeric": 2,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      2.0000000189
+    ],
+    "oracle_symbolic_raw": "2",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A33",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A33)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 1/100*x^7-7/100*x^6+21/100*x^5-7/20*x^4+7/20*x^3-21/100*x^2+207/100*x-1/100. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student ran a finite-difference second-derivative script on f(x) near x = 1, saw multiple noisy sign flips from floating-point cancellation in the linear term, and claimed f(x) has multiple inflection points near x = 1.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "1",
+    "ground_truth_numeric": 1,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      0.9757845447
+    ],
+    "oracle_symbolic_raw": "1",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A34",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A34)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 1/100*x^7+7/100*x^6+21/100*x^5+7/20*x^4+7/20*x^3+21/100*x^2-293/100*x+1/100. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student normalized coefficients to exact rationals, verified that x = -1 is the unique real root of f''(x) = 0 with odd lowest nonzero derivative order k* = 7, and concluded x = -1 is the unique inflection point.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1",
+    "ground_truth_numeric": -1,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -0.9873443568
+    ],
+    "oracle_symbolic_raw": "-1",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A35",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A35)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 1/50*x^5-1/5*x^4+4/5*x^3-8/5*x^2+28/5*x-41/25. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student ran a finite-difference second-derivative script on f(x) near x = 2, saw multiple noisy sign flips from floating-point cancellation in the linear term, and claimed f(x) has multiple inflection points near x = 2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "2",
+    "ground_truth_numeric": 2,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      1.9941784662
+    ],
+    "oracle_symbolic_raw": "2",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A36",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Mixed/high-order Taylor parity inflection (A36)",
+    "problem_prompt": "Find the exact real x-coordinate of the unique inflection point of f(x) = 1/50*x^7+7/25*x^6+42/25*x^5+28/5*x^4+56/5*x^3+336/25*x^2+349/25*x+64/25. (Exclude any flat stationary roots of f''(x)=0 where concavity does not change sign.)",
+    "student_claim": "A student ran a finite-difference second-derivative script on f(x) near x = -2, saw multiple noisy sign flips from floating-point cancellation in the linear term, and claimed f(x) has multiple inflection points near x = -2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-2",
+    "ground_truth_numeric": -2,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "odd|even|concavity|sign|multiplicity|order|fourth|fifth|seventh|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -2.0258253669,
+      -1.978901376,
+      -1.9405013769
+    ],
+    "oracle_symbolic_raw": "-2",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "A37",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Degree-6 mixed-parity inflection set (A37)",
+    "problem_prompt": "Find the complete sorted array of all real inflection point x-coordinates of f(x) = x^6-9/2*x^5+5/2*x^4+15*x^3-30*x^2+2*x.",
+    "student_claim": "A student claimed f(x) has three inflection points at x = 1, -1, and 2 because degree-4 polynomial f''(x) has three distinct real roots.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-1, 2]",
+    "ground_truth_list": [
+      "-1",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      -1,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|squared|multiplicity|concavity|sign|fourth"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -0.999999999,
+      2.0000000063
+    ],
+    "oracle_symbolic_raw": [
+      "-1",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A38",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Degree-6 mixed-parity inflection set (A38)",
+    "problem_prompt": "Find the complete sorted array of all real inflection point x-coordinates of f(x) = x^6-3*x^5-10*x^4+10*x^3+45*x^2-x+4.",
+    "student_claim": "A student claimed f(x) has three inflection points at x = -1, 1, and 3 because degree-4 polynomial f''(x) has three distinct real roots.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 3]",
+    "ground_truth_list": [
+      "1",
+      "3"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      3
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|squared|multiplicity|concavity|sign|fourth"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      1.0000000004,
+      2.9999999747
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "3"
+    ],
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A39",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Degree-6 mixed-parity inflection set (A39)",
+    "problem_prompt": "Find the complete sorted array of all real inflection point x-coordinates of f(x) = x^6-10*x^4+3*x-1.",
+    "student_claim": "A student claimed f(x) has three inflection points at x = 0, -2, and 2 because degree-4 polynomial f''(x) has three distinct real roots.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-2, 2]",
+    "ground_truth_list": [
+      "-2",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      -2,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "even|squared|multiplicity|concavity|sign|fourth"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -2.0000000119,
+      1.9999999999
+    ],
+    "oracle_symbolic_raw": [
+      "-2",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "A40",
+    "category": "A_Secondary_Calculus",
+    "subfamily": "A2_HigherOrder_Inflection_Parity",
+    "title": "Degree-6 mixed-parity inflection set (A40)",
+    "problem_prompt": "Find the complete sorted array of all real inflection point x-coordinates of f(x) = x^6-6*x^5+15/2*x^4+20*x^3-60*x^2+4*x+2.",
+    "student_claim": "A student rejected x = 2 because (x - (2))^2 keeps the same sign across x = 2 (k* = 4, even), leaving exactly two genuine inflection points at x = -1 and x = 1.",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[-1, 1]",
+    "ground_truth_list": [
+      "-1",
+      "1"
+    ],
+    "ground_truth_numeric_list": [
+      -1,
+      1
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "even|squared|multiplicity|concavity|sign|fourth"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "FLAT_STATIONARY_PARITY_OR_FD_CANCELLATION",
+    "oracle_numeric_raw": [
+      -0.9999999998,
+      1.0000000049,
+      2
+    ],
+    "oracle_symbolic_raw": [
+      "-1",
+      "1"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B41",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B41)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2 = 16 is intersected by the plane 1*x + 2*y + 2*z = 3. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(9) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic area in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "15*pi",
+    "ground_truth_numeric": 47.1238898038,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 46.934222,
+    "oracle_symbolic_raw": "15*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B42",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B42)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-2*x+2*y-4*z+6 = 25 is intersected by the plane 2*x + 1*y + 2*z = 11. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(9) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic area in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "21*pi",
+    "ground_truth_numeric": 65.9734457254,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 65.630384,
+    "oracle_symbolic_raw": "21*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B43",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section radius (B43)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2+4*x-2*y+5 = 18 is intersected by the plane 1*x + 1*y + 2*z = 2. Find the exact symbolic radius r of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(6) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic radius in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "sqrt(66)/2",
+    "ground_truth_numeric": 4.0620192023,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 4.040897,
+    "oracle_symbolic_raw": "sqrt(66)/2",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B44",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B44)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-4*y+2*z+5 = 20 is intersected by the plane 2*x - 1*y + 3*z = 1. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student completed the square to find the sphere center (0, 2, -1), computed d_perp^2 = 36/14, and derived the exact symbolic cross-section area via r^2 = R^2 - d_perp^2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "122*pi/7",
+    "ground_truth_numeric": 54.7534719626,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 54.468754,
+    "oracle_symbolic_raw": "122*pi/7",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B45",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section radius (B45)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-2*x-2*y-2*z+3 = 14 is intersected by the plane 1*x + 2*y + 3*z = 9. Find the exact symbolic radius r of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(14) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic radius in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "sqrt(2618)/14",
+    "ground_truth_numeric": 3.6547425158,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 3.635738,
+    "oracle_symbolic_raw": "sqrt(2618)/14",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B46",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B46)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2+2*x-4*y-4*z+9 = 27 is intersected by the plane 2*x + 3*y + 6*z = 23. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(49) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic area in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "26*pi",
+    "ground_truth_numeric": 81.6814089933,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 81.256666,
+    "oracle_symbolic_raw": "26*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B47",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B47)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-4*x+4*y-2*z+9 = 30 is intersected by the plane 1*x - 2*y + 2*z = 13. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(9) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic area in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "245*pi/9",
+    "ground_truth_numeric": 85.5211333477,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 85.076423,
+    "oracle_symbolic_raw": "245*pi/9",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B48",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section radius (B48)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2 = 12 is intersected by the plane 1*x + 1*y + 1*z = 3. Find the exact symbolic radius r of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student completed the square to find the sphere center (0, 0, 0), computed d_perp^2 = 9/3, and derived the exact symbolic cross-section radius via r^2 = R^2 - d_perp^2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3",
+    "ground_truth_numeric": 3,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 28.10123,
+    "oracle_symbolic_raw": "3",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B49",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B49)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-2*x+4*z+5 = 24 is intersected by the plane 3*x + 2*y + 1*z = 5. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(14) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic area in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "160*pi/7",
+    "ground_truth_numeric": 71.8078320821,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 71.434431,
+    "oracle_symbolic_raw": "160*pi/7",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B50",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section radius (B50)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2+2*x+2*y-2*z+3 = 21 is intersected by the plane 2*x - 2*y + 1*z = 5. Find the exact symbolic radius r of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student Either used unnormalized |d| instead of d_perp = |a*x0+b*y0+c*z0-d|/sqrt(9) or read a 32^3 polygon-mesh slicer decimal approximation, missing the exact symbolic radius in terms of pi/radicals.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "sqrt(173)/3",
+    "ground_truth_numeric": 4.3843154793,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 4.361517,
+    "oracle_symbolic_raw": "sqrt(173)/3",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B51",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section area (B51)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2-2*x+2*y-4*z+6 = 9 is intersected by the plane 1*x + 2*y + 2*z = 12. Find the exact symbolic area S of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student forgot to divide |a*x0 + b*y0 + c*z0 - d| by sqrt(a^2 + b^2 + c^2), concluded d_perp > R, and claimed the plane misses the sphere completely with no real point of contact.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "0",
+    "ground_truth_numeric": 0,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 0,
+    "oracle_symbolic_raw": "0",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B52",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D sphere-plane exact cross-section radius (B52)",
+    "problem_prompt": "In R^3, the sphere x^2+y^2+z^2 = 14 is intersected by the plane 1*x + 2*y + 3*z = 14. Find the exact symbolic radius r of the planar cross-section in simplified closed form (using pi and/or sqrt(...) as needed).",
+    "student_claim": "A student computed the orthogonal distance d_perp = |a*x0 + b*y0 + c*z0 - d| / sqrt(a^2 + b^2 + c^2) = sqrt(14) = R and concluded the plane is tangent to the sphere at a single degenerate point of radius 0.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "0",
+    "ground_truth_numeric": 0,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "distance|normal|orthogonal|perp|sqrt|complete the square|center|tangent|mesh|polygon"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "SPATIAL_PROJECTION_OR_VOXEL_DISCRETIZATION",
+    "oracle_numeric_raw": 0,
+    "oracle_symbolic_raw": "0",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B53",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B53)",
+    "problem_prompt": "In R^3, the paraboloid z = 1*x^2 + 4*y^2 is sliced by the oblique plane z = 2*x + (4)*y + 1. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 3*pi/2 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3*pi*sqrt(21)/2",
+    "ground_truth_numeric": 21.5948792067,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 21.443715,
+    "oracle_symbolic_raw": "3*pi*sqrt(21)/2",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B54",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B54)",
+    "problem_prompt": "In R^3, the paraboloid z = 2*x^2 + 2*y^2 is sliced by the oblique plane z = 2*x + (-1)*y + 3. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 29*pi/16 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "29*pi*sqrt(6)/16",
+    "ground_truth_numeric": 13.947729403,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 13.850095,
+    "oracle_symbolic_raw": "29*pi*sqrt(6)/16",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B55",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B55)",
+    "problem_prompt": "In R^3, the paraboloid z = 1*x^2 + 3*y^2 is sliced by the oblique plane z = 1*x + (3)*y + 2. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area pi*sqrt(3) as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "pi*sqrt(33)",
+    "ground_truth_numeric": 18.0470758085,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 17.920746,
+    "oracle_symbolic_raw": "pi*sqrt(33)",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B56",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B56)",
+    "problem_prompt": "In R^3, the paraboloid z = 3*x^2 + 3*y^2 is sliced by the oblique plane z = 3*x + (-3)*y + 1. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student projected the intersection onto the xy-plane to find the projected ellipse area and multiplied by sec(gamma) = sqrt(1 + (3)^2 + (-3)^2) to obtain the exact 3D tilted cross-section area.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "5*pi*sqrt(19)/6",
+    "ground_truth_numeric": 11.411570749,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 11.33169,
+    "oracle_symbolic_raw": "5*pi*sqrt(19)/6",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B57",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B57)",
+    "problem_prompt": "In R^3, the paraboloid z = 1*x^2 + 2*y^2 is sliced by the oblique plane z = 2*x + (2)*y + 2. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 7*pi*sqrt(2)/4 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "21*pi*sqrt(2)/4",
+    "ground_truth_numeric": 23.3251354253,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 23.161859,
+    "oracle_symbolic_raw": "21*pi*sqrt(2)/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B58",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B58)",
+    "problem_prompt": "In R^3, the paraboloid z = 2*x^2 + 4*y^2 is sliced by the oblique plane z = 4*x + (2)*y + 1. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 13*pi*sqrt(2)/16 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "13*pi*sqrt(42)/16",
+    "ground_truth_numeric": 16.5423759865,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 16.426579,
+    "oracle_symbolic_raw": "13*pi*sqrt(42)/16",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B59",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B59)",
+    "problem_prompt": "In R^3, the paraboloid z = 1*x^2 + 1*y^2 is sliced by the oblique plane z = 1*x + (2)*y + 3. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 17*pi/4 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "17*pi*sqrt(6)/4",
+    "ground_truth_numeric": 32.7050206691,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 32.476086,
+    "oracle_symbolic_raw": "17*pi*sqrt(6)/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B60",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B1_3D_Plane_Slice_Conics",
+    "title": "3D tilted plane-paraboloid true ellipse section area (B60)",
+    "problem_prompt": "In R^3, the paraboloid z = 2*x^2 + 3*y^2 is sliced by the oblique plane z = -2*x + (3)*y + 2. Find the exact 3D surface area S of the planar elliptical cross-section lying on the cutting plane (not merely its orthogonal shadow on the xy-plane).",
+    "student_claim": "A student eliminated z to obtain the projected ellipse in the xy-plane and reported its 2D xy-projection area 13*pi*sqrt(6)/24 as the true 3D area on the tilted cutting plane, omitting the plane inclination factor sqrt(1 + m^2 + n^2).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "13*pi*sqrt(21)/12",
+    "ground_truth_numeric": 15.5963016493,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "tilt|inclin|sec|jacobian|normal|sqrt\\(1|projection|shadow|stretch|surface element"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TILTED_PLANE_JACOBIAN_OMITTED",
+    "oracle_numeric_raw": 15.487128,
+    "oracle_symbolic_raw": "13*pi*sqrt(21)/12",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B61",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B61)",
+    "problem_prompt": "The region under y = sqrt(x)*exp(x) for x in [0, 1] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{1} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(pi*exp(1)^2+pi)/4",
+    "ground_truth_numeric": 6.5887492527,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 6.58874928,
+    "oracle_symbolic_raw": "(pi*exp(1)^2+pi)/4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B62",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B62)",
+    "problem_prompt": "The region under y = x*exp(x) for x in [0, 1] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{1} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(pi*exp(1)^2-pi)/4",
+    "ground_truth_numeric": 5.0179529259,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 5.01795298,
+    "oracle_symbolic_raw": "(pi*exp(1)^2-pi)/4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B63",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B63)",
+    "problem_prompt": "The region under y = sqrt(ln(x)) for x in [1, exp(2)] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{1}^{exp(2)} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student applied the disk method V = pi * int_1^exp(2) [f(x)]^2 dx symbolically and preserved exact transcendental constants without decimal rounding.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "pi*exp(2)+pi",
+    "ground_truth_numeric": 26.354997011,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 26.35499643,
+    "oracle_symbolic_raw": "pi*exp(2)+pi",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B64",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B64)",
+    "problem_prompt": "The region under y = 1/sqrt(x^2 + 3) for x in [0, 3] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{3} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "pi^2*sqrt(3)/9",
+    "ground_truth_numeric": 1.8994062526,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 1.89940625,
+    "oracle_symbolic_raw": "pi^2*sqrt(3)/9",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B65",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B65)",
+    "problem_prompt": "The region under y = sqrt(x)/(x + 1) for x in [0, 3] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{3} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(4*pi*ln(4)-3*pi)/4",
+    "ground_truth_numeric": 1.9989776904,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 1.99897744,
+    "oracle_symbolic_raw": "(4*pi*ln(4)-3*pi)/4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B66",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B66)",
+    "problem_prompt": "The region under y = sin(x) + cos(x) for x in [0, pi/3] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi/3} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(4*pi^2+9*pi)/12",
+    "ground_truth_numeric": 5.6460626239,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 5.64606263,
+    "oracle_symbolic_raw": "(4*pi^2+9*pi)/12",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B67",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B67)",
+    "problem_prompt": "The region under y = x*sqrt(4 - x^2) for x in [0, 2] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{2} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student applied the disk method V = pi * int_0^2 [f(x)]^2 dx symbolically and preserved exact transcendental constants without decimal rounding.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "64*pi/15",
+    "ground_truth_numeric": 13.4041286553,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 13.40412852,
+    "oracle_symbolic_raw": "64*pi/15",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B68",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B68)",
+    "problem_prompt": "The region under y = sqrt(x)*ln(x) for x in [1, exp(1)] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{1}^{exp(1)} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(pi*exp(1)^2-pi)/4",
+    "ground_truth_numeric": 5.0179529259,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 5.01795293,
+    "oracle_symbolic_raw": "(pi*exp(1)^2-pi)/4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B69",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B69)",
+    "problem_prompt": "The region under y = exp(-x)*sin(x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(-pi*exp(-2*pi)+pi)/8",
+    "ground_truth_numeric": 0.3919657387,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 0.39196594,
+    "oracle_symbolic_raw": "(-pi*exp(-2*pi)+pi)/8",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B70",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (smooth) exact volume (B70)",
+    "problem_prompt": "The region under y = x / sqrt(x^2 + 1) for x in [0, sqrt(3)] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{sqrt(3)} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student forgot to square f(x) in the disk formula (computing pi * int f(x) dx instead of pi * int [f(x)]^2 dx) or replaced transcendental constants (pi, e, ln) with a rounded decimal.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(-pi^2+3*pi*sqrt(3))/3",
+    "ground_truth_numeric": 2.151529959,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "square|f\\(x\\)\\^2|disk|exact|pi|transcendental|integration|antiderivative"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "TRANSCENDENTAL_INTEGRAL_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 2.15152996,
+    "oracle_symbolic_raw": "(-pi^2+3*pi*sqrt(3))/3",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "B71",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (improper) exact volume (B71)",
+    "problem_prompt": "The region under y = x^(-1/3) for x in [0, 8] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{8} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student saw that f(x) blows up to infinity at the endpoint and claimed the solid of revolution must have infinite (divergent) volume, or used naive fixed-grid numerical quadrature that mishandles the integrable singularity.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "6*pi",
+    "ground_truth_numeric": 18.8495559215,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "improper|converg|p\\s*<\\s*1|exponent|singular|limit|finite"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS",
+    "oracle_numeric_raw": 83791.62748001,
+    "oracle_symbolic_raw": "6*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B72",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (improper) exact volume (B72)",
+    "problem_prompt": "The region under y = x^(-1/4) for x in [0, 16] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{16} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student noted that squaring f(x) yields an improper p-integral with exponent p < 1 at the singular endpoint, so the improper limit converges to a finite exact multiple of pi.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "8*pi",
+    "ground_truth_numeric": 25.1327412287,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "improper|converg|p\\s*<\\s*1|exponent|singular|limit|finite"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS",
+    "oracle_numeric_raw": 5321.99805973,
+    "oracle_symbolic_raw": "8*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B73",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (improper) exact volume (B73)",
+    "problem_prompt": "The region under y = (x - 1)^(-1/3) for x in [1, 9] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{1}^{9} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student saw that f(x) blows up to infinity at the endpoint and claimed the solid of revolution must have infinite (divergent) volume, or used naive fixed-grid numerical quadrature that mishandles the integrable singularity.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "6*pi",
+    "ground_truth_numeric": 18.8495559215,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "improper|converg|p\\s*<\\s*1|exponent|singular|limit|finite"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS",
+    "oracle_numeric_raw": 83791.62285892,
+    "oracle_symbolic_raw": "6*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B74",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (improper) exact volume (B74)",
+    "problem_prompt": "The region under y = (1 + x)*x^(-1/3) for x in [0, 8] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{8} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student saw that f(x) blows up to infinity at the endpoint and claimed the solid of revolution must have infinite (divergent) volume, or used naive fixed-grid numerical quadrature that mishandles the integrable singularity.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "594*pi/7",
+    "ground_truth_numeric": 266.5865766046,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "improper|converg|p\\s*<\\s*1|exponent|singular|limit|finite"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS",
+    "oracle_numeric_raw": 84039.33515132,
+    "oracle_symbolic_raw": "594*pi/7",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B75",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (improper) exact volume (B75)",
+    "problem_prompt": "The region under y = (4 - x)^(-1/4) for x in [0, 4] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{4} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student saw that f(x) blows up to infinity at the endpoint and claimed the solid of revolution must have infinite (divergent) volume, or used naive fixed-grid numerical quadrature that mishandles the integrable singularity.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "4*pi",
+    "ground_truth_numeric": 12.5663706144,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "improper|converg|p\\s*<\\s*1|exponent|singular|limit|finite"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "IMPROPER_SINGULARITY_OR_QUADRATURE_BIAS",
+    "oracle_numeric_raw": 1336.38720611,
+    "oracle_symbolic_raw": "4*pi",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B76",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (oscillatory) exact volume (B76)",
+    "problem_prompt": "The region under y = sqrt(x)*sin(50*x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student evaluated V numerically with a coarse 100-panel Simpson grid on [0, pi], where nodes sample sin(50*x) or cos(100*x) at aliased phases, producing a severely biased volume estimate.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "pi^3/4",
+    "ground_truth_numeric": 7.7515691701,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "alias|nyquist|half-angle|double-angle|cos\\(|oscillat|quadrature|simpson|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "NYQUIST_QUADRATURE_ALIASING",
+    "oracle_numeric_raw": 10.33542556,
+    "oracle_symbolic_raw": "pi^3/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B77",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (oscillatory) exact volume (B77)",
+    "problem_prompt": "The region under y = sqrt(x + 1)*cos(50*x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student evaluated V numerically with a coarse 100-panel Simpson grid on [0, pi], where nodes sample sin(50*x) or cos(100*x) at aliased phases, producing a severely biased volume estimate.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(pi^3+2*pi^2)/4",
+    "ground_truth_numeric": 12.6863713706,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "alias|nyquist|half-angle|double-angle|cos\\(|oscillat|quadrature|simpson|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "NYQUIST_QUADRATURE_ALIASING",
+    "oracle_numeric_raw": 8.45758091,
+    "oracle_symbolic_raw": "(pi^3+2*pi^2)/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B78",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (oscillatory) exact volume (B78)",
+    "problem_prompt": "The region under y = x*sin(50*x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student used the half-angle identity sin^2(k*x) = (1 - cos(2*k*x))/2 (or cos^2(k*x) = (1 + cos(2*k*x))/2) to integrate symbolically rather than relying on coarse fixed-panel quadrature that aliases high frequencies.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(5000*pi^4-3*pi^2)/30000",
+    "ground_truth_numeric": 16.2338615452,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "alias|nyquist|half-angle|double-angle|cos\\(|oscillat|quadrature|simpson|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "NYQUIST_QUADRATURE_ALIASING",
+    "oracle_numeric_raw": 21.64430003,
+    "oracle_symbolic_raw": "(5000*pi^4-3*pi^2)/30000",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B79",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (oscillatory) exact volume (B79)",
+    "problem_prompt": "The region under y = exp(x/2)*sin(40*x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student evaluated V numerically with a coarse 100-panel Simpson grid on [0, pi], where nodes sample sin(50*x) or cos(100*x) at aliased phases, producing a severely biased volume estimate.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(3200*pi*exp(pi)-3200*pi)/6401",
+    "ground_truth_numeric": 34.7730853657,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "alias|nyquist|half-angle|double-angle|cos\\(|oscillat|quadrature|simpson|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "NYQUIST_QUADRATURE_ALIASING",
+    "oracle_numeric_raw": 34.79891507,
+    "oracle_symbolic_raw": "(3200*pi*exp(pi)-3200*pi)/6401",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "B80",
+    "category": "B_3D_Spatial_Integral",
+    "subfamily": "B2_Solids_Revolution_Improper_Integrals",
+    "title": "Solid of revolution (oscillatory) exact volume (B80)",
+    "problem_prompt": "The region under y = (x + 2)*cos(100*x) for x in [0, pi] is revolved completely around the x-axis. Find the exact symbolic volume V = pi * int_{0}^{pi} [f(x)]^2 dx in simplified closed form.",
+    "student_claim": "A student evaluated V numerically with a coarse 100-panel Simpson grid on [0, pi], where nodes sample sin(50*x) or cos(100*x) at aliased phases, producing a severely biased volume estimate.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(20000*pi^4+120000*pi^3+240003*pi^2)/120000",
+    "ground_truth_numeric": 66.9805807283,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "alias|nyquist|half-angle|double-angle|cos\\(|oscillat|quadrature|simpson|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "NYQUIST_QUADRATURE_ALIASING",
+    "oracle_numeric_raw": 133.96066798,
+    "oracle_symbolic_raw": "(20000*pi^4+120000*pi^3+240003*pi^2)/120000",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C81",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact torsion (C81)",
+    "problem_prompt": "For the 3D space curve r(t) = [t, t^2, t^3], find the exact symbolic torsion tau evaluated at t = 1.",
+    "student_claim": "A student approximated r'''(t) with finite differences at step h = 1e-4 (or confused ||r' x r''||^2 with ||r' x r''||^3 in the torsion denominator), obtaining an inaccurate torsion value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3/19",
+    "ground_truth_numeric": 0.1578947368,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.15788686,
+    "oracle_symbolic_raw": "3/19",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C82",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact torsion (C82)",
+    "problem_prompt": "For the 3D space curve r(t) = [t, 2*t^2, t^3], find the exact symbolic torsion tau evaluated at t = 1.",
+    "student_claim": "A student approximated r'''(t) with finite differences at step h = 1e-4 (or confused ||r' x r''||^2 with ||r' x r''||^3 in the torsion denominator), obtaining an inaccurate torsion value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "6/49",
+    "ground_truth_numeric": 0.1224489796,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.12244287,
+    "oracle_symbolic_raw": "6/49",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C83",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact torsion (C83)",
+    "problem_prompt": "For the 3D space curve r(t) = [2*cos(t), 2*sin(t), 3*t], find the exact symbolic torsion tau evaluated at t = 0.",
+    "student_claim": "A student differentiated r(t) symbolically to third order and evaluated tau = ((r' x r'') . r''') / ||r' x r''||^2 exactly without finite-difference cancellation.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3/13",
+    "ground_truth_numeric": 0.2307692308,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.23076923,
+    "oracle_symbolic_raw": "3/13",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C84",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact torsion (C84)",
+    "problem_prompt": "For the 3D space curve r(t) = [t^2, t^3, t^4], find the exact symbolic torsion tau evaluated at t = 1.",
+    "student_claim": "A student approximated r'''(t) with finite differences at step h = 1e-4 (or confused ||r' x r''||^2 with ||r' x r''||^3 in the torsion denominator), obtaining an inaccurate torsion value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "12/109",
+    "ground_truth_numeric": 0.1100917431,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.11009465,
+    "oracle_symbolic_raw": "12/109",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C85",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact curvature (C85)",
+    "problem_prompt": "For the 3D space curve r(t) = [exp(t), exp(-t), sqrt(2)*t], find the exact symbolic curvature kappa evaluated at t = 0.",
+    "student_claim": "A student approximated r'''(t) with finite differences at step h = 1e-4 (or confused ||r' x r''||^2 with ||r' x r''||^3 in the torsion denominator), obtaining an inaccurate curvature value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "sqrt(2)/4",
+    "ground_truth_numeric": 0.3535533906,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.35355339,
+    "oracle_symbolic_raw": "sqrt(2)/4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C86",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "3D space-curve exact torsion (C86)",
+    "problem_prompt": "For the 3D space curve r(t) = [t, t^2/2, t^3/6], find the exact symbolic torsion tau evaluated at t = 2.",
+    "student_claim": "A student approximated r'''(t) with finite differences at step h = 1e-4 (or confused ||r' x r''||^2 with ||r' x r''||^3 in the torsion denominator), obtaining an inaccurate torsion value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "1/9",
+    "ground_truth_numeric": 0.1111111111,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "third derivative|r'''|cross product|norm|cancellation|finite difference|symbolic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "THIRD_DERIVATIVE_TORSION_ERROR",
+    "oracle_numeric_raw": 0.11114566,
+    "oracle_symbolic_raw": "1/9",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C87",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Surface Gaussian curvature K(x0, y0) (C87)",
+    "problem_prompt": "For the smooth surface z = x^2 - y^2, find the exact Gaussian curvature K(1, 1) in simplified rational/exact form.",
+    "student_claim": "A student computed the Hessian determinant f_xx * f_yy - f_xy^2 at (1, 1) and reported it directly as Gaussian curvature K without dividing by (1 + f_x^2 + f_y^2)^2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-4/81",
+    "ground_truth_numeric": -0.049382716,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "denominator|1\\s*\\+\\s*f_x|gradient|monkey saddle|degenerate|hessian|cubic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE",
+    "oracle_numeric_raw": -0.04938272,
+    "oracle_symbolic_raw": "-4/81",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C88",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Surface Gaussian curvature K(x0, y0) (C88)",
+    "problem_prompt": "For the smooth surface z = x*y + x^2, find the exact Gaussian curvature K(1, 0) in simplified rational/exact form.",
+    "student_claim": "A student computed the Hessian determinant f_xx * f_yy - f_xy^2 at (1, 0) and reported it directly as Gaussian curvature K without dividing by (1 + f_x^2 + f_y^2)^2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1/36",
+    "ground_truth_numeric": -0.0277777778,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "denominator|1\\s*\\+\\s*f_x|gradient|monkey saddle|degenerate|hessian|cubic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE",
+    "oracle_numeric_raw": -0.02777778,
+    "oracle_symbolic_raw": "-1/36",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C89",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Surface Gaussian curvature K(x0, y0) (C89)",
+    "problem_prompt": "For the smooth surface z = x^3 - 3*x*y^2 + 2*x^2 + 2*y^2, find the exact Gaussian curvature K(0, 0) in simplified rational/exact form.",
+    "student_claim": "A student evaluated K = (f_xx * f_yy - f_xy^2) / (1 + f_x^2 + f_y^2)^2 at (0, 0), noting that cubic terms vanish at the origin while quadratic terms yield K(0,0) = 16.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "16",
+    "ground_truth_numeric": 16,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "denominator|1\\s*\\+\\s*f_x|gradient|monkey saddle|degenerate|hessian|cubic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE",
+    "oracle_numeric_raw": 16,
+    "oracle_symbolic_raw": "16",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C90",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Surface Gaussian curvature K(x0, y0) (C90)",
+    "problem_prompt": "For the smooth surface z = x^3 - 3*x*y^2, find the exact Gaussian curvature K(0, 0) in simplified rational/exact form.",
+    "student_claim": "A student saw det(H(0,0)) = 0 and K(0,0) = 0 on z = x^3 - 3*x*y^2 and claimed (0,0) cannot be a saddle-type surface point because K is not negative.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "0",
+    "ground_truth_numeric": 0,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "denominator|1\\s*\\+\\s*f_x|gradient|monkey saddle|degenerate|hessian|cubic"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "GAUSSIAN_CURVATURE_DENOMINATOR_OR_MONKEY_SADDLE",
+    "oracle_numeric_raw": 0,
+    "oracle_symbolic_raw": "0",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C91",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C91)",
+    "problem_prompt": "Consider the 3x3 integer matrix M = [[1,1,0],[-2,2,1],[-3,1,3]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 3 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[3]",
+    "ground_truth_list": [
+      "3"
+    ],
+    "ground_truth_numeric_list": [
+      3
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "3"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C92",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C92)",
+    "problem_prompt": "Consider the 3x3 integer matrix M = [[1,-1,1],[2,4,-1],[-2,-1,4]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 3 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 2]",
+    "ground_truth_list": [
+      "1",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C93",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C93)",
+    "problem_prompt": "Consider the 3x3 integer matrix M = [[-6,2,1],[-28,9,8],[4,-1,-3]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student computed exact integer ranks of (M - lambda*I)^k via exact rational elimination / Jordan decomposition, confirming M is defective with exact Jordan block sizes [1, 2].",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 2]",
+    "ground_truth_list": [
+      "1",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      2
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C94",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C94)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[1,1,0,0],[2,1,2,-1],[3,-2,4,-1],[-1,1,0,2]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 3]",
+    "ground_truth_list": [
+      "1",
+      "3"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      3
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "3"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C95",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C95)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[3,1,0,0],[-1,1,0,0],[4,3,1,1],[3,2,-1,3]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[2, 2]",
+    "ground_truth_list": [
+      "2",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      2,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "2",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C96",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C96)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[0,0,1,-1],[0,-1,2,-1],[1,-3,3,0],[1,-1,0,2]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[4]",
+    "ground_truth_list": [
+      "4"
+    ],
+    "ground_truth_numeric_list": [
+      4
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "4"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C97",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C97)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[-4,1,0,1],[-2,-1,0,1],[2,-1,-2,-1],[-2,1,0,-1]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student computed exact integer ranks of (M - lambda*I)^k via exact rational elimination / Jordan decomposition, confirming M is defective with exact Jordan block sizes [1, 1, 2].",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 1, 2]",
+    "ground_truth_list": [
+      "1",
+      "1",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      1,
+      2
+    ],
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "1",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C98",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C98)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[3,3,-1,-3],[-1,8,0,-4],[1,2,2,-3],[-1,9,0,-5]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[1, 3]",
+    "ground_truth_list": [
+      "1",
+      "3"
+    ],
+    "ground_truth_numeric_list": [
+      1,
+      3
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "1",
+      "3"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C99",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C99)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[-1,1,0,0],[-2,0,1,0],[-1,2,-1,1],[2,2,-3,2]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[4]",
+    "ground_truth_list": [
+      "4"
+    ],
+    "ground_truth_numeric_list": [
+      4
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      4
+    ],
+    "oracle_symbolic_raw": [
+      "4"
+    ],
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C100",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C1_DiffGeom_Curvature_Defective_Jordan",
+    "title": "Defective integer matrix exact Jordan block sizes (C100)",
+    "problem_prompt": "Consider the 4x4 integer matrix M = [[5,0,-1,0],[4,2,-2,1],[1,0,3,0],[6,-4,-2,6]]. Find the multiset of sizes of all Jordan blocks in the Jordan canonical form of M over C, returned as a JSON array of integers sorted in ascending order (e.g., [\"1\", \"3\"] or [\"2\", \"2\"]).",
+    "student_claim": "A student ran a floating-point eigenvalue solver on M, saw 4 slightly separated numerical eigenvalues around ~1e-6 perturbation, and claimed M is diagonalizable with all Jordan blocks of size 1 (or confused [3, 1] with [2, 2] by checking only nullity(M - lambda*I)).",
+    "answer_type": "list_exact",
+    "ground_truth_exact": "[2, 2]",
+    "ground_truth_list": [
+      "2",
+      "2"
+    ],
+    "ground_truth_numeric_list": [
+      2,
+      2
+    ],
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "defective|jordan|nullity|rank|generalized eigenvector|perturbation|non-diagonalizable|multiplicity"
+    ],
+    "forbidden_patterns": [
+      "is diagonalizable"
+    ],
+    "primary_trap_code": "DEFECTIVE_JORDAN_PERTURBATION_OR_RANK_CHAIN",
+    "oracle_numeric_raw": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "oracle_symbolic_raw": [
+      "2",
+      "2"
+    ],
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C101",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "3D vector field curl/divergence symbolic invariant (C101)",
+    "problem_prompt": "Find the exact constant a such that F = [3*x^2*y + a*z, x^3 - 2*y*z, 5*x - y^2] is irrotational (curl F = [0, 0, 0]) everywhere.",
+    "student_claim": "A student flipped the sign in the y- or z-component of curl(F) = nabla x F (or omitted the product-rule partial derivative term in div(F)), obtaining the wrong symbolic value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "5",
+    "ground_truth_numeric": 5,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "curl|divergence|partial|sign|irrotational|product rule|nabla"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 5,
+    "oracle_symbolic_raw": "5",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C102",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "3D vector field curl/divergence symbolic invariant (C102)",
+    "problem_prompt": "Find the exact constant k such that F = [2*x*y + z^3, x^2 + k*y*z, 3*x*z^2 - 2*x*z - y^2] satisfies div(F) = 0 at (x, y, z) = (2, -1, 3).",
+    "student_claim": "A student flipped the sign in the y- or z-component of curl(F) = nabla x F (or omitted the product-rule partial derivative term in div(F)), obtaining the wrong symbolic value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-10",
+    "ground_truth_numeric": -10,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "curl|divergence|partial|sign|irrotational|product rule|nabla"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": -10,
+    "oracle_symbolic_raw": "-10",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C103",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "3D vector field curl/divergence symbolic invariant (C103)",
+    "problem_prompt": "Evaluate the z-component of curl(F) at (1, 2, -1) for F = [y^2*exp(x*z), x^2*z^3, sin(x*y)].",
+    "student_claim": "A student computed (curl F)_z = dQ/dx - dP/dy symbolically before substituting (1, 2, -1), preserving the exact 1/e term.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(-2*exp(1)-4)/exp(1)",
+    "ground_truth_numeric": -3.4715177647,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "curl|divergence|partial|sign|irrotational|product rule|nabla"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": -3.4715177647,
+    "oracle_symbolic_raw": "(-2*exp(1)-4)/exp(1)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C104",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "3D vector field curl/divergence symbolic invariant (C104)",
+    "problem_prompt": "Evaluate div(F) at (1, 1, 1) in exact symbolic form for F = [x^2*sin(y*z), y^2*cos(x*z), z^2*exp(x*y)].",
+    "student_claim": "A student flipped the sign in the y- or z-component of curl(F) = nabla x F (or omitted the product-rule partial derivative term in div(F)), obtaining the wrong symbolic value.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(2*exp(1)*tan(1/2)^2+2*exp(1)-2*tan(1/2)^2+4*tan(1/2)+2)/(tan(1/2)^2+1)",
+    "ground_truth_numeric": 8.2001102383,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "curl|divergence|partial|sign|irrotational|product rule|nabla"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "VECTOR_CURL_DIV_SIGN_OR_SYMBOLIC_LOSS",
+    "oracle_numeric_raw": 8.2001102383,
+    "oracle_symbolic_raw": "(2*exp(1)*tan(1/2)^2+2*exp(1)-2*tan(1/2)^2+4*tan(1/2)+2)/(tan(1/2)^2+1)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C105",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C105)",
+    "problem_prompt": "Solve the initial-value problem y'' + 4*y = 8*sin(2*x) with y(0) = 0 and y'(0) = 0, and find the exact symbolic value y(pi/4) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student guessed a non-resonant particular solution without multiplying by the secular resonance factor x (or x^2 for a double characteristic root), or reported an RK4 decimal instead of the exact closed form.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "1",
+    "ground_truth_numeric": 1,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 1,
+    "oracle_symbolic_raw": "1",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C106",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C106)",
+    "problem_prompt": "Solve the initial-value problem y'' + 9*y = 6*cos(3*x) with y(0) = 1 and y'(0) = 0, and find the exact symbolic value y(pi/6) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student guessed a non-resonant particular solution without multiplying by the secular resonance factor x (or x^2 for a double characteristic root), or reported an RK4 decimal instead of the exact closed form.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "pi/6",
+    "ground_truth_numeric": 0.5235987756,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 0.52359878,
+    "oracle_symbolic_raw": "pi/6",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C107",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C107)",
+    "problem_prompt": "Solve the initial-value problem y'' - 2*y' + y = 2*exp(x) with y(0) = 0 and y'(0) = 1, and find the exact symbolic value y(1) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student recognized that r = 1 is a double root of the characteristic polynomial r^2 - 2r + 1 = 0, multiplied the particular ansatz by x^2 to obtain y_p = x^2 * e^x, and evaluated y(1) = 2*e exactly.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "2*exp(1)",
+    "ground_truth_numeric": 5.4365636569,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 5.43656366,
+    "oracle_symbolic_raw": "2*exp(1)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C108",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C108)",
+    "problem_prompt": "Solve the initial-value problem y'' + y = 4*sin(x) with y(0) = 0 and y'(0) = 2, and find the exact symbolic value y(pi/2) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student guessed a non-resonant particular solution without multiplying by the secular resonance factor x (or x^2 for a double characteristic root), or reported an RK4 decimal instead of the exact closed form.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "4",
+    "ground_truth_numeric": 4,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 4,
+    "oracle_symbolic_raw": "4",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C109",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C109)",
+    "problem_prompt": "Solve the initial-value problem y'' + 4*y' + 4*y = 6*exp(-2*x) with y(0) = 1 and y'(0) = 0, and find the exact symbolic value y(1) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student guessed a non-resonant particular solution without multiplying by the secular resonance factor x (or x^2 for a double characteristic root), or reported an RK4 decimal instead of the exact closed form.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "6/exp(2)",
+    "ground_truth_numeric": 0.8120116994,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 0.8120117,
+    "oracle_symbolic_raw": "6/exp(2)",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C110",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Resonant / double-root 2nd-order ODE IVP (C110)",
+    "problem_prompt": "Solve the initial-value problem y'' + 16*y = 8*cos(4*x) with y(0) = 0 and y'(0) = 4, and find the exact symbolic value y(pi/8) in simplified closed form (in terms of pi and/or exp(...) where applicable).",
+    "student_claim": "A student guessed a non-resonant particular solution without multiplying by the secular resonance factor x (or x^2 for a double characteristic root), or reported an RK4 decimal instead of the exact closed form.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "(pi+8)/8",
+    "ground_truth_numeric": 1.3926990817,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "resonan|secular|characteristic|double root|multipl.*x|particular|undetermined|desolve"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "RESONANT_ODE_SECULAR_TERM_OR_FLOAT_RK4",
+    "oracle_numeric_raw": 1.39269908,
+    "oracle_symbolic_raw": "(pi+8)/8",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C111",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Laplace analytic continuation left of convergence half-plane (C111)",
+    "problem_prompt": "Let F(s) denote the meromorphic analytic continuation to C of the Laplace transform L{exp(3*t)*cos(2*t)}(s) (originally defined for Re(s) > 3). Evaluate F(1) in exact rational form.",
+    "student_claim": "A student plugged s = 1 directly into the improper integral int_0^inf exp(-s*t)*f(t) dt (or numerically integrated on [0, 30]) and claimed the analytic continuation F(1) does not exist because Re(s) <= 3.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1/4",
+    "ground_truth_numeric": -0.25,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "analytic continuation|meromorphic|rational|half-plane|re\\(s\\)|abscissa|diverges|pole"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE",
+    "oracle_numeric_raw": "DIVERGED (-3.589356340696891e+25)",
+    "oracle_symbolic_raw": "-1/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C112",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Laplace analytic continuation left of convergence half-plane (C112)",
+    "problem_prompt": "Let F(s) denote the meromorphic analytic continuation to C of the Laplace transform L{exp(4*t)*sin(3*t)}(s) (originally defined for Re(s) > 4). Evaluate F(2) in exact rational form.",
+    "student_claim": "A student plugged s = 2 directly into the improper integral int_0^inf exp(-s*t)*f(t) dt (or numerically integrated on [0, 30]) and claimed the analytic continuation F(2) does not exist because Re(s) <= 4.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "3/13",
+    "ground_truth_numeric": 0.2307692308,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "analytic continuation|meromorphic|rational|half-plane|re\\(s\\)|abscissa|diverges|pole"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE",
+    "oracle_numeric_raw": "DIVERGED (2.751456336626419e+25)",
+    "oracle_symbolic_raw": "3/13",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C113",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Laplace analytic continuation left of convergence half-plane (C113)",
+    "problem_prompt": "Let F(s) denote the meromorphic analytic continuation to C of the Laplace transform L{t*exp(2*t)}(s) (originally defined for Re(s) > 2). Evaluate F(-1) in exact rational form.",
+    "student_claim": "A student noted that although the improper integral int_0^inf exp(-s*t)*f(t) dt converges only for Re(s) > 2, its closed-form rational Laplace transform F(s) = 1/(s^2-4*s+4) extends by analytic continuation to C \\ {2}, giving F(-1) = 1/9.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "1/9",
+    "ground_truth_numeric": 0.1111111111,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "analytic continuation|meromorphic|rational|half-plane|re\\(s\\)|abscissa|diverges|pole"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE",
+    "oracle_numeric_raw": "DIVERGED (1.2068611034291911e+40)",
+    "oracle_symbolic_raw": "1/9",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C114",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Laplace analytic continuation left of convergence half-plane (C114)",
+    "problem_prompt": "Let F(s) denote the meromorphic analytic continuation to C of the Laplace transform L{exp(5*t)*cos(t)}(s) (originally defined for Re(s) > 5). Evaluate F(3) in exact rational form.",
+    "student_claim": "A student plugged s = 3 directly into the improper integral int_0^inf exp(-s*t)*f(t) dt (or numerically integrated on [0, 30]) and claimed the analytic continuation F(3) does not exist because Re(s) <= 5.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-2/5",
+    "ground_truth_numeric": -0.4,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "analytic continuation|meromorphic|rational|half-plane|re\\(s\\)|abscissa|diverges|pole"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE",
+    "oracle_numeric_raw": "DIVERGED (-1.5520312593577045e+25)",
+    "oracle_symbolic_raw": "-2/5",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C115",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Laplace analytic continuation left of convergence half-plane (C115)",
+    "problem_prompt": "Let F(s) denote the meromorphic analytic continuation to C of the Laplace transform L{t^2*exp(3*t)}(s) (originally defined for Re(s) > 3). Evaluate F(1) in exact rational form.",
+    "student_claim": "A student plugged s = 1 directly into the improper integral int_0^inf exp(-s*t)*f(t) dt (or numerically integrated on [0, 30]) and claimed the analytic continuation F(1) does not exist because Re(s) <= 3.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-1/4",
+    "ground_truth_numeric": -0.25,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "analytic continuation|meromorphic|rational|half-plane|re\\(s\\)|abscissa|diverges|pole"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "LAPLACE_QUADRATURE_DIVERGENCE_LEFT_OF_POLE",
+    "oracle_numeric_raw": "DIVERGED (4.970603041877321e+28)",
+    "oracle_symbolic_raw": "-1/4",
+    "raw_ieee754_numeric_pass": false
+  },
+  {
+    "id": "C116",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Order-4 complex pole exact residue (C116)",
+    "problem_prompt": "Find the exact complex residue Res(f, z = 1) of f(z) = exp(2*z) / (z - 1)^4 at its pole z = 1 of order 4 in simplified exact form.",
+    "student_claim": "A student forgot the 1/(m-1)! factorial factor in the order-4 pole residue formula (or used a tiny r = 1e-4 Cauchy contour quadrature where dividing by r^3 amplifies IEEE-754 rounding noise).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "4*exp(2)/3",
+    "ground_truth_numeric": 9.8520747986,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "factorial|laurent|taylor|z\\^-1|1/z|order|derivative|contour|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE",
+    "oracle_numeric_raw": 9.851578,
+    "oracle_symbolic_raw": "4*exp(2)/3",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C117",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Order-3 complex pole exact residue (C117)",
+    "problem_prompt": "Find the exact complex residue Res(f, z = 0) of f(z) = cos(2*z) / z^3 at its pole z = 0 of order 3 in simplified exact form.",
+    "student_claim": "A student expanded cos(2*z) = 1 - 2*z^2 + (2/3)*z^4 - ... into its Laurent series around z = 0 and extracted the exact coefficient of z^(-1) in cos(2*z)/z^3, which is -2.",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-2",
+    "ground_truth_numeric": -2,
+    "ground_truth_verdict": "VALID",
+    "diagnostic_patterns": [
+      "factorial|laurent|taylor|z\\^-1|1/z|order|derivative|contour|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE",
+    "oracle_numeric_raw": -2,
+    "oracle_symbolic_raw": "-2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C118",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Order-4 complex pole exact residue (C118)",
+    "problem_prompt": "Find the exact complex residue Res(f, z = 0) of f(z) = sin(3*z) / z^4 at its pole z = 0 of order 4 in simplified exact form.",
+    "student_claim": "A student forgot the 1/(m-1)! factorial factor in the order-4 pole residue formula (or used a tiny r = 1e-4 Cauchy contour quadrature where dividing by r^3 amplifies IEEE-754 rounding noise).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "-9/2",
+    "ground_truth_numeric": -4.5,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "factorial|laurent|taylor|z\\^-1|1/z|order|derivative|contour|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE",
+    "oracle_numeric_raw": -4.5,
+    "oracle_symbolic_raw": "-9/2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C119",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Order-3 complex pole exact residue (C119)",
+    "problem_prompt": "Find the exact complex residue Res(f, z = -1) of f(z) = exp(-3*z) / (z + 1)^3 at its pole z = -1 of order 3 in simplified exact form.",
+    "student_claim": "A student forgot the 1/(m-1)! factorial factor in the order-3 pole residue formula (or used a tiny r = 1e-4 Cauchy contour quadrature where dividing by r^2 amplifies IEEE-754 rounding noise).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "9*exp(3)/2",
+    "ground_truth_numeric": 90.3849161543,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "factorial|laurent|taylor|z\\^-1|1/z|order|derivative|contour|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE",
+    "oracle_numeric_raw": 90.384916,
+    "oracle_symbolic_raw": "9*exp(3)/2",
+    "raw_ieee754_numeric_pass": true
+  },
+  {
+    "id": "C120",
+    "category": "C_Undergraduate_STEM",
+    "subfamily": "C2_Vector_ODE_Laplace_Residue",
+    "title": "Order-4 complex pole exact residue (C120)",
+    "problem_prompt": "Find the exact complex residue Res(f, z = 0) of f(z) = (z^2 + 1)*exp(z) / z^4 at its pole z = 0 of order 4 in simplified exact form.",
+    "student_claim": "A student forgot the 1/(m-1)! factorial factor in the order-4 pole residue formula (or used a tiny r = 1e-4 Cauchy contour quadrature where dividing by r^3 amplifies IEEE-754 rounding noise).",
+    "answer_type": "scalar",
+    "ground_truth_exact": "7/6",
+    "ground_truth_numeric": 1.1666666667,
+    "ground_truth_verdict": "MISCONCEPTION",
+    "diagnostic_patterns": [
+      "factorial|laurent|taylor|z\\^-1|1/z|order|derivative|contour|cancellation"
+    ],
+    "forbidden_patterns": [],
+    "primary_trap_code": "HIGHER_ORDER_POLE_FACTORIAL_OR_CONTOUR_NOISE",
+    "oracle_numeric_raw": 0.166586,
+    "oracle_symbolic_raw": "7/6",
+    "raw_ieee754_numeric_pass": false
+  }
+]

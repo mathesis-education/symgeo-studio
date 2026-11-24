@@ -7,7 +7,7 @@
   "description": "SymGeo Studio Calculator Suite 2D+3D: Client-side WebAssembly symbolic-geometric studio coupling Giac C++ CAS with Three.js, MeshBVH, and CSG",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sejunoh/symgeo-studio.git"
+    "url": "https://github.com/mathesis-education/symgeo-studio.git"
   },
   "keywords": [
     "computer-algebra-system",

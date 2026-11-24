@@ -25,7 +25,8 @@ Open-source client-side symbolic-geometric computing studio coupling the **Giac/
 ## Quick Start & Reproducible Benchmarks
 
 ```powershell
-cd C:\dev\apps\symgeo-studio
+git clone https://github.com/mathesis-education/symgeo-studio.git
+cd symgeo-studio
 npm install
 npm start          # Starts local HTTP server at http://127.0.0.1:8787
 npm test           # Runs 2D + 3D + Giac WASM + BVH + CSG verification suite
@@ -37,3 +38,9 @@ npm run benchmark  # Runs 24-task accuracy & N=30 latency/scaling benchmarks
 ## License
 
 Released under **GNU General Public License v3.0 or later (`GPL-3.0-or-later`)**. Clean-room implementation containing zero proprietary GeoGebra source code or `CC BY-NC` assets. See [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+---
+
+## Neuro-Symbolic RVR Replication Benchmark (`SymGeoRVR-120`)
+
+See [`neurosymbolic-rvr/`](neurosymbolic-rvr/README.md) for the complete 120-item open-ended mathematical tutoring & misconception diagnosis benchmark, client-side `giac.wasm` vs. IEEE-754 tool sandboxes, verbatim `N = 720` + `240` episode logs, and statistical verification scripts.
