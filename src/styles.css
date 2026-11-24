@@ -1,0 +1,1399 @@
+:root {
+  --ggb-indigo: #4f46e5;
+  --ggb-indigo-dark: #4338ca;
+  --ggb-indigo-soft: #eef2ff;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-rail: #f8fafc;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text-main: #1e293b;
+  --text-sub: #475569;
+  --text-muted: #64748b;
+  --header-h: 48px;
+  --rail-w: 66px;
+  --font-scale: 1;
+}
+
+body.presentation-mode {
+  --font-scale: 1.16;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Pretendard Variable", "Pretendard", "Malgun Gothic", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  color: var(--text-main);
+  background: #ffffff;
+  font-size: calc(13.8px * var(--font-scale));
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GeoGebra Calculator Suite Clean Light Header (48px, Zero Visual Noise) */
+.ggb-header {
+  height: var(--header-h);
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  gap: 8px;
+  user-select: none;
+  z-index: 30;
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--ggb-indigo);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+.brand-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.cas-ready-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  white-space: nowrap;
+}
+
+.cas-ready-pill.is-loading {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* Free Step Navigation & Counterexample Scenarios (Gate 3.2 & Gate 3.4) */
+.scenario-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scenario-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.step-arrow-btn {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.step-arrow-btn:hover {
+  background: var(--ggb-indigo-soft);
+  color: var(--ggb-indigo);
+  border-color: #c7d2fe;
+}
+
+.scen-chip {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-sub);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.14s;
+}
+.scen-chip:hover {
+  background: var(--bg-subtle);
+  color: var(--text-main);
+}
+.scen-chip.is-active {
+  background: var(--ggb-indigo-soft);
+  border-color: #c7d2fe;
+  color: var(--ggb-indigo);
+  font-weight: 700;
+}
+
+/* Right Utility Buttons (Mute, Presentation Scale, Fullscreen F11) */
+.hdr-utils {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.util-btn {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  border-radius: 7px;
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: all 0.14s;
+}
+.util-btn:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+  color: var(--text-main);
+}
+.util-btn.is-active {
+  background: var(--ggb-indigo);
+  border-color: var(--ggb-indigo);
+  color: #ffffff;
+}
+
+/* Main Zero-Scroll Workspace (100vh - 48px) */
+.ggb-workspace {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+  position: relative;
+}
+
+/* GeoGebra Calculator Suite Left App Rail (66px) */
+.ggb-rail {
+  width: var(--rail-w);
+  height: 100%;
+  background: var(--bg-rail);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  gap: 6px;
+  flex-shrink: 0;
+  user-select: none;
+  z-index: 22;
+}
+
+.rail-btn {
+  width: 56px;
+  padding: 8px 2px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-sub);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.14s;
+}
+.rail-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+}
+.rail-btn:hover {
+  background: #e2e8f066;
+  color: var(--text-main);
+}
+.rail-btn.is-active {
+  background: var(--ggb-indigo-soft);
+  color: var(--ggb-indigo);
+  font-weight: 700;
+}
+
+.rail-spacer {
+  flex: 1;
+}
+
+/* Left Side Panel (Algebra / Tools / Table / Tutor) */
+.ggb-side-panel {
+  width: 410px;
+  min-width: 290px;
+  max-width: 62vw;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.ggb-side-panel.is-collapsed {
+  display: none;
+}
+
+.tab-pane {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.tab-pane.is-active {
+  display: flex;
+}
+
+/* 1. GeoGebra Algebra Stream */
+.ggb-input-bar {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.ggb-plus-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 9px;
+  padding: 5px 8px 5px 10px;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.ggb-plus-row:focus-within {
+  border-color: var(--ggb-indigo);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.plus-symbol {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.ggb-expr-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: calc(14px * var(--font-scale));
+  color: var(--text-main);
+  background: transparent;
+  min-width: 0;
+}
+
+.ggb-enter-btn {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ggb-enter-btn:hover {
+  background: var(--ggb-indigo-dark);
+}
+
+.live-tex-preview {
+  margin-top: 6px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: calc(12.5px * var(--font-scale));
+}
+.live-tex-preview.is-empty {
+  display: none;
+}
+.preview-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ggb-indigo);
+  background: var(--ggb-indigo-soft);
+  padding: 2px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/*GeoGebra Stacked Algebra Rows*/
+.algebra-rows {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.alg-row {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  background: #ffffff;
+  transition: background 0.12s;
+}
+.alg-row:hover {
+  background: #fafbff;
+}
+.alg-row.is-selected {
+  background: #f5f7ff;
+  border-left: 3.5px solid var(--ggb-indigo);
+  padding-left: 8.5px;
+}
+
+.alg-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.alg-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Signature GeoGebra Colored Marble Toggle */
+.ggb-marble {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.2px solid currentColor;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.12s, background-color 0.12s;
+}
+.ggb-marble.is-on {
+  background-color: currentColor;
+}
+.ggb-marble:hover {
+  transform: scale(1.12);
+}
+
+.alg-math {
+  font-size: calc(14.5px * var(--font-scale));
+  overflow-x: auto;
+  padding: 2px 0;
+  flex: 1;
+}
+
+.alg-actions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.row-icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.row-icon-btn:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+.row-icon-btn.danger:hover {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+/* CAS Form Chips & Calculus Action Chips */
+.cas-chips {
+  margin-top: 7px;
+  padding-left: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cas-chip {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: calc(11px * var(--font-scale));
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cas-chip:hover {
+  border-color: #a5b4fc;
+  color: var(--ggb-indigo);
+}
+.cas-chip.is-active {
+  background: var(--ggb-indigo-soft);
+  border-color: #818cf8;
+  color: var(--ggb-indigo);
+  font-weight: 700;
+}
+.cas-chip.accent-purple {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+  color: #7e22ce;
+  font-weight: 600;
+}
+.cas-chip.accent-purple.is-on {
+  background: #9333ea;
+  border-color: #9333ea;
+  color: #ffffff;
+}
+.cas-chip.accent-pink {
+  background: #fdf2f8;
+  border-color: #fbcfe8;
+  color: #be185d;
+  font-weight: 600;
+}
+.cas-chip.accent-pink.is-on {
+  background: #db2777;
+  border-color: #db2777;
+  color: #ffffff;
+}
+
+.cas-output-card {
+  margin-top: 7px;
+  margin-left: 28px;
+  padding: 6px 10px;
+  background: var(--bg-subtle);
+  border-left: 3px solid var(--ggb-indigo);
+  border-radius: 5px;
+  font-size: calc(13.5px * var(--font-scale));
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Slider Row with Play Animation & Speed (Gate 3.1: Right = Faster!) */
+.ggb-slider-controls {
+  margin-top: 7px;
+  padding-left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.play-slider-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: #ffffff;
+  color: var(--ggb-indigo);
+  font-size: 11px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.play-slider-btn.is-playing {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+  border-color: var(--ggb-indigo);
+}
+.ggb-range {
+  flex: 1;
+  accent-color: var(--ggb-indigo);
+  cursor: pointer;
+}
+.slider-minmax {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Special Points Sub-list */
+.sp-sublist {
+  margin-top: 7px;
+  margin-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: var(--bg-subtle);
+  cursor: pointer;
+  font-size: calc(12.5px * var(--font-scale));
+}
+.sp-row:hover {
+  background: var(--ggb-indigo-soft);
+}
+.sp-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.sp-warn-box {
+  font-size: 11.5px;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.sp-info-box {
+  font-size: 11.5px;
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+/* 2. GeoGebra Tools Tab Pane */
+.tools-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tool-cat-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.ggb-tool-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  transition: all 0.14s;
+}
+.ggb-tool-card:hover {
+  border-color: #a5b4fc;
+  background: #fafbff;
+}
+.ggb-tool-card.is-active {
+  border-color: var(--ggb-indigo);
+  background: var(--ggb-indigo-soft);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.12);
+}
+.tool-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--bg-subtle);
+  color: var(--ggb-indigo);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ggb-tool-card.is-active .tool-icon-box {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+}
+.tool-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tool-card-name {
+  font-size: 12.8px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.tool-card-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Quick Calculators inside Tools Pane */
+.tool-widget-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.widget-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.widget-select,
+.widget-input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-size: 12.5px;
+  background: #ffffff;
+}
+
+/* 3. GeoGebra Table of Values Pane */
+.table-pane-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.table-config-bar {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tbl-num-input {
+  width: 58px;
+  padding: 4px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-size: 12.5px;
+  text-align: center;
+}
+.values-table-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 10px 12px;
+}
+.ggb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(13px * var(--font-scale));
+}
+.ggb-table th,
+.ggb-table td {
+  border: 1px solid var(--border);
+  padding: 7px 9px;
+  text-align: center;
+}
+.ggb-table th {
+  background: var(--bg-subtle);
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+}
+.tbl-approx-sub {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* 4. Canvas-Linked AI Socratic Tutor Pane (Gate 3.5 & Case #7 노현채) */
+.tutor-pane-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.tutor-header-note {
+  padding: 9px 12px;
+  background: var(--ggb-indigo-soft);
+  border-bottom: 1px solid #c7d2fe;
+  font-size: 12px;
+  color: #3730a3;
+  line-height: 1.45;
+}
+.tutor-quick-prompts {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tutor-prompt-chip {
+  background: #ffffff;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 11.5px;
+  color: var(--text-sub);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tutor-prompt-chip:hover {
+  border-color: var(--ggb-indigo);
+  color: var(--ggb-indigo);
+}
+.tutor-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-bubble {
+  max-width: 92%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: calc(13px * var(--font-scale));
+  line-height: 1.55;
+}
+.chat-bubble.tutor {
+  align-self: flex-start;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+.chat-bubble.student {
+  align-self: flex-end;
+  background: var(--ggb-indigo);
+  color: #ffffff;
+}
+.chat-bubble img.pasted-snap {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.tutor-action-tag {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ggb-indigo);
+  background: var(--ggb-indigo-soft);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.tutor-input-bar {
+  padding: 9px 10px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+}
+.paste-preview-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  font-size: 11.5px;
+}
+.paste-preview-strip.is-hidden {
+  display: none;
+}
+.paste-preview-strip img {
+  height: 34px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* Resizable Split Handle + Collapse Toggle (Case #10 백한결) */
+.splitter {
+  width: 7px;
+  height: 100%;
+  background: #f8fafc;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 20;
+}
+.splitter:hover,
+.splitter.is-dragging {
+  background: #c7d2fe;
+}
+.splitter-grip {
+  width: 3px;
+  height: 36px;
+  border-radius: 99px;
+  background: #94a3b8;
+}
+.collapse-pane-btn {
+  position: absolute;
+  top: 12px;
+  left: 6px;
+  width: 22px;
+  height: 28px;
+  border-radius: 0 7px 7px 0;
+  border: 1px solid var(--border-strong);
+  border-left: none;
+  background: #ffffff;
+  color: var(--text-sub);
+  cursor: pointer;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.06);
+}
+.collapse-pane-btn:hover {
+  color: var(--ggb-indigo);
+  background: var(--ggb-indigo-soft);
+}
+
+/* Right 2D Graphing Canvas Area */
+.canvas-stage {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+#graphCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Active Tool Pill on Canvas Top-Left */
+.active-tool-pill {
+  position: absolute;
+  top: 12px;
+  left: 34px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.07);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 15;
+}
+
+.canvas-quick-mode {
+  background: transparent;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+.canvas-quick-mode:hover {
+  background: var(--bg-subtle);
+}
+.canvas-quick-mode.is-active {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+}
+
+.canvas-hint-banner {
+  position: absolute;
+  top: 52px;
+  left: 34px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  z-index: 16;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.canvas-hint-banner.is-hidden {
+  opacity: 0;
+}
+
+/* KaTeX Coordinate Overlay Badges */
+.canvas-label-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+.canvas-pt-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 7px;
+  border: 1.5px solid #cbd5e1;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.09);
+  font-size: calc(12px * var(--font-scale));
+  white-space: nowrap;
+}
+.canvas-pt-badge.is-hovered {
+  z-index: 25;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+}
+.pt-kind-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.pt-approx {
+  font-size: 10.5px;
+  color: #64748b;
+  margin-left: 2px;
+}
+
+/* Bottom-Left Floating Keyboard Open Button (GeoGebra signature!) */
+.floating-kbd-fab {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  background: #ffffff;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+  z-index: 18;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.floating-kbd-fab:hover {
+  border-color: var(--ggb-indigo);
+  color: var(--ggb-indigo);
+}
+
+/* Bottom-Floating WolframAlpha + GeoGebra Virtual Math Keyboard */
+.virtual-kbd-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: min(680px, 94%);
+  background: rgba(248, 250, 252, 0.97);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  padding: 9px 12px 11px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+  z-index: 28;
+}
+.virtual-kbd-dock.is-hidden {
+  display: none;
+}
+
+.vkbd-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.vkbd-tabs {
+  display: flex;
+  gap: 5px;
+}
+.vkbd-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+.vkbd-tab.is-active {
+  background: #ffffff;
+  border-color: var(--border-strong);
+  color: var(--ggb-indigo);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.vkbd-close {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.vkbd-page {
+  display: none;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+}
+.vkbd-page.is-active {
+  display: grid;
+}
+.vkbd-page.cas-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.vkbd-key {
+  background: #ffffff;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 7px;
+  padding: 7px 4px;
+  font-size: calc(13px * var(--font-scale));
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  transition: all 0.1s;
+}
+.vkbd-key:hover {
+  background: var(--ggb-indigo-soft);
+  border-color: #818cf8;
+  color: var(--ggb-indigo);
+}
+.vkbd-key.op-key {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+/* Bottom-Right Zoom & Coordinate Controls */
+.canvas-zoom-dock {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  z-index: 16;
+}
+.coord-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.zoom-group {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.zoom-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
+.zoom-btn:last-child {
+  border-bottom: none;
+}
+.zoom-btn:hover {
+  background: var(--ggb-indigo-soft);
+  color: var(--ggb-indigo);
+}
+.zoom-btn.is-on {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+}
+
+/* Hidden Teacher Dashboard & Open API Modal (?mode=admin or Ctrl+Logo Click — Gate 4.2 & 4.3) */
+.admin-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 120;
+}
+.admin-backdrop.is-hidden {
+  display: none;
+}
+.admin-modal {
+  background: #ffffff;
+  width: min(920px, 94vw);
+  height: min(640px, 88vh);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.28);
+}
+.admin-head {
+  padding: 12px 18px;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-tabs {
+  display: flex;
+  gap: 6px;
+}
+.adm-tab {
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.adm-tab.is-active {
+  background: var(--ggb-indigo);
+  border-color: #6366f1;
+  color: #ffffff;
+}
+.admin-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+}
+.adm-section {
+  display: none;
+}
+.adm-section.is-active {
+  display: block;
+}
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.stu-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stu-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.stu-status {
+  font-size: 10.5px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.evt-log-box {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: Consolas, monospace;
+  font-size: 12px;
+  max-height: 410px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.evt-item {
+  background: #1e293b;
+  padding: 6px 9px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+}
+
+/* GeoGebra 2D / 2D+3D / 3D Segmented View Switcher */
+.view-mode-seg {
+  display: inline-flex;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.vmode-btn {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 11.8px;
+  font-weight: 700;
+  color: var(--text-sub);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.14s;
+}
+
+.vmode-btn:hover {
+  color: var(--text-main);
+}
+
+.vmode-btn.is-active {
+  background: var(--ggb-indigo);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(79, 70, 229, 0.25);
+}
+
+/* Dual Viewport Host (2D | 3D | Split) */
+.viewports-host {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.vp-pane {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.vp-pane.is-hidden {
+  display: none;
+}
+
+.vp-pane + .vp-pane:not(.is-hidden) {
+  border-left: 1.5px solid var(--border-strong);
+}
+
+#viewport3D {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+#viewport3D canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 3D Top Floating Action Strip */
+.toolbar-3d {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.toolbar-3d-group {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 4px 8px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+  flex-wrap: wrap;
+}
+
+.export-pill-btn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.export-pill-btn:hover {
+  background: var(--ggb-indigo);
+}
+.export-pill-btn.stl {
+  background: #475569;
+}
+.export-pill-btn.stl:hover {
+  background: #334155;
+}
+
