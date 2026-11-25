@@ -228,7 +228,11 @@ function loadJsonl(p) {
   for (const line of fs.readFileSync(p, 'utf8').split(/\r?\n/).filter(Boolean)) {
     try {
       const obj = JSON.parse(line);
-      if (obj && obj.key) map.set(obj.key, obj);
+      if (obj) {
+        if (obj.arm === 'Arm3_AlgeoCAS_RVR') obj.arm = 'Arm3_SymGeoCAS_RVR';
+        if (typeof obj.key === 'string') obj.key = obj.key.replace('Arm3_AlgeoCAS_RVR', 'Arm3_SymGeoCAS_RVR');
+        if (obj.key) map.set(obj.key, obj);
+      }
     } catch {
       // skip
     }
@@ -694,7 +698,7 @@ fs.writeFileSync(OUT_STATS, JSON.stringify(fullStats, null, 2), 'utf8');
 
 // Build comprehensive Markdown Evidence Report
 const md = [];
-md.push('# Stage 5 (`analysis`) & Stage 6 (`results`): Executed Statistical Analysis & Results Evidence Table');
+md.push('# SymGeoRVR-120: Executed Statistical Analysis & Results Summary');
 md.push('');
 md.push(`- **Primary Executed Dataset:** \`data/runs/episodes_primary.jsonl\` (\`716\` completed live episodes + \`4\` local-GPU 90s timeouts conservatively scored as incorrect under strict Intention-to-Treat \`N = 720\` = \`2 models x 3 arms x 120 items\`; Complete-Case \`N = 716\` reported in sensitivity check)`);
 md.push(`- **Stochastic Stability Dataset:** \`data/runs/episodes_stochastic_k5.jsonl\` (\`N = 240\` completed live episodes, \`0\` timeouts; \`24\` stratified items x \`2\` arms x \`k = 5\` independent runs at \`T = 0.7\`)`);

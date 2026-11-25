@@ -1,0 +1,13 @@
+﻿Task,Category,Runs,Mean_ms,SD_ms,Median_ms,P95_ms,Min_ms,Max_ms
+"2D Cubic Full Symbolic Analysis (factor, diff, int, roots, extrema, k-th parity inflections)","Giac 2D CAS",30,6.201,0.449,6.03,7.077,5.674,7.254
+"2D Irrational Curve-Curve Intersection (Parabola ∩ Line)","Giac 2D CAS",30,5.271,0.501,5.044,6.306,4.741,6.63
+"3D Sphere ∩ Plane Symbolic Reduction (Center, √Radius, Area)","Giac 3D CAS",30,1.881,0.168,1.82,2.232,1.692,2.287
+"University DiffGeom Space Curve (κ, τ, Frenet-Serret Triad)","University CAS",30,3.557,0.323,3.469,4.29,3.246,4.521
+"University Surface Gaussian & Mean Curvature (K, H, Hessian)","University CAS",30,2.651,1.052,2.331,3.796,2.18,7.891
+"University 4x4 Defective Matrix Jordan Canonical Form","University CAS",30,0.608,0.102,0.585,0.807,0.484,0.809
+"University 2nd-Order Symbolic ODE Solver (desolve)","University CAS",30,0.975,0.159,0.946,1.488,0.842,1.508
+"Kuhn 6-Tetrahedra Implicit Meshing (Grid 24³, 7032 tris)","3D Geometry Kernel",30,4.959,1.166,4.544,7.827,3.602,8.219
+"Kuhn 6-Tetrahedra Implicit Meshing (Grid 32³, 12768 tris)","3D Geometry Kernel",30,10.526,2.317,9.867,16.097,7.693,17.225
+"MeshBVH Spatial Index Build (12768 triangles)","3D Geometry Kernel",30,2.295,0.559,2.142,2.963,1.966,4.981
+"End-to-End MeshBVH Plane Slice + Cap Buffer Extraction (per slider frame)","3D Geometry Kernel",30,0.147,0.029,0.138,0.205,0.114,0.218
+"CSG Solid Boolean Subtraction (Sphere − Cylinder, 4230 verts)","3D Geometry Kernel",30,4.085,0.624,3.885,5.308,3.514,6.763

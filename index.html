@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,8 +58,9 @@
       <button id="nextScenBtn" class="step-arrow-btn" title="다음 탐구">▶</button>
     </nav>
 
-    <!-- Mandatory Classroom Utilities: Mute, Presentation Scale, Fullscreen F11 -->
+    <!-- Mandatory Classroom Utilities: Language Toggle, Mute, Presentation Scale, Fullscreen F11 -->
     <div class="hdr-utils">
+      <button id="langToggleBtn" class="util-btn" title="Switch UI Language (Korean / English)">🌐 EN/KO</button>
       <button id="muteBtn" class="util-btn" title="조작 효과음 켜기/끄기 (교실 기본값: 음소거)">🔇 음소거</button>
       <button id="presModeBtn" class="util-btn" title="전자칠판 발표용 수식·글씨 확대">가+ 확대</button>
       <button id="fullscreenBtn" class="util-btn" title="전체화면 전환 (F11)">⛶ 전체화면</button>
@@ -523,12 +524,53 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      if (!window.katex) return;
-      document.querySelectorAll('[data-katex]').forEach((btn) => {
-        try {
-          window.katex.render(btn.dataset.katex, btn, { throwOnError: false });
-        } catch (_) {}
-      });
+      if (window.katex) {
+        document.querySelectorAll('[data-katex]').forEach((btn) => {
+          try {
+            window.katex.render(btn.dataset.katex, btn, { throwOnError: false });
+          } catch (_) {}
+        });
+      }
+      const i18nPairs = [
+        ['[data-vmode="2d"]', '2D 평면', '2D Plane'],
+        ['[data-vmode="split"]', '2D+3D 연동', '2D+3D Split'],
+        ['[data-vmode="3d"]', '3D 공간', '3D Space'],
+        ['[data-scenario="s1"]', '① 2D 무리수교점', '① 2D Surd Roots'],
+        ['[data-scenario="s2"]', '② 2D 극점·정적분', '② 2D Extrema & Int'],
+        ['[data-scenario="s3"]', '③ 2D 변곡점반례', '③ 2D Parity Check'],
+        ['[data-scenario="s4"]', '④ 2D 바이어슈트라스', '④ 2D Weierstrass'],
+        ['[data-scenario="s5"]', '⑤ 3D 구·평면교원', '⑤ 3D Sphere Slice'],
+        ['[data-scenario="s6"]', '⑥ 3D 원뿔곡선단면', '⑥ 3D Conic Slice'],
+        ['[data-scenario="s7"]', '⑦ 2D↔3D 회전체·구분구적', '⑦ 2D↔3D Revolution'],
+        ['[data-scenario="s8"]', '⑧ 3D 안장면·CSG·GLB', '⑧ 3D Saddle & CSG'],
+        ['[data-scenario="s9"]', '⑨ 미분기하 프레네틀·곡률', '⑨ Frenet & Curvature'],
+        ['[data-scenario="s10"]', '⑩ 선형대수 3D변환·조르당', '⑩ 3D Matrix & Jordan'],
+        ['[data-scenario="s11"]', '⑪ 벡터장(Curl/Div)·미분방정식', '⑪ Curl/Div & ODE'],
+        ['[data-pane="algebra"] span', '대수', 'Algebra'],
+        ['[data-pane="tools"] span', '도구', 'Tools'],
+        ['[data-pane="table"] span', '수치표', 'Table'],
+        ['[data-pane="tutor"] span', '탐구안내', 'Guide'],
+        ['#presModeBtn', '가+ 확대', 'A+ Zoom'],
+        ['#fullscreenBtn', '⛶ 전체화면', '⛶ Fullscreen']
+      ];
+      let uiLang = new URLSearchParams(window.location.search).get('lang') === 'ko' ? 'ko' : 'en';
+      const applyLang = (lang) => {
+        document.documentElement.lang = lang;
+        i18nPairs.forEach(([sel, koTxt, enTxt]) => {
+          const el = document.querySelector(sel);
+          if (el) el.textContent = lang === 'en' ? enTxt : koTxt;
+        });
+        const lb = document.getElementById('langToggleBtn');
+        if (lb) lb.textContent = lang === 'en' ? '🌐 KO' : '🌐 EN';
+      };
+      applyLang(uiLang);
+      const langBtn = document.getElementById('langToggleBtn');
+      if (langBtn) {
+        langBtn.addEventListener('click', () => {
+          uiLang = uiLang === 'en' ? 'ko' : 'en';
+          applyLang(uiLang);
+        });
+      }
     });
   </script>
   <script type="module" src="./src/app.js"></script>

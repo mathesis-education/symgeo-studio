@@ -1,0 +1,461 @@
+{
+  "generatedAt": "2026-11-18T12:51:00.864Z",
+  "environment": {
+    "platform": "Windows_NT 10.0.26300 (x64)",
+    "cpuModel": "Intel(R) Core(TM) Ultra 7 265K",
+    "logicalCores": 20,
+    "totalRamGB": 63.5,
+    "nodeVersion": "v24.19.0",
+    "giacWasmBytes": 14016856,
+    "giacWasmMB": 13.37,
+    "coldInitMs": 82.33,
+    "rssMB": 290.1,
+    "heapUsedMB": 65
+  },
+  "accuracySummary": {
+    "totalTasks": 24,
+    "giacPassCount": 24,
+    "giacExactSymbolicCount": 24,
+    "numericRootPassCount": 14,
+    "numericExactSymbolicCount": 0
+  },
+  "bvhCullingStats": {
+    "grid32TotalTriangles": 12768,
+    "bvhVisitedTriangles": 887,
+    "bvhIntersectedTriangles": 343,
+    "culledFractionPct": 93.05,
+    "csgBenchmarkVertices": 4230
+  },
+  "accuracyReport": [
+    {
+      "id": "T01",
+      "category": "Tangential Intersections",
+      "problem": "y = x^2 - 2x + 2 ∩ y = 1 (even-multiplicity tangency at x=1)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(1, 1)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "found 1 roots"
+    },
+    {
+      "id": "T02",
+      "category": "Tangential Intersections",
+      "problem": "y = x^4 - 2x^2 + 1 ∩ y = 0 (double roots at ±1)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(-1,0), (1,0)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "found 0 roots"
+    },
+    {
+      "id": "T03",
+      "category": "Tangential Intersections",
+      "problem": "x^2 + y^2 = 2 ∩ x + y = 2 (tangent line to circle at (1,1))",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(1, 1)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "found 0 roots"
+    },
+    {
+      "id": "T04",
+      "category": "Tangential Intersections",
+      "problem": "y = (x - 1/3)^2 + 2 ∩ y = 2 (off-grid rational tangency at x=1/3)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(1/3, 2)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "found 0 roots"
+    },
+    {
+      "id": "T05",
+      "category": "Radical Exact Coordinates",
+      "problem": "y = x^2 - 2 ∩ y = x + 1 -> ((1±√13)/2, (3±√13)/2)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(sqrt(13)+1)/2",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "-1.302776, 2.302776"
+    },
+    {
+      "id": "T06",
+      "category": "Radical Exact Coordinates",
+      "problem": "x^2 + y^2 = 10 ∩ y = 2x - 1 -> (-1,-3), (9/5, 13/5)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(-1,-3), (9/5,13/5)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "-1.000000, 1.800000"
+    },
+    {
+      "id": "T07",
+      "category": "Radical Exact Coordinates",
+      "problem": "f(x) = x^3 - 3x^2 - x + 3 extrema -> (3∓2√3)/3",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(-2*sqrt(3)+3)/3",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "-0.154701, 2.154701"
+    },
+    {
+      "id": "T08",
+      "category": "Radical Exact Coordinates",
+      "problem": "g(x) = x*exp(-x^2/2) inflections -> 0, ±√3",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "-sqrt(3), 0, sqrt(3)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "-1.732051, -0.000000, 1.732051"
+    },
+    {
+      "id": "T09",
+      "category": "Inflection Counterexamples",
+      "problem": "f(x) = (x - 1)^6 + 2x (even order k*=6 non-inflection; IEEE-754 f''_h noise)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "0 inflections (k*=6 even rejected)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "1 spurious f''_h sign-flip roots"
+    },
+    {
+      "id": "T10",
+      "category": "Inflection Counterexamples",
+      "problem": "f(x) = (x - 1)^7/100 + 2x (odd order k*=7 true inflection at x=1)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(1, 2) [k*=7 odd verified]",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "6 cancellation roots near x=1"
+    },
+    {
+      "id": "T11",
+      "category": "Inflection Counterexamples",
+      "problem": "f(x) = x^4 - 4x^3 (true inflections at x=0 [k*=3] and x=2 [k*=3])",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "(0,0), (2,-16)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "0.000000, 2.000000"
+    },
+    {
+      "id": "T12",
+      "category": "Inflection Counterexamples",
+      "problem": "f(x) = x^4 at x=0 (even order k*=4 non-inflection)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "0 inflections (k*=4 even rejected)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "0 sign-flips (no symbolic k*=4 certificate)"
+    },
+    {
+      "id": "T13",
+      "category": "3D Spatial Symbolic Coupling",
+      "problem": "Sphere x^2+y^2+z^2=9 ∩ Plane x+y+2z=3 -> S = 15π/2 (exact area & r=√30/2)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "r = \\frac{\\sqrt{30}}{2}, \\quad S = \\frac{15 \\pi }{2}",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "mesh area=23.4420 (|err|=0.1200 > 1e-4)"
+    },
+    {
+      "id": "T14",
+      "category": "3D Spatial Symbolic Coupling",
+      "problem": "Cone x^2+y^2=z^2 ∩ Plane z=x+3/2 -> exact parabola y^2 - 3x - 9/4 = 0",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "\\frac{-12 x+4 y^{2}-9}{4} = 0",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "mesh residual=0.0373 > 1e-4 (no conic formula)"
+    },
+    {
+      "id": "T15",
+      "category": "3D Spatial Symbolic Coupling",
+      "problem": "Surface z=(x^2-y^2)/4 saddle & Gaussian curvature K(x,y) = -4/(x^2+y^2+4)^2",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "-4/(x^4+2*x^2*y^2+8*x^2+y^4+8*y^2+16)",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "K(0,0)≈-0.250000 (pointwise only)"
+    },
+    {
+      "id": "T16",
+      "category": "3D Spatial Symbolic Coupling",
+      "problem": "Revolution y=sqrt(x) on [0,4] -> exact volume V = 8π",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "8*pi",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "25.132741 (Simpson float)"
+    },
+    {
+      "id": "T17",
+      "category": "University DiffGeom & LinAlg",
+      "problem": "Helix r(t)=[2cos(t),2sin(t),t/2] at t=1 -> exact κ=8/17, τ=2/17",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "κ=8/17, τ=2/17",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "κ≈0.470588, τ≈0.117647"
+    },
+    {
+      "id": "T18",
+      "category": "University DiffGeom & LinAlg",
+      "problem": "Twisted cubic r(t)=[t, t^2, t^3] at t=5 -> τ(5) = 3/5851 (3rd-deriv step h=1e-5)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "τ(t)=3/(9*t^4+9*t^2+1)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "τ≈0.0003795 (relErr=25.99%)"
+    },
+    {
+      "id": "T19",
+      "category": "University DiffGeom & LinAlg",
+      "problem": "Defective 4x4 matrix Jordan Canonical Form J = diag(J_2(4), 2, 1)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "Exact Jordan block J_2(4)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "λ split gap=4.82e-8 (destroys J_2(4))"
+    },
+    {
+      "id": "T20",
+      "category": "University DiffGeom & LinAlg",
+      "problem": "3x3 Matrix M=[[2,1,0],[1,2,0],[0,0,1/2]] det=3/2 & eigenAxes",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "det=3/2, 3 axes",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "det=1.500000"
+    },
+    {
+      "id": "T21",
+      "category": "University Vector/ODE/Complex",
+      "problem": "Vector field F=[-y, x, z^2] -> symbolic div=2z, curl=[0,0,2] (tested at (1,1,1))",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "div=2z, curl=[0,0,2]",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "div(1,1,1)=2.00000 (pointwise only)"
+    },
+    {
+      "id": "T22",
+      "category": "University Vector/ODE/Complex",
+      "problem": "2nd-order ODE y'' + 4y = sin(x) general solution (RK4 IVP y(0)=0,y'(0)=1/3 at x=π)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "c_0*cos(2*x)+c_1*sin(2*x)+sin(x)/3",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "y(π)≈4.32e-13 (single IVP only)"
+    },
+    {
+      "id": "T23",
+      "category": "University Vector/ODE/Complex",
+      "problem": "Laplace L{t^2*exp(-3t)}(s) = 2/(s+3)^3 evaluated at s=-4 (analytic continuation)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "2/(s+3)^3 (F(-4)=-2)",
+      "numericPass": false,
+      "numericExact": false,
+      "numericOut": "diverged (1.76e+11 vs -2)"
+    },
+    {
+      "id": "T24",
+      "category": "University Vector/ODE/Complex",
+      "problem": "Order-3 pole residue Res(exp(z)/(z-1)^3, z=1) = e/2 (Cauchy contour r=1e-6)",
+      "giacPass": true,
+      "giacExact": true,
+      "giacOut": "exp(1)/2",
+      "numericPass": true,
+      "numericExact": false,
+      "numericOut": "Res≈1.35911 (|err|=3.29e-5)"
+    }
+  ],
+  "latencyBenchmarks": [
+    {
+      "name": "2D Cubic Full Symbolic Analysis (factor, diff, int, roots, extrema, k-th parity inflections)",
+      "category": "Giac 2D CAS",
+      "runs": 30,
+      "meanMs": 6.201,
+      "sdMs": 0.449,
+      "medianMs": 6.03,
+      "p95Ms": 7.077,
+      "minMs": 5.674,
+      "maxMs": 7.254
+    },
+    {
+      "name": "2D Irrational Curve-Curve Intersection (Parabola ∩ Line)",
+      "category": "Giac 2D CAS",
+      "runs": 30,
+      "meanMs": 5.271,
+      "sdMs": 0.501,
+      "medianMs": 5.044,
+      "p95Ms": 6.306,
+      "minMs": 4.741,
+      "maxMs": 6.63
+    },
+    {
+      "name": "3D Sphere ∩ Plane Symbolic Reduction (Center, √Radius, Area)",
+      "category": "Giac 3D CAS",
+      "runs": 30,
+      "meanMs": 1.881,
+      "sdMs": 0.168,
+      "medianMs": 1.82,
+      "p95Ms": 2.232,
+      "minMs": 1.692,
+      "maxMs": 2.287
+    },
+    {
+      "name": "University DiffGeom Space Curve (κ, τ, Frenet-Serret Triad)",
+      "category": "University CAS",
+      "runs": 30,
+      "meanMs": 3.557,
+      "sdMs": 0.323,
+      "medianMs": 3.469,
+      "p95Ms": 4.29,
+      "minMs": 3.246,
+      "maxMs": 4.521
+    },
+    {
+      "name": "University Surface Gaussian & Mean Curvature (K, H, Hessian)",
+      "category": "University CAS",
+      "runs": 30,
+      "meanMs": 2.651,
+      "sdMs": 1.052,
+      "medianMs": 2.331,
+      "p95Ms": 3.796,
+      "minMs": 2.18,
+      "maxMs": 7.891
+    },
+    {
+      "name": "University 4x4 Defective Matrix Jordan Canonical Form",
+      "category": "University CAS",
+      "runs": 30,
+      "meanMs": 0.608,
+      "sdMs": 0.102,
+      "medianMs": 0.585,
+      "p95Ms": 0.807,
+      "minMs": 0.484,
+      "maxMs": 0.809
+    },
+    {
+      "name": "University 2nd-Order Symbolic ODE Solver (desolve)",
+      "category": "University CAS",
+      "runs": 30,
+      "meanMs": 0.975,
+      "sdMs": 0.159,
+      "medianMs": 0.946,
+      "p95Ms": 1.488,
+      "minMs": 0.842,
+      "maxMs": 1.508
+    },
+    {
+      "name": "Kuhn 6-Tetrahedra Implicit Meshing (Grid 24³, 7032 tris)",
+      "category": "3D Geometry Kernel",
+      "runs": 30,
+      "meanMs": 4.959,
+      "sdMs": 1.166,
+      "medianMs": 4.544,
+      "p95Ms": 7.827,
+      "minMs": 3.602,
+      "maxMs": 8.219
+    },
+    {
+      "name": "Kuhn 6-Tetrahedra Implicit Meshing (Grid 32³, 12768 tris)",
+      "category": "3D Geometry Kernel",
+      "runs": 30,
+      "meanMs": 10.526,
+      "sdMs": 2.317,
+      "medianMs": 9.867,
+      "p95Ms": 16.097,
+      "minMs": 7.693,
+      "maxMs": 17.225
+    },
+    {
+      "name": "MeshBVH Spatial Index Build (12768 triangles)",
+      "category": "3D Geometry Kernel",
+      "runs": 30,
+      "meanMs": 2.295,
+      "sdMs": 0.559,
+      "medianMs": 2.142,
+      "p95Ms": 2.963,
+      "minMs": 1.966,
+      "maxMs": 4.981
+    },
+    {
+      "name": "End-to-End MeshBVH Plane Slice + Cap Buffer Extraction (per slider frame)",
+      "category": "3D Geometry Kernel",
+      "runs": 30,
+      "meanMs": 0.147,
+      "sdMs": 0.029,
+      "medianMs": 0.138,
+      "p95Ms": 0.205,
+      "minMs": 0.114,
+      "maxMs": 0.218
+    },
+    {
+      "name": "CSG Solid Boolean Subtraction (Sphere − Cylinder, 4230 verts)",
+      "category": "3D Geometry Kernel",
+      "runs": 30,
+      "meanMs": 4.085,
+      "sdMs": 0.624,
+      "medianMs": 3.885,
+      "p95Ms": 5.308,
+      "minMs": 3.514,
+      "maxMs": 6.763
+    }
+  ],
+  "meshScaling": [
+    {
+      "res": 16,
+      "triangles": 3168,
+      "meanMs": 2.203,
+      "sdMs": 0.843
+    },
+    {
+      "res": 24,
+      "triangles": 7032,
+      "meanMs": 4.899,
+      "sdMs": 1.05
+    },
+    {
+      "res": 32,
+      "triangles": 12768,
+      "meanMs": 9.789,
+      "sdMs": 1.611
+    },
+    {
+      "res": 40,
+      "triangles": 19944,
+      "meanMs": 15.106,
+      "sdMs": 1.985
+    },
+    {
+      "res": 48,
+      "triangles": 28560,
+      "meanMs": 22.784,
+      "sdMs": 2.972
+    }
+  ]
+}

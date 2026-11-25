@@ -10,14 +10,15 @@ Open-source client-side symbolic-geometric computing studio coupling the **Giac/
    - Single algebra pane driving 2D explicit/implicit curves, real-time parameter sliders, 3D explicit surfaces $z=f(x,y)$, crack-free Kuhn 6-tetrahedra 3D implicit surfaces $F(x,y,z)=0$, space curves $\mathbf{r}(t)$, 3D matrix transformations, and 3D vector fields $\mathbf{F}(x,y,z)$.
    - Eliminates floating-point numerical root-finding pathologies: preserves exact radicals/rationals (e.g., $\frac{1\pm\sqrt{13}}{2}$) and rejects false-positive inflection points (e.g., $f(x)=x^4$ at $x=0$ via higher-order symbolic concavity parity checks).
 2. **Dual-Engine 3D Plane Slicing (Giac Symbolic Reduction + `MeshBVH` Shapecast)**
-   - Intersecting a 3D surface with an arbitrary plane $ax+by+cz=d$ simultaneously invokes Giac symbolic elimination (yielding exact center, radical radius $r=\frac{\sqrt{30}}{2}$, area $S=\frac{15\pi}{2}$, or conic equation) and cached `MeshBVH.shapecast` (0.147 ms per frame end-to-end with section cap generation, culling 93.05% of non-intersecting triangles).
+   - Intersecting a 3D surface with an arbitrary plane $ax+by+cz=d$ simultaneously invokes Giac symbolic elimination (yielding exact center, radical radius $r=\frac{\sqrt{30}}{2}$, area $S=\frac{15\pi}{2}$, or conic equation) and cached `MeshBVH.shapecast` (0.147 ms per frame end-to-end with section cap generation in our baseline V8 profile; median ~0.14–0.18 ms across repeated runs, culling 93.05% of non-intersecting triangles).
 3. **2D $\leftrightarrow$ 3D Solids of Revolution & Riemann Disc Convergence**
    - Converts any 2D curve $y=f(x)$ on $[a,b]$ into a 3D lathe solid alongside $n$-disc numerical quadrature converging to Giac's exact symbolic integral $V = \pi \int_a^b \{f(x)\}^2\,dx$.
 4. **University Mathematics Modules (`v3.0.0`)**
    - **Differential Geometry:** Space curve curvature $\kappa(t)$, torsion $\tau(t)$, moving Frenet–Serret frame $\{\mathbf{T},\mathbf{N},\mathbf{B}\}$, osculating circle, and surface Gaussian/Mean curvature ($K, H$) vertex-color heatmaps.
    - **Linear Algebra:** Continuous 3D unit-sphere-to-ellipsoid linear deformation $(1-s)I + sM$, real eigenvector axes, characteristic polynomials, and exact **Jordan Canonical Form (`jordan`)** immune to IEEE-754 defective eigenvalue splitting.
    - **Vector Calculus, ODEs, Integral Transforms & Complex Analysis:** Symbolic $\nabla\cdot\mathbf{F}$ (`divergence`), $\nabla\times\mathbf{F}$ (`curl`), exact symbolic ODE solver (`desolve`), Laplace/inverse-Laplace transforms (`laplace`, `ilaplace`), Gröbner bases (`gbasis`), and higher-order pole complex residues (`residue`).
-5. **Open Ecosystem Telemetry & Neuro-Symbolic Verification SDK (`window.SymGeoCAS`)**
+5. **Open Ecosystem Telemetry, Bilingual UI, & Neuro-Symbolic Verification SDK (`window.SymGeoCAS`)**
+   - Bilingual English/Korean classroom navigation (`🌐 EN/KO` header toggle; defaults to English with `?lang=ko` classroom preset) alongside a 4-page `KaTeX` virtual mathematical keypad.
    - Structured JSON event bus (`SymGeoEventBus`) for Learning Record Stores (LRS) and headless/programmatic CAS verification (`window.SymGeoCAS.evalCAS`, `addExpression`, `exportState`).
 
 ---
@@ -30,8 +31,10 @@ cd symgeo-studio
 npm install
 npm start          # Starts local HTTP server at http://127.0.0.1:8787
 npm test           # Runs 2D + 3D + Giac WASM + BVH + CSG verification suite
-npm run benchmark  # Runs 24-task accuracy & N=30 latency/scaling benchmarks
+npm run benchmark  # Runs 24-task accuracy & N=30 latency/scaling benchmarks -> ./data/
 ```
+
+Pre-generated benchmark artifacts referenced in the *SoftwareX* manuscript are archived in [`data/benchmark_results.json`](data/benchmark_results.json) and [`data/latency_benchmarks.csv`](data/latency_benchmarks.csv).
 
 ---
 
