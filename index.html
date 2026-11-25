@@ -21,7 +21,7 @@
 <body>
   <!-- Application Top Navigation Bar -->
   <header class="ggb-header">
-    <div id="brandTrigger" class="brand-area" title="SymGeo Studio 2D+3D">
+    <div id="brandTrigger" class="brand-area" data-i18n-title="brand_title" title="SymGeo Studio 2D+3D (Ctrl+Click: Instructor & API Console)">
       <div class="brand-mark">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="7" cy="17" r="3"></circle>
@@ -31,52 +31,52 @@
         </svg>
       </div>
       <span class="brand-text">SymGeo Studio 2D+3D</span>
-      <span id="engineStatus" class="cas-ready-pill is-loading">Giac CAS 준비 중...</span>
+      <span id="engineStatus" class="cas-ready-pill is-loading" data-i18n="engine_loading">Loading Giac CAS...</span>
     </div>
 
     <!-- 2D / 2D+3D / 3D View Switcher -->
-    <div class="view-mode-seg" role="tablist" aria-label="차원 뷰 전환">
-      <button class="vmode-btn is-active" data-vmode="2d">2D 평면</button>
-      <button class="vmode-btn" data-vmode="split">2D+3D 연동</button>
-      <button class="vmode-btn" data-vmode="3d">3D 공간</button>
+    <div class="view-mode-seg" role="tablist" data-i18n-aria="aria_vmode" aria-label="Switch dimension view">
+      <button class="vmode-btn is-active" data-vmode="2d" data-i18n="vmode_2d">2D Plane</button>
+      <button class="vmode-btn" data-vmode="split" data-i18n="vmode_split">2D+3D Split</button>
+      <button class="vmode-btn" data-vmode="3d" data-i18n="vmode_3d">3D Space</button>
     </div>
 
-    <!-- Free Step-by-Step 2D & 3D Exploration Scenarios -->
-    <nav class="scenario-nav" aria-label="탐구 주제 선택">
-      <button id="prevScenBtn" class="step-arrow-btn" title="이전 탐구">◀</button>
-      <button class="scen-chip is-active" data-scenario="s1">① 2D 무리수교점</button>
-      <button class="scen-chip" data-scenario="s2">② 2D 극점·정적분</button>
-      <button class="scen-chip" data-scenario="s3">③ 2D 변곡점반례</button>
-      <button class="scen-chip" data-scenario="s4">④ 2D 바이어슈트라스</button>
-      <button class="scen-chip" data-scenario="s5">⑤ 3D 구·평면교원</button>
-      <button class="scen-chip" data-scenario="s6">⑥ 3D 원뿔곡선단면</button>
-      <button class="scen-chip" data-scenario="s7">⑦ 2D↔3D 회전체·구분구적</button>
-      <button class="scen-chip" data-scenario="s8">⑧ 3D 안장면·CSG·GLB</button>
-      <button class="scen-chip" data-scenario="s9">⑨ 미분기하 프레네틀·곡률</button>
-      <button class="scen-chip" data-scenario="s10">⑩ 선형대수 3D변환·조르당</button>
-      <button class="scen-chip" data-scenario="s11">⑪ 벡터장(Curl/Div)·미분방정식</button>
-      <button id="nextScenBtn" class="step-arrow-btn" title="다음 탐구">▶</button>
+    <!-- Step-by-Step 2D & 3D Exploration Scenarios -->
+    <nav class="scenario-nav" data-i18n-aria="aria_scenarios" aria-label="Select mathematical preset">
+      <button id="prevScenBtn" class="step-arrow-btn" data-i18n-title="prev_scen_title" title="Previous preset">◀</button>
+      <button class="scen-chip is-active" data-scenario="s1" data-i18n="scen_s1">① 2D Surd Roots</button>
+      <button class="scen-chip" data-scenario="s2" data-i18n="scen_s2">② 2D Extrema &amp; Int</button>
+      <button class="scen-chip" data-scenario="s3" data-i18n="scen_s3">③ 2D Parity Check</button>
+      <button class="scen-chip" data-scenario="s4" data-i18n="scen_s4">④ 2D Weierstrass</button>
+      <button class="scen-chip" data-scenario="s5" data-i18n="scen_s5">⑤ 3D Sphere Slice</button>
+      <button class="scen-chip" data-scenario="s6" data-i18n="scen_s6">⑥ 3D Conic Slice</button>
+      <button class="scen-chip" data-scenario="s7" data-i18n="scen_s7">⑦ 2D↔3D Revolution</button>
+      <button class="scen-chip" data-scenario="s8" data-i18n="scen_s8">⑧ 3D Saddle &amp; CSG</button>
+      <button class="scen-chip" data-scenario="s9" data-i18n="scen_s9">⑨ Frenet &amp; Curvature</button>
+      <button class="scen-chip" data-scenario="s10" data-i18n="scen_s10">⑩ 3D Matrix &amp; Jordan</button>
+      <button class="scen-chip" data-scenario="s11" data-i18n="scen_s11">⑪ Curl/Div &amp; ODE</button>
+      <button id="nextScenBtn" class="step-arrow-btn" data-i18n-title="next_scen_title" title="Next preset">▶</button>
     </nav>
 
-    <!-- Mandatory Classroom Utilities: Language Toggle, Mute, Presentation Scale, Fullscreen F11 -->
+    <!-- Classroom Utilities: Bilingual EN/KO Toggle, Mute, Presentation Scale, Fullscreen F11 -->
     <div class="hdr-utils">
-      <button id="langToggleBtn" class="util-btn" title="Switch UI Language (Korean / English)">🌐 EN/KO</button>
-      <button id="muteBtn" class="util-btn" title="조작 효과음 켜기/끄기 (교실 기본값: 음소거)">🔇 음소거</button>
-      <button id="presModeBtn" class="util-btn" title="전자칠판 발표용 수식·글씨 확대">가+ 확대</button>
-      <button id="fullscreenBtn" class="util-btn" title="전체화면 전환 (F11)">⛶ 전체화면</button>
+      <button id="langToggleBtn" class="util-btn" data-i18n="lang_btn" data-i18n-title="lang_btn_title" title="Switch interface language to Korean">🌐 한국어</button>
+      <button id="muteBtn" class="util-btn" data-i18n-title="mute_title" title="Toggle interaction sound (Classroom default: Muted)">🔇 Muted</button>
+      <button id="presModeBtn" class="util-btn" data-i18n="pres_btn" data-i18n-title="pres_title" title="Enlarge equations and labels for classroom display">A+ Zoom</button>
+      <button id="fullscreenBtn" class="util-btn" data-i18n="fs_btn" data-i18n-title="fs_title" title="Toggle fullscreen (F11)">⛶ Fullscreen</button>
     </div>
   </header>
 
   <!-- Zero-Scroll 100% Viewport Main Workspace -->
   <main class="ggb-workspace">
     <!-- Left App Rail -->
-    <nav class="ggb-rail" aria-label="도구 모음 전환">
+    <nav class="ggb-rail" data-i18n-aria="aria_rail" aria-label="Switch workspace pane">
       <button class="rail-btn is-active" data-pane="algebra">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 7h6M4 12h10M4 17h7"></path>
           <path d="M16 7l4 4m0-4l-4 4"></path>
         </svg>
-        <span>대수</span>
+        <span data-i18n="rail_algebra">Algebra</span>
       </button>
 
       <button class="rail-btn" data-pane="tools">
@@ -84,7 +84,7 @@
           <circle cx="9" cy="9" r="5"></circle>
           <polygon points="15 11 21 20 11 20"></polygon>
         </svg>
-        <span>도구</span>
+        <span data-i18n="rail_tools">Tools</span>
       </button>
 
       <button class="rail-btn" data-pane="table">
@@ -93,24 +93,24 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
           <line x1="10" y1="4" x2="10" y2="20"></line>
         </svg>
-        <span>수치표</span>
+        <span data-i18n="rail_table">Table</span>
       </button>
 
       <button class="rail-btn" data-pane="tutor">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
         </svg>
-        <span>탐구튜터</span>
+        <span data-i18n="rail_tutor">Guide</span>
       </button>
 
       <div class="rail-spacer"></div>
 
-      <button id="railKbdBtn" class="rail-btn" title="하단 수식 입력기 열기/닫기">
+      <button id="railKbdBtn" class="rail-btn" data-i18n-title="rail_kbd_title" title="Toggle bottom virtual math keypad">
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="6" width="20" height="12" rx="2"></rect>
           <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"></path>
         </svg>
-        <span>입력기</span>
+        <span data-i18n="rail_kbd">Keypad</span>
       </button>
     </nav>
 
@@ -127,13 +127,14 @@
               type="text"
               autocomplete="off"
               spellcheck="false"
-              placeholder="2D·3D 수식 입력 (예: f(x)=x^2-2, z=x^2-y^2, x^2+y^2+z^2=9)"
+              data-i18n-placeholder="math_placeholder"
+              placeholder="Enter 2D/3D expression (e.g., f(x)=x^2-2, z=x^2-y^2, x^2+y^2+z^2=9)"
             />
-            <button id="addExprBtn" class="ggb-enter-btn">입력</button>
+            <button id="addExprBtn" class="ggb-enter-btn" data-i18n="add_expr_btn">Enter</button>
           </div>
           <div id="livePreviewBar" class="live-tex-preview is-empty">
             <div id="livePreviewMath"></div>
-            <span id="livePreviewKind" class="preview-badge">수식</span>
+            <span id="livePreviewKind" class="preview-badge" data-i18n="preview_expr">Expr</span>
           </div>
         </div>
 
@@ -144,53 +145,53 @@
       <section id="pane-tools" class="tab-pane">
         <div class="tools-scroll">
           <div>
-            <div class="tool-cat-title">2D 평면 작도 · 미적분 도구</div>
+            <div class="tool-cat-title" data-i18n="tools_cat_2d">2D Planar Construction &amp; Calculus Tools</div>
             <div class="tools-grid">
               <button class="ggb-tool-card is-active" data-tool="move">
                 <div class="tool-icon-box">✋</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">이동 · 탐색</span>
-                  <span class="tool-card-desc">좌표평면 이동 및 점 확인</span>
+                  <span class="tool-card-name" data-i18n="tool_move_name">Move &amp; Inspect</span>
+                  <span class="tool-card-desc" data-i18n="tool_move_desc">Pan viewport &amp; inspect points</span>
                 </div>
               </button>
 
               <button class="ggb-tool-card" data-tool="sketch">
                 <div class="tool-icon-box">✍</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">스케치 작도</span>
-                  <span class="tool-card-desc">손으로 원·직선·포물선 그리기</span>
+                  <span class="tool-card-name" data-i18n="tool_sketch_name">Freehand Sketch</span>
+                  <span class="tool-card-desc" data-i18n="tool_sketch_desc">Draw circle, line, or parabola</span>
                 </div>
               </button>
 
               <button class="ggb-tool-card" data-tool="intersect">
                 <div class="tool-icon-box">✕</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">2D 교점 찾기</span>
-                  <span class="tool-card-desc">두 곡선 클릭 → 무리수·분수 해</span>
+                  <span class="tool-card-name" data-i18n="tool_inter_name">2D Intersections</span>
+                  <span class="tool-card-desc" data-i18n="tool_inter_desc">Click two curves → exact surds</span>
                 </div>
               </button>
 
               <button class="ggb-tool-card" data-tool="special">
                 <div class="tool-icon-box">★</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">극점 · 변곡점</span>
-                  <span class="tool-card-desc">곡선 클릭 → 극값·변곡점·영점</span>
+                  <span class="tool-card-name" data-i18n="tool_spec_name">Extrema &amp; Inflections</span>
+                  <span class="tool-card-desc" data-i18n="tool_spec_desc">Click curve → roots, extrema, parity</span>
                 </div>
               </button>
 
               <button class="ggb-tool-card" data-tool="tangent">
                 <div class="tool-icon-box">╱</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">접선 작도</span>
-                  <span class="tool-card-desc">곡선 위 점 클릭 (자석 스냅)</span>
+                  <span class="tool-card-name" data-i18n="tool_tan_name">Exact Tangent</span>
+                  <span class="tool-card-desc" data-i18n="tool_tan_desc">Click point on curve (magnetic snap)</span>
                 </div>
               </button>
 
               <button class="ggb-tool-card" data-tool="integral">
                 <div class="tool-icon-box">∫</div>
                 <div class="tool-card-meta">
-                  <span class="tool-card-name">정적분 넓이</span>
-                  <span class="tool-card-desc">곡선 위 구간 [a, b] 두 번 클릭</span>
+                  <span class="tool-card-name" data-i18n="tool_int_name">Definite Integral</span>
+                  <span class="tool-card-desc" data-i18n="tool_int_desc">Click interval [a, b] on curve</span>
                 </div>
               </button>
             </div>
@@ -198,61 +199,61 @@
 
           <!-- 3D Spatial Geometry, Plane Cross-Section, Revolution & CSG Tools -->
           <div>
-            <div class="tool-cat-title">3D 평면 단면 교선 대수 계산 (Giac + BVH)</div>
+            <div class="tool-cat-title" data-i18n="tools_cat_slice3d">3D Plane Cross-Section (Giac Symbolic + BVH)</div>
             <div class="tool-widget-box">
               <div class="widget-row">
-                <select id="pl3dSelect" class="widget-select" aria-label="절단 평면"></select>
+                <select id="pl3dSelect" class="widget-select" data-i18n-aria="aria_pl3d" aria-label="Cutting plane"></select>
                 <span style="font-weight:700;">∩</span>
-                <select id="surf3dSelect" class="widget-select" aria-label="3D 곡면 또는 도형"></select>
+                <select id="surf3dSelect" class="widget-select" data-i18n-aria="aria_surf3d" aria-label="Target 3D surface or quadric"></select>
               </div>
-              <button id="slice3dRunBtn" class="ggb-enter-btn" style="width:100%; padding:7px;">단면 방정식·반지름·넓이 대수 계산</button>
+              <button id="slice3dRunBtn" class="ggb-enter-btn" style="width:100%; padding:7px;" data-i18n="slice3d_run_btn">Compute Exact Section Equation, Radius &amp; Area</button>
             </div>
           </div>
 
           <div>
-            <div class="tool-cat-title">2D 함수 → 3D 회전체 · 구분구적법 생성</div>
+            <div class="tool-cat-title" data-i18n="tools_cat_rev">2D Curve → 3D Solid of Revolution &amp; Riemann Discs</div>
             <div class="tool-widget-box">
               <div class="widget-row">
-                <select id="revFnSelect" class="widget-select" aria-label="회전시킬 2D 함수"></select>
+                <select id="revFnSelect" class="widget-select" data-i18n-aria="aria_rev_fn" aria-label="2D function to revolve"></select>
               </div>
               <div class="widget-row">
-                <input id="revAInput" class="widget-input" type="text" value="0" placeholder="시작 a" />
+                <input id="revAInput" class="widget-input" type="text" value="0" data-i18n-placeholder="rev_a_ph" placeholder="Start a" />
                 <span>~</span>
-                <input id="revBInput" class="widget-input" type="text" value="4" placeholder="끝 b" />
-                <button id="revRunBtn" class="ggb-enter-btn">3D 회전체 생성</button>
+                <input id="revBInput" class="widget-input" type="text" value="4" data-i18n-placeholder="rev_b_ph" placeholder="End b" />
+                <button id="revRunBtn" class="ggb-enter-btn" data-i18n="rev_run_btn">Revolve 3D Solid</button>
               </div>
             </div>
           </div>
 
           <div>
-            <div class="tool-cat-title">3D 입체 합치기 · 빼기 (CSG 부울 연산 & GLB 출력)</div>
+            <div class="tool-cat-title" data-i18n="tools_cat_csg">3D Constructive Solid Geometry (CSG Booleans &amp; GLB)</div>
             <div class="tool-widget-box">
               <div class="widget-row" style="flex-wrap:wrap;">
-                <button class="cas-chip is-active" data-csg="sphere_minus_cyl" style="flex:1; padding:6px;">구 − 원기둥</button>
-                <button class="cas-chip" data-csg="box_union_sphere" style="flex:1; padding:6px;">정육면체 ∪ 구</button>
-                <button class="cas-chip" data-csg="sphere_intersect_box" style="flex:1; padding:6px;">구 ∩ 정육면체</button>
+                <button class="cas-chip is-active" data-csg="sphere_minus_cyl" style="flex:1; padding:6px;" data-i18n="csg_sub_btn">Sphere − Cylinder</button>
+                <button class="cas-chip" data-csg="box_union_sphere" style="flex:1; padding:6px;" data-i18n="csg_uni_btn">Box ∪ Sphere</button>
+                <button class="cas-chip" data-csg="sphere_intersect_box" style="flex:1; padding:6px;" data-i18n="csg_int_btn">Sphere ∩ Box</button>
               </div>
               <div class="widget-row">
-                <button id="toolExportGlbBtn" class="ggb-enter-btn" style="flex:1; padding:7px;">📦 .GLB 내보내기 (색상·재질 포함)</button>
+                <button id="toolExportGlbBtn" class="ggb-enter-btn" style="flex:1; padding:7px;" data-i18n="tool_glb_btn">📦 Export .GLB (PBR Color)</button>
                 <button id="toolExportStlBtn" class="util-btn" style="padding:7px 10px;">.STL</button>
               </div>
             </div>
           </div>
 
           <div>
-            <div class="tool-cat-title">2D 연립 교점 / 정적분 빠른 실행</div>
+            <div class="tool-cat-title" data-i18n="tools_cat_quick2d">Quick 2D Symbolic Intersection &amp; Definite Integral</div>
             <div class="tool-widget-box">
               <div class="widget-row">
-                <select id="qiSelectA" class="widget-select" aria-label="첫 번째 곡선"></select>
+                <select id="qiSelectA" class="widget-select" data-i18n-aria="aria_qi_a" aria-label="First 2D curve"></select>
                 <span style="font-weight:700;">∩</span>
-                <select id="qiSelectB" class="widget-select" aria-label="두 번째 곡선"></select>
+                <select id="qiSelectB" class="widget-select" data-i18n-aria="aria_qi_b" aria-label="Second 2D curve"></select>
               </div>
-              <button id="qiRunBtn" class="ggb-enter-btn" style="width:100%; padding:6px;">2D 대수적 교점 구하기</button>
+              <button id="qiRunBtn" class="ggb-enter-btn" style="width:100%; padding:6px;" data-i18n="qi_run_btn">Solve Exact 2D Intersections</button>
               <div class="widget-row" style="margin-top:4px;">
-                <select id="intFnSelect" class="widget-select" aria-label="적분 함수"></select>
+                <select id="intFnSelect" class="widget-select" data-i18n-aria="aria_int_fn" aria-label="Integrand function"></select>
                 <input id="intAInput" class="widget-input" style="max-width:52px;" type="text" value="-1" />
                 <input id="intBInput" class="widget-input" style="max-width:52px;" type="text" value="1" />
-                <button id="intRunBtn" class="ggb-enter-btn">∫ 넓이</button>
+                <button id="intRunBtn" class="ggb-enter-btn" data-i18n="int_run_btn">∫ Area</button>
               </div>
             </div>
           </div>
@@ -263,36 +264,36 @@
       <section id="pane-table" class="tab-pane">
         <div class="table-pane-wrap">
           <div class="table-config-bar">
-            <span style="font-size:12px; font-weight:700;">구간:</span>
+            <span style="font-size:12px; font-weight:700;" data-i18n="tbl_range_lbl">Range:</span>
             <input id="tblStart" class="tbl-num-input" type="number" value="-2" step="1" />
             <span>~</span>
             <input id="tblEnd" class="tbl-num-input" type="number" value="3" step="1" />
-            <span style="font-size:12px; font-weight:700;">간격:</span>
+            <span style="font-size:12px; font-weight:700;" data-i18n="tbl_step_lbl">Step:</span>
             <input id="tblStep" class="tbl-num-input" type="number" value="1" step="0.5" min="0.25" />
-            <button id="tblBuildBtn" class="ggb-enter-btn">표 갱신</button>
+            <button id="tblBuildBtn" class="ggb-enter-btn" data-i18n="tbl_build_btn">Update Table</button>
           </div>
           <div id="valuesTableWrap" class="values-table-scroll"></div>
         </div>
       </section>
 
-      <!-- TAB 4: Canvas-Linked Socratic Inquiry Tutor + Ctrl+V Screenshot Question -->
+      <!-- TAB 4: Canvas-Linked Socratic Inquiry Guide + Ctrl+V Screenshot Question -->
       <section id="pane-tutor" class="tab-pane">
         <div class="tutor-pane-wrap">
-          <div class="tutor-header-note">
-            질문을 입력하거나 캡처 이미지를 <strong>Ctrl+V</strong>로 붙여넣으세요. <strong>2D·3D 좌표공간에 교점·단면·회전체·접평면을 직접 작도</strong>하며 탐구를 돕습니다.
+          <div class="tutor-header-note" data-i18n-html="tutor_header_html">
+            Ask a mathematical question or paste a screenshot with <strong>Ctrl+V</strong>. The guide <strong>constructs exact 2D/3D intersections, cross-sections, solids of revolution, and tangent planes</strong> directly in the viewport.
           </div>
           <div class="tutor-quick-prompts">
-            <button class="tutor-prompt-chip" data-ask="구와 평면의 3D 단면 교원을 보여줘">3D 구·평면 단면</button>
-            <button class="tutor-prompt-chip" data-ask="원뿔을 평면으로 잘라 원뿔곡선을 보여줘">3D 원뿔곡선 절단</button>
-            <button class="tutor-prompt-chip" data-ask="회전체와 구분구적법 부피를 보여줘">3D 회전체·구분구적</button>
-            <button class="tutor-prompt-chip" data-ask="두 그래프의 정확한 교점을 작도해줘">2D 무리수 교점</button>
-            <button class="tutor-prompt-chip" data-ask="왜 x^4은 x=0이 변곡점이 아닌가요?">x⁴ 반례 질문</button>
+            <button class="tutor-prompt-chip" data-ask="sphere_slice" data-i18n="tutor_chip_s5">3D Sphere–Plane Slice</button>
+            <button class="tutor-prompt-chip" data-ask="conic_slice" data-i18n="tutor_chip_s6">3D Conic Sections</button>
+            <button class="tutor-prompt-chip" data-ask="revolution_solid" data-i18n="tutor_chip_s7">3D Solid of Revolution</button>
+            <button class="tutor-prompt-chip" data-ask="surd_intersections" data-i18n="tutor_chip_s1">2D Exact Surd Roots</button>
+            <button class="tutor-prompt-chip" data-ask="x4_counterexample" data-i18n="tutor_chip_s3">Why x⁴ Is Not an Inflection</button>
           </div>
           <div id="tutorMessages" class="tutor-messages"></div>
           <div class="tutor-input-bar">
             <div id="pastePreview" class="paste-preview-strip is-hidden">
-              <img id="pasteThumb" alt="첨부된 캡처" />
-              <span style="flex:1;">캡처 이미지 첨부됨</span>
+              <img id="pasteThumb" alt="Attached screenshot" />
+              <span style="flex:1;" data-i18n="paste_attached_lbl">Screenshot attached</span>
               <button id="clearPasteBtn" class="row-icon-btn danger">✕</button>
             </div>
             <div class="ggb-plus-row">
@@ -300,9 +301,10 @@
                 id="tutorInput"
                 class="ggb-expr-input"
                 type="text"
-                placeholder="2D·3D 탐구 질문 또는 작도 요청 (Ctrl+V 이미지 가능)"
+                data-i18n-placeholder="tutor_placeholder"
+                placeholder="Ask a 2D/3D inquiry question or construction request (Ctrl+V image supported)"
               />
-              <button id="tutorSendBtn" class="ggb-enter-btn">질문</button>
+              <button id="tutorSendBtn" class="ggb-enter-btn" data-i18n="tutor_send_btn">Ask</button>
             </div>
           </div>
         </div>
@@ -310,9 +312,9 @@
     </aside>
 
     <!-- Draggable Resizable Split Handle + Collapse Toggle -->
-    <div id="paneSplitter" class="splitter" title="좌우로 드래그하여 창 비율을 조절합니다">
+    <div id="paneSplitter" class="splitter" data-i18n-title="splitter_title" title="Drag horizontally to resize panels">
       <div class="splitter-grip"></div>
-      <button id="collapsePaneBtn" class="collapse-pane-btn" title="왼쪽 창 접기/펼치기">◀</button>
+      <button id="collapsePaneBtn" class="collapse-pane-btn" data-i18n-title="collapse_title" title="Collapse / expand left panel">◀</button>
     </div>
 
     <!-- Right Synchronized 2D / 3D / Split Viewports Host -->
@@ -320,12 +322,12 @@
       <!-- 2D Dynamic Graphing Pane -->
       <div id="pane2D" class="vp-pane">
         <div class="active-tool-pill">
-          <button class="canvas-quick-mode is-active" data-tool="move">✋ 이동</button>
-          <button class="canvas-quick-mode" data-tool="intersect">✕ 교점</button>
-          <button class="canvas-quick-mode" data-tool="special">★ 극점·변곡점</button>
-          <button class="canvas-quick-mode" data-tool="tangent">╱ 접선</button>
-          <button class="canvas-quick-mode" data-tool="integral">∫ 넓이</button>
-          <button class="canvas-quick-mode" data-tool="sketch">✍ 스케치</button>
+          <button class="canvas-quick-mode is-active" data-tool="move" data-i18n="qtool_move">✋ Move</button>
+          <button class="canvas-quick-mode" data-tool="intersect" data-i18n="qtool_inter">✕ Intersect</button>
+          <button class="canvas-quick-mode" data-tool="special" data-i18n="qtool_spec">★ Extrema·Inflect</button>
+          <button class="canvas-quick-mode" data-tool="tangent" data-i18n="qtool_tan">╱ Tangent</button>
+          <button class="canvas-quick-mode" data-tool="integral" data-i18n="qtool_int">∫ Area</button>
+          <button class="canvas-quick-mode" data-tool="sketch" data-i18n="qtool_sketch">✍ Sketch</button>
         </div>
 
         <canvas id="graphCanvas"></canvas>
@@ -334,11 +336,11 @@
         <div class="canvas-zoom-dock">
           <div id="coordReadout" class="coord-pill">(x, y) = (0, 0)</div>
           <div class="zoom-group">
-            <button id="zoomInBtn" class="zoom-btn" title="확대">+</button>
-            <button id="zoomOutBtn" class="zoom-btn" title="축소">−</button>
-            <button id="resetViewBtn" class="zoom-btn" title="원점 복귀">원점</button>
-            <button id="toggleGridBtn" class="zoom-btn is-on" style="font-size:11px;" title="격자 표시 전환">격자</button>
-            <button id="toggleDecBtn" class="zoom-btn" style="font-size:11px;" title="근삿값 병기 전환">근사</button>
+            <button id="zoomInBtn" class="zoom-btn" data-i18n-title="zoom_in_title" title="Zoom in">+</button>
+            <button id="zoomOutBtn" class="zoom-btn" data-i18n-title="zoom_out_title" title="Zoom out">−</button>
+            <button id="resetViewBtn" class="zoom-btn" data-i18n="reset_2d_btn" data-i18n-title="reset_2d_title" title="Reset to origin">Origin</button>
+            <button id="toggleGridBtn" class="zoom-btn is-on" style="font-size:11px;" data-i18n="grid_2d_btn" data-i18n-title="grid_2d_title" title="Toggle coordinate grid">Grid</button>
+            <button id="toggleDecBtn" class="zoom-btn" style="font-size:11px;" data-i18n="dec_2d_btn" data-i18n-title="dec_2d_title" title="Toggle decimal approximations alongside exact badges">Approx</button>
           </div>
         </div>
       </div>
@@ -347,15 +349,15 @@
       <div id="pane3D" class="vp-pane is-hidden">
         <div class="toolbar-3d">
           <div class="toolbar-3d-group">
-            <button id="cutaway3dBtn" class="canvas-quick-mode" title="절단 평면 위쪽 입체를 잘라내어 단면 내부를 직접 관찰합니다">✂ 단면 잘라보기</button>
-            <button id="rotate3dBtn" class="canvas-quick-mode" title="3D 공간 자동 회전">↻ 회전</button>
-            <button id="xyPlane3dBtn" class="canvas-quick-mode is-active" title="xy 기준 평면 격자 표시">xy 평면</button>
-            <button id="reset3dCamBtn" class="canvas-quick-mode" title="3D 기본 카메라 각도로 복귀">시점 복귀</button>
+            <button id="cutaway3dBtn" class="canvas-quick-mode" data-i18n="cutaway_btn" data-i18n-title="cutaway_title" title="Clip solid above cutting plane to inspect internal cross-section">✂ Cutaway</button>
+            <button id="rotate3dBtn" class="canvas-quick-mode" data-i18n="rotate3d_btn" data-i18n-title="rotate3d_title" title="Auto-rotate 3D scene">↻ Orbit</button>
+            <button id="xyPlane3dBtn" class="canvas-quick-mode is-active" data-i18n="xyplane_btn" data-i18n-title="xyplane_title" title="Toggle xy reference grid plane">xy Plane</button>
+            <button id="reset3dCamBtn" class="canvas-quick-mode" data-i18n="reset3d_btn" data-i18n-title="reset3d_title" title="Reset 3D camera orientation">Reset View</button>
           </div>
 
           <div class="toolbar-3d-group">
-            <button id="exportGlbBtn" class="export-pill-btn" title="색상과 재질이 포함된 표준 3D 파일(.glb)로 저장 (파워포인트·로블록스 호환)">📦 .GLB 저장</button>
-            <button id="exportStlBtn" class="export-pill-btn stl" title="3D 프린터 출력용 .stl 저장">.STL</button>
+            <button id="exportGlbBtn" class="export-pill-btn" data-i18n="glb3d_btn" data-i18n-title="glb3d_title" title="Export binary .glb with PBR colors and materials">📦 Save .GLB</button>
+            <button id="exportStlBtn" class="export-pill-btn stl" data-i18n-title="stl3d_title" title="Export binary .stl mesh for 3D printing">.STL</button>
           </div>
         </div>
 
@@ -366,20 +368,20 @@
       <div id="canvasHint" class="canvas-hint-banner is-hidden"></div>
 
       <!-- Bottom-Left Floating Virtual Keyboard Trigger -->
-      <button id="openVkbdFab" class="floating-kbd-fab" title="울프람알파·지오지브라 스타일 수식 입력기 열기">
-        <span>⌨ 수식 입력기</span>
+      <button id="openVkbdFab" class="floating-kbd-fab" data-i18n-title="vkbd_fab_title" title="Open virtual symbolic math keypad">
+        <span data-i18n="vkbd_fab">⌨ Math Keypad</span>
       </button>
 
       <!-- Bottom-Floating Virtual Math Keyboard -->
       <div id="virtualKbdDock" class="virtual-kbd-dock is-hidden">
         <div class="vkbd-head">
           <div class="vkbd-tabs">
-            <button class="vkbd-tab is-active" data-kpage="basic">123 · 2D/3D 기호</button>
-            <button class="vkbd-tab" data-kpage="funcs">f(x) · 초월·미적분</button>
-            <button class="vkbd-tab" data-kpage="cas">CAS · 대수명령</button>
-            <button class="vkbd-tab" data-kpage="univ">대학수학 (미기·선대·미방)</button>
+            <button class="vkbd-tab is-active" data-kpage="basic" data-i18n="vkbd_tab_basic">123 · 2D/3D Basic</button>
+            <button class="vkbd-tab" data-kpage="funcs" data-i18n="vkbd_tab_funcs">f(x) · Calculus</button>
+            <button class="vkbd-tab" data-kpage="cas" data-i18n="vkbd_tab_cas">CAS · Algebra</button>
+            <button class="vkbd-tab" data-kpage="univ" data-i18n="vkbd_tab_univ">Univ. STEM (DiffG·LinAlg·ODE)</button>
           </div>
-          <button id="closeVkbdBtn" class="vkbd-close" title="입력기 닫기">✕</button>
+          <button id="closeVkbdBtn" class="vkbd-close" data-i18n-title="vkbd_close_title" title="Close keypad">✕</button>
         </div>
 
         <!-- Page 1 -->
@@ -394,7 +396,7 @@
           <button class="vkbd-key op-key" data-insert="/" data-cursor="0" data-katex="\div">÷</button>
 
           <button class="vkbd-key op-key" data-insert="sqrt()" data-cursor="-1" data-katex="\sqrt{\square}">√□</button>
-          <button class="vkbd-key op-key" data-insert="()/()" data-cursor="-4" data-katex="\frac{\square}{\square}">분수</button>
+          <button class="vkbd-key op-key" data-insert="()/()" data-cursor="-4" data-katex="\frac{\square}{\square}" data-i18n-title="vkbd_frac_title" title="Fraction a/b">a/b</button>
           <button class="vkbd-key op-key" data-insert="^()" data-cursor="-1" data-katex="\square^{\square}">xⁿ</button>
           <button class="vkbd-key op-key" data-insert="abs()" data-cursor="-1" data-katex="|\square|">|x|</button>
           <button class="vkbd-key" data-insert="4" data-cursor="0">4</button>
@@ -405,19 +407,19 @@
           <button class="vkbd-key op-key" data-insert="pi" data-cursor="0" data-katex="\pi">π</button>
           <button class="vkbd-key op-key" data-insert="e^()" data-cursor="-1" data-katex="e^{\square}">eˣ</button>
           <button class="vkbd-key op-key" data-insert="=" data-cursor="0">=</button>
-          <button class="vkbd-key op-key" data-insert="k = 2" data-cursor="0">슬라이더</button>
+          <button class="vkbd-key op-key" data-insert="k = 2" data-cursor="0" data-i18n="vkbd_slider">Slider</button>
           <button class="vkbd-key" data-insert="1" data-cursor="0">1</button>
           <button class="vkbd-key" data-insert="2" data-cursor="0">2</button>
           <button class="vkbd-key" data-insert="3" data-cursor="0">3</button>
           <button class="vkbd-key op-key" data-insert="-" data-cursor="0">−</button>
 
-          <button class="vkbd-key op-key" data-insert="z = x^2 - y^2" data-cursor="0">3D곡면</button>
-          <button class="vkbd-key op-key" data-insert="x^2 + y^2 + z^2 = 9" data-cursor="0">3D구</button>
+          <button class="vkbd-key op-key" data-insert="z = x^2 - y^2" data-cursor="0" data-i18n="vkbd_surf3d">3D Surf</button>
+          <button class="vkbd-key op-key" data-insert="x^2 + y^2 + z^2 = 9" data-cursor="0" data-i18n="vkbd_sphere3d">3D Sphere</button>
           <button class="vkbd-key" data-insert="0" data-cursor="0">0</button>
           <button class="vkbd-key" data-insert="." data-cursor="0">.</button>
           <button class="vkbd-key" data-insert="()" data-cursor="-1">( )</button>
           <button id="vkbdBackspace" class="vkbd-key op-key">⌫</button>
-          <button id="vkbdEnter" class="vkbd-key op-key" style="background:#4f46e5; color:#fff;">입력</button>
+          <button id="vkbdEnter" class="vkbd-key op-key" style="background:#4f46e5; color:#fff;" data-i18n="vkbd_enter">Enter</button>
           <button class="vkbd-key op-key" data-insert="+" data-cursor="0">+</button>
         </div>
 
@@ -444,26 +446,26 @@
 
         <!-- Page 3 -->
         <div id="kpage-cas" class="vkbd-page cas-grid">
-          <button class="vkbd-key op-key" data-insert="factor()" data-cursor="-1">인수분해 factor( )</button>
-          <button class="vkbd-key op-key" data-insert="expand()" data-cursor="-1">식 전개 expand( )</button>
-          <button class="vkbd-key op-key" data-insert="canonical_form(, x)" data-cursor="-4">완전제곱 표준형</button>
-          <button class="vkbd-key op-key" data-insert="partfrac(, x)" data-cursor="-4">부분분수 분해</button>
-          <button class="vkbd-key op-key" data-insert="solve( = 0, x)" data-cursor="-7">방정식 해 solve( )</button>
-          <button class="vkbd-key op-key" data-insert="simplify()" data-cursor="-1">식 간단히 simplify( )</button>
-          <button class="vkbd-key op-key" data-insert="extrema(, x)" data-cursor="-4">극값 계산 extrema( )</button>
-          <button class="vkbd-key op-key" data-insert="taylor(, x=0, 5)" data-cursor="-9">테일러 급수 전개</button>
+          <button class="vkbd-key op-key" data-insert="factor()" data-cursor="-1" data-i18n="vkbd_cas_factor">Factor factor( )</button>
+          <button class="vkbd-key op-key" data-insert="expand()" data-cursor="-1" data-i18n="vkbd_cas_expand">Expand expand( )</button>
+          <button class="vkbd-key op-key" data-insert="canonical_form(, x)" data-cursor="-4" data-i18n="vkbd_cas_canon">Canonical Form</button>
+          <button class="vkbd-key op-key" data-insert="partfrac(, x)" data-cursor="-4" data-i18n="vkbd_cas_partfrac">Partial Frac</button>
+          <button class="vkbd-key op-key" data-insert="solve( = 0, x)" data-cursor="-7" data-i18n="vkbd_cas_solve">Solve solve( )</button>
+          <button class="vkbd-key op-key" data-insert="simplify()" data-cursor="-1" data-i18n="vkbd_cas_simplify">Simplify simplify( )</button>
+          <button class="vkbd-key op-key" data-insert="extrema(, x)" data-cursor="-4" data-i18n="vkbd_cas_extrema">Extrema extrema( )</button>
+          <button class="vkbd-key op-key" data-insert="taylor(, x=0, 5)" data-cursor="-9" data-i18n="vkbd_cas_taylor">Taylor Series</button>
         </div>
 
         <!-- Page 4: University Mathematics -->
         <div id="kpage-univ" class="vkbd-page cas-grid">
-          <button class="vkbd-key op-key" data-insert="r(t) = [cos(t), sin(t), t/2]" data-cursor="0">공간곡선·프레네틀</button>
-          <button class="vkbd-key op-key" data-insert="M = [[2, 1, 0], [1, 2, 0], [0, 0, 1]]" data-cursor="0">3D 선형변환 행렬</button>
-          <button class="vkbd-key op-key" data-insert="F(x, y, z) = [-y, x, z/2]" data-cursor="0">3D 벡터장(Curl/Div)</button>
-          <button class="vkbd-key op-key" data-insert="desolve(y'' + 4*y = sin(x), x, y)" data-cursor="0">상미분방정식 desolve</button>
-          <button class="vkbd-key op-key" data-insert="jordan([[2,1,0],[0,2,0],[0,0,3]])" data-cursor="0">조르당 표준형 jordan</button>
-          <button class="vkbd-key op-key" data-insert="laplace(t^2*exp(-3*t), t, s)" data-cursor="0">라플라스 변환</button>
-          <button class="vkbd-key op-key" data-insert="residue(exp(z)/(z-1)^3, z, 1)" data-cursor="0">복소 유수 residue</button>
-          <button class="vkbd-key op-key" data-insert="gbasis([x^2+y^2-1, x^2-y], [x,y])" data-cursor="0">그뢰브너 기저</button>
+          <button class="vkbd-key op-key" data-insert="r(t) = [cos(t), sin(t), t/2]" data-cursor="0" data-i18n="vkbd_u_curve">Space Curve · Frenet</button>
+          <button class="vkbd-key op-key" data-insert="M = [[2, 1, 0], [1, 2, 0], [0, 0, 1]]" data-cursor="0" data-i18n="vkbd_u_mat">3D Linear Matrix</button>
+          <button class="vkbd-key op-key" data-insert="F(x, y, z) = [-y, x, z/2]" data-cursor="0" data-i18n="vkbd_u_vf">3D Vector Field (Curl/Div)</button>
+          <button class="vkbd-key op-key" data-insert="desolve(y'' + 4*y = sin(x), x, y)" data-cursor="0" data-i18n="vkbd_u_ode">Symbolic ODE desolve</button>
+          <button class="vkbd-key op-key" data-insert="jordan([[2,1,0],[0,2,0],[0,0,3]])" data-cursor="0" data-i18n="vkbd_u_jordan">Jordan Form jordan</button>
+          <button class="vkbd-key op-key" data-insert="laplace(t^2*exp(-3*t), t, s)" data-cursor="0" data-i18n="vkbd_u_laplace">Laplace Transform</button>
+          <button class="vkbd-key op-key" data-insert="residue(exp(z)/(z-1)^3, z, 1)" data-cursor="0" data-i18n="vkbd_u_residue">Complex Residue</button>
+          <button class="vkbd-key op-key" data-insert="gbasis([x^2+y^2-1, x^2-y], [x,y])" data-cursor="0" data-i18n="vkbd_u_gbasis">Gröbner Basis</button>
         </div>
       </div>
     </section>
@@ -474,26 +476,26 @@
     <div class="admin-modal">
       <div class="admin-head">
         <div style="display:flex; align-items:center; gap:12px;">
-          <strong style="font-size:15px;">교사용 실시간 관제 & 개방형 API 콘솔</strong>
+          <strong style="font-size:15px;" data-i18n="adm_title">Instructor Live Monitor &amp; Open API Console</strong>
           <div class="admin-tabs">
-            <button class="adm-tab is-active" data-atab="dashboard">학급 실시간 현황</button>
-            <button class="adm-tab" data-atab="apilog">Open API · LRS 로그 (<span id="eventCountBadge">0</span>)</button>
-            <button class="adm-tab" data-atab="license">GPL-3.0 · 3D 라이선스 명세</button>
+            <button class="adm-tab is-active" data-atab="dashboard" data-i18n="adm_tab_dash">Live Classroom</button>
+            <button class="adm-tab" data-atab="apilog"><span data-i18n="adm_tab_log_prefix">Open API · LRS Log</span> (<span id="eventCountBadge">0</span>)</button>
+            <button class="adm-tab" data-atab="license" data-i18n="adm_tab_lic">GPL-3.0 · 3D Licenses</button>
           </div>
         </div>
-        <button id="closeAdminBtn" class="adm-tab">닫기 ✕</button>
+        <button id="closeAdminBtn" class="adm-tab" data-i18n="adm_close">Close ✕</button>
       </div>
 
       <div class="admin-body">
         <section id="atab-dashboard" class="adm-section is-active">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <p style="font-size:13px; color:#475569;">
-              학교운영위원회 개인정보 보호 기준에 따라 실명 대신 <strong>학급 가상 코드네임</strong>만 수집합니다. (접근법: <code>?mode=admin</code> 또는 로고 <code>Ctrl+클릭</code>)
+            <p style="font-size:13px; color:#475569;" data-i18n-html="adm_privacy_html">
+              Collects only <strong>pseudonymous classroom aliases</strong> with zero student PII. (Access: <code>?mode=admin</code> or <code>Ctrl+Click</code> brand logo)
             </p>
             <div style="display:flex; gap:6px;">
-              <button id="anonToggleBtn" class="util-btn">익명화 ON</button>
-              <button id="pauseClassBtn" class="util-btn">⏸ 화면 일시정지</button>
-              <button id="approveFeedbackBtn" class="ggb-enter-btn">✓ AI 피드백 일괄 검토·전송</button>
+              <button id="anonToggleBtn" class="util-btn">Anonymize ON</button>
+              <button id="pauseClassBtn" class="util-btn">⏸ Pause Screen</button>
+              <button id="approveFeedbackBtn" class="ggb-enter-btn">✓ Send AI Feedback</button>
             </div>
           </div>
           <div id="studentGrid" class="student-grid"></div>
@@ -501,21 +503,21 @@
 
         <section id="atab-apilog" class="adm-section">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-            <span style="font-size:13px; color:#475569;"><code>window.SymGeoCAS</code> 실시간 2D·3D 조작 이벤트 스트림</span>
+            <span style="font-size:13px; color:#475569;" data-i18n-html="adm_stream_lbl_html"><code>window.SymGeoCAS</code> live 2D/3D interaction telemetry stream</span>
             <div style="display:flex; gap:6px;">
-              <button id="copyLogBtn" class="util-btn">JSON 복사</button>
-              <button id="clearLogBtn" class="util-btn">로그 비우기</button>
+              <button id="copyLogBtn" class="util-btn" data-i18n="adm_copy_btn">Copy JSON</button>
+              <button id="clearLogBtn" class="util-btn" data-i18n="adm_clear_btn">Clear Log</button>
             </div>
           </div>
           <div id="eventStream" class="evt-log-box"></div>
         </section>
 
         <section id="atab-license" class="adm-section">
-          <h3 style="margin-bottom:8px;">오픈소스 라이선스 구성 안내</h3>
+          <h3 style="margin-bottom:8px;" data-i18n="adm_lic_heading">Open-Source License Architecture</h3>
           <ul style="padding-left:18px; line-height:1.7; font-size:13.5px; color:#334155;">
-            <li><strong>Giac/Xcas WebAssembly (<code>@basthon/xcas-wasm</code>):</strong> <code>GPL-3.0-or-later</code> (대수 연산, 단면 방정식, 회전체 부피 정확해 계산).</li>
-            <li><strong>Three.js + three-mesh-bvh + three-bvh-csg + KaTeX:</strong> <code>MIT License</code> (실시간 BVH 단면 절단, CSG 불리언 연산, 2-Pass 반투명 렌더링, <code>.glb/.stl</code> 내보내기).</li>
-            <li><strong>전체 오픈소스 배포:</strong> UI, 수식 조판, 2D/3D 기하 커널 및 검증 SDK 전체가 OSI 승인 오픈소스 라이선스(<code>GPL-3.0-or-later</code> 및 <code>MIT</code>)로 제공됩니다.</li>
+            <li data-i18n-html="adm_lic_1_html"><strong>Giac/Xcas WebAssembly (<code>@basthon/xcas-wasm</code>):</strong> <code>GPL-3.0-or-later</code> (exact symbolic algebra, plane conic reduction, and solid of revolution volume).</li>
+            <li data-i18n-html="adm_lic_2_html"><strong>Three.js + three-mesh-bvh + three-bvh-csg + KaTeX:</strong> <code>MIT License</code> (cached BVH plane slicing, CSG Booleans, 2-pass translucent rendering, and <code>.glb/.stl</code> export).</li>
+            <li data-i18n-html="adm_lic_3_html"><strong>100% OSI-Approved Open Stack:</strong> The complete UI, math typesetting, 2D/3D spatial kernels, and headless verification SDK are distributed under <code>GPL-3.0-or-later</code> and <code>MIT</code>.</li>
           </ul>
         </section>
       </div>
@@ -529,46 +531,6 @@
           try {
             window.katex.render(btn.dataset.katex, btn, { throwOnError: false });
           } catch (_) {}
-        });
-      }
-      const i18nPairs = [
-        ['[data-vmode="2d"]', '2D 평면', '2D Plane'],
-        ['[data-vmode="split"]', '2D+3D 연동', '2D+3D Split'],
-        ['[data-vmode="3d"]', '3D 공간', '3D Space'],
-        ['[data-scenario="s1"]', '① 2D 무리수교점', '① 2D Surd Roots'],
-        ['[data-scenario="s2"]', '② 2D 극점·정적분', '② 2D Extrema & Int'],
-        ['[data-scenario="s3"]', '③ 2D 변곡점반례', '③ 2D Parity Check'],
-        ['[data-scenario="s4"]', '④ 2D 바이어슈트라스', '④ 2D Weierstrass'],
-        ['[data-scenario="s5"]', '⑤ 3D 구·평면교원', '⑤ 3D Sphere Slice'],
-        ['[data-scenario="s6"]', '⑥ 3D 원뿔곡선단면', '⑥ 3D Conic Slice'],
-        ['[data-scenario="s7"]', '⑦ 2D↔3D 회전체·구분구적', '⑦ 2D↔3D Revolution'],
-        ['[data-scenario="s8"]', '⑧ 3D 안장면·CSG·GLB', '⑧ 3D Saddle & CSG'],
-        ['[data-scenario="s9"]', '⑨ 미분기하 프레네틀·곡률', '⑨ Frenet & Curvature'],
-        ['[data-scenario="s10"]', '⑩ 선형대수 3D변환·조르당', '⑩ 3D Matrix & Jordan'],
-        ['[data-scenario="s11"]', '⑪ 벡터장(Curl/Div)·미분방정식', '⑪ Curl/Div & ODE'],
-        ['[data-pane="algebra"] span', '대수', 'Algebra'],
-        ['[data-pane="tools"] span', '도구', 'Tools'],
-        ['[data-pane="table"] span', '수치표', 'Table'],
-        ['[data-pane="tutor"] span', '탐구안내', 'Guide'],
-        ['#presModeBtn', '가+ 확대', 'A+ Zoom'],
-        ['#fullscreenBtn', '⛶ 전체화면', '⛶ Fullscreen']
-      ];
-      let uiLang = new URLSearchParams(window.location.search).get('lang') === 'ko' ? 'ko' : 'en';
-      const applyLang = (lang) => {
-        document.documentElement.lang = lang;
-        i18nPairs.forEach(([sel, koTxt, enTxt]) => {
-          const el = document.querySelector(sel);
-          if (el) el.textContent = lang === 'en' ? enTxt : koTxt;
-        });
-        const lb = document.getElementById('langToggleBtn');
-        if (lb) lb.textContent = lang === 'en' ? '🌐 KO' : '🌐 EN';
-      };
-      applyLang(uiLang);
-      const langBtn = document.getElementById('langToggleBtn');
-      if (langBtn) {
-        langBtn.addEventListener('click', () => {
-          uiLang = uiLang === 'en' ? 'ko' : 'en';
-          applyLang(uiLang);
         });
       }
     });

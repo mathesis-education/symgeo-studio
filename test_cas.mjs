@@ -120,8 +120,8 @@ const s7Rev = cas.computeSolidOfRevolution('sqrt(x)', '0', '4', 16, {});
 console.log('S7 Revolution Volume:', s7Rev.volExact, 'Discs(16):', s7Rev.discSum);
 assert.strictEqual(s7Rev.volExact, '8*pi');
 
-// 4. Regression Tests for Adversarial Review Items (ISS-01, ISS-02, ISS-03, ISS-08, ISS-09)
-// ISS-01: Symbolic k-th derivative parity on 0.01*x^7, x^9, x^(7/3), and x^4
+// 4. Symbolic Edge-Case & Programmatic SDK Tests
+// Higher-order derivative parity on 0.01*x^7, x^9, x^(7/3), and x^4
 const infOdd7 = cas.analyzeExplicitFunction('0.01*x^7', {}, true);
 assert.strictEqual(infOdd7.inflections.length, 1, '0.01*x^7 must detect true inflection at x=0');
 assert.strictEqual(infOdd7.inflections[0].lowestNonzeroOrder, 7);
@@ -139,17 +139,17 @@ assert.strictEqual(infEven4.inflections.length, 0);
 assert.strictEqual(infEven4.nonInflectionWarnings.length, 1);
 assert.strictEqual(infEven4.nonInflectionWarnings[0].lowestNonzeroOrder, 4);
 
-// ISS-03: Defective 3x3 matrix [[2,1,0],[0,2,0],[0,0,3]] must not fail or alert, and must return 2 real eigenAxes
+// Defective 3x3 matrix [[2,1,0],[0,2,0],[0,0,3]] must return 2 real eigenAxes without throwing
 const defMat3 = cas.analyzeMatrix3D('[[2,1,0],[0,2,0],[0,0,3]]', {});
 console.log('Defective 3x3 Matrix det:', defMat3.detExact, 'eigenAxes:', defMat3.eigenAxes.length);
 assert.strictEqual(defMat3.detExact, '12');
 assert.strictEqual(defMat3.eigenAxes.length, 2, 'Defective 3x3 matrix J_2(2)⊕[3] has 2 independent eigenvectors');
 
-// ISS-08: Symbolic 2D and 3D Point classification
+// Symbolic 2D and 3D Point classification
 assert.strictEqual(cas.classifyUserInput('A = (1, 2)').kind, 'point');
 assert.strictEqual(cas.classifyUserInput('P = (1/2, sqrt(2), 3)').kind, 'point3d');
 
-// ISS-02: Exact Manuscript Section 2.3 window.SymGeoCAS SDK snippet verification
+// Programmatic window.SymGeoCAS SDK contract verification
 const { SymGeoEventBus, createSymGeoSDK } = await import('./src/open-api.js');
 const bus = new SymGeoEventBus();
 const sdkState = { mode: '2d', exprs: [] };
@@ -172,4 +172,30 @@ assert.ok(ode.exact.includes('sin(x)/3'));
 assert.strictEqual(capturedEvents.length, 3);
 assert.strictEqual(globalThis.window.SymGeoCAS.exportState().objects.length, 2);
 
-console.log('FULL 2D + 3D + GIAC CAS + BVH + CSG + SDK INTEGRATION SUITE PASSED 100%!');
+// 5. Bilingual EN/KO Full UI & Symbolic Output Verification
+const { DOM_DICT, setLang, getLang } = await import('./src/i18n.js');
+const htmlWithoutLangBtn = html.replace(/<button[^>]*id="langToggleBtn"[^>]*>[\s\S]*?<\/button>/g, '');
+assert.strictEqual(/[가-힣]/.test(htmlWithoutLangBtn), false, 'Default EN index.html must contain 0 Hangul outside #langToggleBtn');
+const i18nKeys = [...html.matchAll(/data-i18n(?:-(?:html|placeholder|title|aria))?="([^"]+)"/g)].map((m) => m[1]);
+for (const k of i18nKeys) {
+  assert.ok(DOM_DICT[k] && DOM_DICT[k][0] && DOM_DICT[k][1], `Missing DOM_DICT entry for ${k}`);
+  if (k !== 'lang_btn') {
+    assert.strictEqual(/[가-힣]/.test(DOM_DICT[k][0]), false, `EN DOM_DICT["${k}"] must not contain Hangul`);
+  }
+}
+
+setLang('en');
+assert.strictEqual(getLang(), 'en');
+const enSphereSlice = cas.solve3DPlaneIntersection(s5Pl, s5Sph, { k: 3 });
+const enCubic = cas.analyzeExplicitFunction('x^3 - 3*x', {}, true);
+assert.strictEqual(/[가-힣]/.test(JSON.stringify({ enSphereSlice, enCubic })), false, 'EN runtime CAS outputs must contain 0 Hangul');
+
+setLang('ko');
+assert.strictEqual(getLang(), 'ko');
+const koSphereSlice = cas.solve3DPlaneIntersection(s5Pl, s5Sph, { k: 3 });
+const koCubic = cas.analyzeExplicitFunction('x^3 - 3*x', {}, true);
+assert.ok(/[가-힣]/.test(JSON.stringify(koSphereSlice)), 'KO 3D slice output must localize labels into Korean');
+assert.ok(/[가-힣]/.test(JSON.stringify(koCubic)), 'KO 2D explicit output must localize labels into Korean');
+setLang('en');
+
+console.log('FULL 2D + 3D + GIAC CAS + BVH + CSG + BILINGUAL I18N + SDK INTEGRATION SUITE PASSED 100%!');

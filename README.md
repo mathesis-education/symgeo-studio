@@ -18,7 +18,7 @@ Open-source client-side symbolic-geometric computing studio coupling the **Giac/
    - **Linear Algebra:** Continuous 3D unit-sphere-to-ellipsoid linear deformation $(1-s)I + sM$, real eigenvector axes, characteristic polynomials, and exact **Jordan Canonical Form (`jordan`)** immune to IEEE-754 defective eigenvalue splitting.
    - **Vector Calculus, ODEs, Integral Transforms & Complex Analysis:** Symbolic $\nabla\cdot\mathbf{F}$ (`divergence`), $\nabla\times\mathbf{F}$ (`curl`), exact symbolic ODE solver (`desolve`), Laplace/inverse-Laplace transforms (`laplace`, `ilaplace`), Gröbner bases (`gbasis`), and higher-order pole complex residues (`residue`).
 5. **Open Ecosystem Telemetry, Bilingual UI, & Neuro-Symbolic Verification SDK (`window.SymGeoCAS`)**
-   - Bilingual English/Korean classroom navigation (`🌐 EN/KO` header toggle; defaults to English with `?lang=ko` classroom preset) alongside a 4-page `KaTeX` virtual mathematical keypad.
+   - Full bilingual English/Korean UI (`🌐 한국어` / `🌐 English` header toggle across all tabs, tools, symbolic badges, and 3D viewport controls; defaults to English with `?lang=ko` classroom preset and `window.SymGeoCAS.setLanguage('en' | 'ko')`) alongside a 4-page `KaTeX` virtual mathematical keypad.
    - Structured JSON event bus (`SymGeoEventBus`) for Learning Record Stores (LRS) and headless/programmatic CAS verification (`window.SymGeoCAS.evalCAS`, `addExpression`, `exportState`).
 
 ---

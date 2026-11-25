@@ -7,7 +7,7 @@
  * - Real-time `three-mesh-bvh` Plane Cross-Section Slicing (`shapecast` contour + cutaway clipping)
  * - `three-bvh-csg` Tinkercad-style Solid Booleans (Union, Subtract, Intersect)
  * - Marching Tetrahedra 3D Implicit Quadric/Surface Meshing
- * - 2D-to-3D Solid of Revolution & n-Disc 구분구적법 Visualizer
+ * - 2D-to-3D Solid of Revolution & n-Disc Riemann Quadrature Visualizer
  * - 1-Click Color/Material `.glb` (glTF 2.0) & `.stl` Export
  */
 
@@ -19,6 +19,7 @@ import { MeshBVH } from 'three-mesh-bvh';
 import { Brush, Evaluator, ADDITION, SUBTRACTION, INTERSECTION } from 'three-bvh-csg';
 import { extractImplicitSurfaceMesh } from './marching-cubes.js';
 import { formatCleanNumber } from './cas-engine.js';
+import { t } from './i18n.js';
 
 export class SpatialGraph3D {
   constructor(containerEl, labelLayerEl, callbacks = {}) {
@@ -392,7 +393,7 @@ export class SpatialGraph3D {
       return res.geometry;
     }
 
-    // Default: Sphere minus vertical Z-Cylinder ('구에서 원기둥 빼기' — 고교 기하·적분 고전 부피 문제!)
+    // Default: Sphere minus vertical Z-Cylinder (classic drilled-sphere Boolean solid)
     const cylGeo = new THREE.CylinderGeometry(1.35, 1.35, 7.0, 40);
     cylGeo.rotateX(Math.PI / 2); // Align cylinder along Z-axis!
     const bCyl = new Brush(cylGeo);
@@ -656,7 +657,7 @@ export class SpatialGraph3D {
           const [cx, cy, cz] = obj.analysis.sphereInfo.centerExact.map((s) => Number(s) || 0);
           if (Number.isFinite(cx)) {
             this._add3DSpecialPointMarker({
-              badge: '중심',
+              badge: t('Center', '중심'),
               latexCoord: obj.analysis.sphereInfo.centerLatex,
               x: cx,
               y: cy,
@@ -667,7 +668,7 @@ export class SpatialGraph3D {
         }
       }
 
-      // 3. Render 2D-to-3D Solid of Revolution + n-Disc 구분구적법!
+      // 3. Render 2D-to-3D Solid of Revolution + n-Disc Riemann quadrature
       if (obj.kind === 'revolution3d') {
         const srcFn = objects.find((o) => o.id === obj.sourceFnId && o.kind === 'explicit');
         if (srcFn && srcFn.evaluator && obj.result) {
@@ -690,7 +691,7 @@ export class SpatialGraph3D {
           });
           this.exportMeshGroup.add(new THREE.Mesh(revGeo.clone(), expMat));
 
-          // Render n-Disc 구분구적법 cylinders along x-axis!
+          // Render n-Disc Riemann cylinders along x-axis
           if (obj.showDiscs && obj.result.discs) {
             for (const d of obj.result.discs) {
               if (d.radius < 1e-4) continue;
@@ -941,7 +942,7 @@ export class SpatialGraph3D {
       const tag = document.createElement('span');
       tag.className = 'pt-kind-tag';
       tag.style.backgroundColor = pt.color || '#dc2626';
-      tag.textContent = pt.badge || '점';
+      tag.textContent = pt.badge || t('Pt', '점');
       el.appendChild(tag);
 
       const mathSpan = document.createElement('span');
@@ -958,15 +959,17 @@ export class SpatialGraph3D {
   }
 
   /**
-   * Export 3D Scene to Binary `.glb` (preserving Colors & PBR Materials for PowerPoint / Roblox!)
+   * Export 3D Scene to Binary `.glb` (preserving Colors & PBR Materials)
    */
   exportGLB(filename = 'symgeo-3d-model.glb') {
     if (this.exportMeshGroup.children.length === 0) {
-      if (this.callbacks.onHint) this.callbacks.onHint('내보낼 3D 곡면이나 입체 객체가 없습니다.');
+      if (this.callbacks.onHint) {
+        this.callbacks.onHint(t('No 3D surface or solid available to export.', '내보낼 3D 곡면이나 입체 객체가 없습니다.'));
+      }
       return;
     }
 
-    // Rotate from Math Z-up to glTF standard Y-up so PowerPoint / Roblox opens upright!
+    // Rotate from Math Z-up to glTF standard Y-up so viewers open upright
     const exportRoot = this.exportMeshGroup.clone(true);
     exportRoot.rotation.x = -Math.PI / 2;
     exportRoot.updateMatrixWorld(true);
@@ -983,7 +986,12 @@ export class SpatialGraph3D {
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 2000);
         if (this.callbacks.onHint) {
-          this.callbacks.onHint(`색상·재질이 포함된 3D 모델 [${filename}] 저장이 완료되었습니다!`);
+          this.callbacks.onHint(
+            t(
+              `Saved 3D PBR model [${filename}] successfully.`,
+              `색상·재질이 포함된 3D 모델 [${filename}] 저장이 완료되었습니다!`
+            )
+          );
         }
       },
       (err) => {
@@ -994,11 +1002,13 @@ export class SpatialGraph3D {
   }
 
   /**
-   * Export 3D Scene to Binary `.stl` (for 3D Printing!)
+   * Export 3D Scene to Binary `.stl` (for 3D Printing)
    */
   exportSTL(filename = 'symgeo-3d-print.stl') {
     if (this.exportMeshGroup.children.length === 0) {
-      if (this.callbacks.onHint) this.callbacks.onHint('내보낼 3D 입체 객체가 없습니다.');
+      if (this.callbacks.onHint) {
+        this.callbacks.onHint(t('No 3D solid available to export.', '내보낼 3D 입체 객체가 없습니다.'));
+      }
       return;
     }
     const exporter = new STLExporter();
@@ -1011,7 +1021,9 @@ export class SpatialGraph3D {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
     if (this.callbacks.onHint) {
-      this.callbacks.onHint(`3D 프린팅용 [${filename}] 저장이 완료되었습니다!`);
+      this.callbacks.onHint(
+        t(`Saved 3D-printable mesh [${filename}] successfully.`, `3D 프린팅용 [${filename}] 저장이 완료되었습니다!`)
+      );
     }
   }
 }

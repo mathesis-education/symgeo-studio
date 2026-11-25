@@ -11,6 +11,7 @@
  */
 
 import { formatCleanNumber } from './cas-engine.js';
+import { t } from './i18n.js';
 
 const BADGE_COLORS = {
   intersection: { fill: '#dc2626', ring: '#fecaca', labelBg: '#fef2f2', border: '#ef4444' },
@@ -161,7 +162,7 @@ export class DynamicGraphCanvas {
 
   _hitTestSpecialPoint(sx, sy) {
     let best = null;
-    let bestDist = 17; // Generous tolerance for student/tablet touch (Gate 3.2)
+    let bestDist = 17; // Generous hit-test tolerance for pointer and tablet touch
     for (const pt of this.specialPoints) {
       const px = this.worldToScreenX(pt.x);
       const py = this.worldToScreenY(pt.y);
@@ -399,7 +400,7 @@ export class DynamicGraphCanvas {
       const yTerm = cy === 0 ? 'y^2' : `(y ${cy > 0 ? '-' : '+'} ${Math.abs(cy)})^2`;
       const rSq = formatCleanNumber(r * r, 2);
       if (this.callbacks.onSketchRecognized) {
-        this.callbacks.onSketchRecognized(`${xTerm} + ${yTerm} = ${rSq}`, '원(Circle)');
+        this.callbacks.onSketchRecognized(`${xTerm} + ${yTerm} = ${rSq}`, t('Circle', '원(Circle)'));
       }
       return;
     }
@@ -409,7 +410,7 @@ export class DynamicGraphCanvas {
       if (Math.abs(last.wx - first.wx) < 0.25) {
         const xConst = snapHalf((first.wx + last.wx) / 2);
         if (this.callbacks.onSketchRecognized) {
-          this.callbacks.onSketchRecognized(`x = ${xConst}`, '수직선');
+          this.callbacks.onSketchRecognized(`x = ${xConst}`, t('Vertical Line', '수직선'));
         }
         return;
       }
@@ -425,7 +426,7 @@ export class DynamicGraphCanvas {
       const mPart = m === 0 ? '' : m === 1 ? 'x' : m === -1 ? '-x' : `${m}*x`;
       const bPart = b === 0 ? (mPart ? '' : '0') : b > 0 ? (mPart ? ` + ${b}` : `${b}`) : ` - ${Math.abs(b)}`;
       if (this.callbacks.onSketchRecognized) {
-        this.callbacks.onSketchRecognized(`y = ${mPart}${bPart}`, '일차함수(직선)');
+        this.callbacks.onSketchRecognized(`y = ${mPart}${bPart}`, t('Linear Function', '일차함수(직선)'));
       }
       return;
     }
@@ -452,7 +453,7 @@ export class DynamicGraphCanvas {
     const qStr = qSnap === 0 ? '' : qSnap > 0 ? ` + ${qSnap}` : ` - ${Math.abs(qSnap)}`;
 
     if (this.callbacks.onSketchRecognized) {
-      this.callbacks.onSketchRecognized(`y = ${aStr}${baseStr}${qStr}`, '이차함수(포물선)');
+      this.callbacks.onSketchRecognized(`y = ${aStr}${baseStr}${qStr}`, t('Parabola', '이차함수(포물선)'));
     }
   }
 
@@ -492,7 +493,12 @@ export class DynamicGraphCanvas {
         this.selectedFirstCurveId = hitCurveId;
         if (this.callbacks.onToolHint) {
           const obj1 = this.objects.find((o) => o.id === hitCurveId);
-          this.callbacks.onToolHint(`첫 번째 곡선 [${obj1?.label || ''}] 선택됨 → 교점을 구할 두 번째 곡선을 클릭하세요.`);
+          this.callbacks.onToolHint(
+            t(
+              `Selected first curve [${obj1?.label || ''}] → Click a second curve to compute exact intersections.`,
+              `첫 번째 곡선 [${obj1?.label || ''}] 선택됨 → 교점을 구할 두 번째 곡선을 클릭하세요.`
+            )
+          );
         }
         this.requestRender();
       } else if (this.selectedFirstCurveId !== hitCurveId) {
@@ -519,7 +525,12 @@ export class DynamicGraphCanvas {
         const snap = this._snapWorldX(sx);
         this.integralPending = { curveId: targetObj.id, aExact: snap.exactX, aNum: snap.xNum };
         if (this.callbacks.onToolHint) {
-          this.callbacks.onToolHint(`적분 시작점 x = ${snap.exactX} 선택됨 → 적분 끝점(x = b) 위치를 클릭하세요.`);
+          this.callbacks.onToolHint(
+            t(
+              `Lower bound x = ${snap.exactX} selected → Click the upper bound (x = b).`,
+              `적분 시작점 x = ${snap.exactX} 선택됨 → 적분 끝점(x = b) 위치를 클릭하세요.`
+            )
+          );
         }
         this.requestRender();
       }
@@ -678,7 +689,7 @@ export class DynamicGraphCanvas {
       }
     }
 
-    // 5. Animated Locus / Trace Point Trail (Case #13 오성원)
+    // 5. Animated Locus / Trace Point Trail
     if (this.traceState && this.traceState.trail && this.traceState.trail.length > 0) {
       ctx.save();
       ctx.strokeStyle = this.traceState.color || '#ec4899';
@@ -1035,7 +1046,7 @@ export class DynamicGraphCanvas {
       const tag = document.createElement('span');
       tag.className = 'pt-kind-tag';
       tag.style.backgroundColor = style.fill;
-      tag.textContent = pt.badge || '점';
+      tag.textContent = pt.badge || t('Pt', '점');
       el.appendChild(tag);
 
       const mathSpan = document.createElement('span');

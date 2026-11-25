@@ -10,6 +10,8 @@
  * modularized under GPL-3.0.
  */
 
+import { t } from './i18n.js';
+
 let giacModule = null;
 let rawCaseval = null;
 let initPromise = null;
@@ -64,7 +66,7 @@ export function isEngineReady() {
  */
 export function giacEvalRaw(cmd) {
   if (!rawCaseval) {
-    throw new Error('Giac WASM 엔진이 아직 초기화되지 않았습니다.');
+    throw new Error(t('Giac WASM engine is not initialized yet.', 'Giac WASM 엔진이 아직 초기화되지 않았습니다.'));
   }
   const out = rawCaseval(String(cmd));
   return typeof out === 'string' ? out.trim() : String(out ?? '');
@@ -87,7 +89,7 @@ export function formatCleanNumber(val, digits = 4) {
  * - Implicit multiplication: 3x^2 -> 3*x^2, 2(x+1) -> 2*(x+1), (x-1)(x+1) -> (x-1)*(x+1), 2sin(x) -> 2*sin(x)
  * - Unicode symbols: √(x) -> sqrt(x), π -> pi, − -> -, × -> *, ÷ -> /, ² -> ^2, ³ -> ^3
  * - Absolute value: |x - 2| -> abs(x - 2)
- * - Korean CAS command aliases: 인수분해(...), 전개(...), 미분(...), 적분(...), 해(...), 극한(...)
+ * - Localized Korean CAS command input aliases (factor, expand, diff, integrate, solve, limit)
  */
 export function normalizeMathInput(input) {
   if (!input) return '';
@@ -669,7 +671,7 @@ export function evaluateCASCommand(rawExpr, params = {}) {
 
 /**
  * Full Symbolic Analysis of an Explicit Function y = f(x):
- * - Multiple symbolic representations (기본식, 인수분해, 전개식, 표준형/부분분수, 도함수 f', 이계도함수 f'', 부정적분, 소수근사)
+ * - Multiple symbolic representations (exact, factored, expanded, canonical/partial-fraction, f', f'', antiderivative, decimal)
  * - Symbolic Roots (solve(f(x)=0, x))
  * - Symbolic Extrema (solve(f'(x)=0, x) + rigorous sign-change classification)
  * - Symbolic Inflection Points (solve(f''(x)=0, x) + rigorous sign-change verification, catching x^4 counterexamples!)
@@ -686,18 +688,18 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
 
   // Check if rational or quadratic for canonical / partial-fraction form
   const denom = giacEvalRaw(`denom(simplify(${id}))`);
-  let specialFormLabel = '표준형';
+  let specialFormLabel = t('Canonical', '표준형');
   let specialFormExpr = simplified;
   if (denom !== '1' && /\bx\b/.test(denom)) {
-    specialFormLabel = '부분분수';
+    specialFormLabel = t('Part. Frac', '부분분수');
     specialFormExpr = giacEvalRaw(`partfrac(${id}, x)`);
   } else {
     const degStr = giacEvalRaw(`degree(${expanded}, x)`);
     if (degStr === '2') {
-      specialFormLabel = '완전제곱(표준형)';
+      specialFormLabel = t('Vertex Form', '완전제곱(표준형)');
       specialFormExpr = giacEvalRaw(`canonical_form(${id}, x)`);
     } else {
-      specialFormLabel = '정리식';
+      specialFormLabel = t('Normal', '정리식');
       specialFormExpr = giacEvalRaw(`normal(${id})`);
     }
   }
@@ -708,14 +710,14 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
   const approxExpr = giacEvalRaw(`evalf(${simplified}, 6)`);
 
   const forms = {
-    exact: { label: '정확식', expr: simplified, latex: giacToLatex(simplified) },
-    factored: { label: '인수분해', expr: factored, latex: giacToLatex(factored) },
-    expanded: { label: '전개식', expr: expanded, latex: giacToLatex(expanded) },
+    exact: { label: t('Exact', '정확식'), expr: simplified, latex: giacToLatex(simplified) },
+    factored: { label: t('Factored', '인수분해'), expr: factored, latex: giacToLatex(factored) },
+    expanded: { label: t('Expanded', '전개식'), expr: expanded, latex: giacToLatex(expanded) },
     special: { label: specialFormLabel, expr: specialFormExpr, latex: giacToLatex(specialFormExpr) },
-    diff1: { label: "도함수 f'(x)", expr: d1, latex: giacToLatex(d1) },
-    diff2: { label: "이계도함수 f''(x)", expr: d2, latex: giacToLatex(d2) },
-    integral: { label: '부정적분 ∫f dx', expr: integ, latex: `${giacToLatex(integ)} + C` },
-    approx: { label: '소수 근사', expr: approxExpr, latex: prettifyGiacLatex(approxExpr) }
+    diff1: { label: t("f'(x)", "도함수 f'(x)"), expr: d1, latex: giacToLatex(d1) },
+    diff2: { label: t("f''(x)", "이계도함수 f''(x)"), expr: d2, latex: giacToLatex(d2) },
+    integral: { label: t('∫f dx', '부정적분 ∫f dx'), expr: integ, latex: `${giacToLatex(integ)} + C` },
+    approx: { label: t('Decimal', '소수 근사'), expr: approxExpr, latex: prettifyGiacLatex(approxExpr) }
   };
 
   const roots = [];
@@ -734,7 +736,7 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
       if (Number.isFinite(checkVal) && Math.abs(checkVal) < 1e-5) {
         roots.push({
           kind: 'root',
-          badge: '영점',
+          badge: t('Root', '영점'),
           exactX: r.exact,
           exactY: '0',
           latexCoord: `\\left(${r.latex},\\, 0\\right)`,
@@ -770,7 +772,7 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
         const yTex = giacToLatex(yExact);
         extrema.push({
           kind: 'max',
-          badge: '극대',
+          badge: t('Max', '극대'),
           exactX: c.exact,
           exactY: yExact,
           latexCoord: `\\left(${c.latex},\\, ${yTex}\\right)`,
@@ -781,7 +783,7 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
         const yTex = giacToLatex(yExact);
         extrema.push({
           kind: 'min',
-          badge: '극소',
+          badge: t('Min', '극소'),
           exactX: c.exact,
           exactY: yExact,
           latexCoord: `\\left(${c.latex},\\, ${yTex}\\right)`,
@@ -841,7 +843,7 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
       if (isTrueInflection) {
         inflections.push({
           kind: 'inflection',
-          badge: '변곡점',
+          badge: t('Inflect', '변곡점'),
           exactX: c.exact,
           exactY: yExact,
           lowestNonzeroOrder: lowestOrder,
@@ -856,8 +858,14 @@ export function analyzeExplicitFunction(rhsExpr, params = {}, computeSpecialPoin
           lowestNonzeroOrder: lowestOrder,
           latexCoord: `\\left(${c.latex},\\, ${yTex}\\right)`,
           reason: lowestOrder
-            ? `f''(x)=0 이나 최초 비영 고계도함수 차수 k*=${lowestOrder}(짝수)로 오목·볼록 부호가 바뀌지 않아 변곡점이 아님`
-            : "f''(x)=0 이나 좌우 오목·볼록 부호가 바뀌지 않아 변곡점이 아님"
+            ? t(
+                `f''(x)=0, but lowest nonzero derivative order k*=${lowestOrder} (even) preserves concavity (not an inflection point)`,
+                `f''(x)=0 이나 최초 비영 고계도함수 차수 k*=${lowestOrder}(짝수)로 오목·볼록 부호가 바뀌지 않아 변곡점이 아님`
+              )
+            : t(
+                "f''(x)=0 without concavity sign reversal (not an inflection point)",
+                "f''(x)=0 이나 좌우 오목·볼록 부호가 바뀌지 않아 변곡점이 아님"
+              )
         });
       }
     }
@@ -933,7 +941,7 @@ export function solveSymbolicIntersections(objA, objB, params = {}) {
 
       points.push({
         kind: 'intersection',
-        badge: '교점',
+        badge: t('Intersect', '교점'),
         exactX,
         exactY,
         latexX: texX,
@@ -966,9 +974,15 @@ export function solveSymbolicIntersections(objA, objB, params = {}) {
       }
     }
     if (tangentTouchDetected) {
-      numericalComparisonNote = '접하는 교점(부호 불변): 기존 단순 수치해석(이분법)이 놓치기 쉬운 접점까지 Giac 대수 엔진이 정확히 검출했습니다.';
+      numericalComparisonNote = t(
+        'Tangential touch (no sign reversal): Certified symbolically by Giac where numerical bracketing fails.',
+        '접하는 교점(부호 불변): 기존 단순 수치해석(이분법)이 놓치기 쉬운 접점까지 Giac 대수 엔진이 정확히 검출했습니다.'
+      );
     } else if (points.some((p) => p.hasRadicalOrFraction)) {
-      numericalComparisonNote = '근삿값 오차 없이 무리수(√)·기약분수 대수적 표현을 그대로 보존합니다.';
+      numericalComparisonNote = t(
+        'Exact radical (√) and rational symbolic coordinates preserved without rounding error.',
+        '근삿값 오차 없이 무리수(√)·기약분수 대수적 표현을 그대로 보존합니다.'
+      );
     }
   }
 
@@ -1006,7 +1020,7 @@ export function constructExactTangentLine(rhsExpr, x0Exact, params = {}) {
     slopeLatex: giacToLatex(slopeExact),
     point: {
       kind: 'tangentPoint',
-      badge: '접점',
+      badge: t('Tangent', '접점'),
       exactX: String(x0Exact),
       exactY: y0Exact,
       latexCoord: `\\left(${texX0},\\, ${texY0}\\right)`,
@@ -1065,7 +1079,11 @@ export function computeTableOfValues(explicitObjs, startX = -2, endX = 3, stepX 
       const subExpr = applyParamsToExpr(obj.rhsExpr, params);
       const valExact = stripKhicasApprox(giacEvalRaw(`simplify(subst(${subExpr}, x=${xRat}))`));
       if (!valExact || valExact.includes('undef') || valExact.includes('infinity')) {
-        return { exact: '정의되지 않음', latex: '\\text{정의 안 됨}', approx: '' };
+        return {
+          exact: t('Undefined', '정의되지 않음'),
+          latex: t('\\text{Undefined}', '\\text{정의 안 됨}'),
+          approx: ''
+        };
       }
       const num = parseFloat(giacEvalRaw(`evalf(${valExact}, 10)`));
       return {
@@ -1188,13 +1206,13 @@ export function analyzeSurface3D(rhsExpr, params = {}) {
       );
       const fxxVal = parseFloat(giacEvalRaw(`evalf(subst(${fxx}, [x=(${exX}), y=(${exY})]), 10)`));
 
-      let badge = '임계점';
+      let badge = t('Critical', '임계점');
       let kind = 'critical3d';
       if (hessVal < -1e-8) {
-        badge = '안장점(Saddle)';
+        badge = t('Saddle', '안장점(Saddle)');
         kind = 'saddle3d';
       } else if (hessVal > 1e-8) {
-        badge = fxxVal < 0 ? '극대점' : '극소점';
+        badge = fxxVal < 0 ? t('Local Max', '극대점') : t('Local Min', '극소점');
         kind = fxxVal < 0 ? 'max3d' : 'min3d';
       }
 
@@ -1372,7 +1390,7 @@ export function solve3DPlaneIntersection(planeObj, targetObj, params = {}) {
     const dirZ = stripKhicasApprox(giacEvalRaw(`simplify((${aExact})*(${pl2.bExact}) - (${bExact})*(${pl2.aExact}))`));
     return {
       type: 'line3d',
-      summaryTitle: '두 평면의 교선 방향벡터',
+      summaryTitle: t('Intersection Line Direction Vector', '두 평면의 교선 방향벡터'),
       latexMain: `\\vec{v} = \\left(${giacToLatex(dirX)},\\, ${giacToLatex(dirY)},\\, ${giacToLatex(dirZ)}\\right)`,
       details: [],
       durationMs: Math.max(1, Math.round(performance.now() - t0))
@@ -1394,8 +1412,8 @@ export function solve3DPlaneIntersection(planeObj, targetObj, params = {}) {
       if (!Number.isFinite(cutRSqNum) || cutRSqNum < -1e-9) {
         return {
           type: 'empty',
-          summaryTitle: '만나지 않음 (교원 없음)',
-          latexMain: '\\text{구의 중심과 평면 사이 거리 } d > R',
+          summaryTitle: t('Disjoint (No Real Section)', '만나지 않음 (교원 없음)'),
+          latexMain: t('\\text{Center-to-plane distance } d > R', '\\text{구의 중심과 평면 사이 거리 } d > R'),
           details: [],
           durationMs: Math.max(1, Math.round(performance.now() - t0))
         };
@@ -1410,12 +1428,14 @@ export function solve3DPlaneIntersection(planeObj, targetObj, params = {}) {
 
       return {
         type: 'circle3d',
-        summaryTitle: Math.abs(cutRSqNum) < 1e-9 ? '평면과 구가 한 점에서 접함' : '구와 평면의 단면 교원 (정확해)',
+        summaryTitle: Math.abs(cutRSqNum) < 1e-9
+          ? t('Tangent at a Single Point', '평면과 구가 한 점에서 접함')
+          : t('Exact Circle of Intersection', '구와 평면의 단면 교원 (정확해)'),
         latexMain: `r = ${giacToLatex(cutRExact)}, \\quad S = ${giacToLatex(areaExact)}`,
         details: [
-          { label: '교원 중심', latex: `C\\left(${giacToLatex(cxEx)},\\, ${giacToLatex(cyEx)},\\, ${giacToLatex(czEx)}\\right)` },
-          { label: '교원 반지름', latex: `r = ${giacToLatex(cutRExact)}` },
-          { label: '단면 넓이', latex: `S = ${giacToLatex(areaExact)}` }
+          { label: t('Section Center', '교원 중심'), latex: `C\\left(${giacToLatex(cxEx)},\\, ${giacToLatex(cyEx)},\\, ${giacToLatex(czEx)}\\right)` },
+          { label: t('Section Radius', '교원 반지름'), latex: `r = ${giacToLatex(cutRExact)}` },
+          { label: t('Section Area', '단면 넓이'), latex: `S = ${giacToLatex(areaExact)}` }
         ],
         durationMs: Math.max(1, Math.round(performance.now() - t0))
       };
@@ -1428,19 +1448,19 @@ export function solve3DPlaneIntersection(planeObj, targetObj, params = {}) {
     : `(${applyParamsToExpr(targetObj.lhsExpr, params)}) - (${applyParamsToExpr(targetObj.rhsExpr, params)})`;
 
   let eliminatedEq = '';
-  let projLabel = 'xy 투영 단면식';
+  let projLabel = t('Projected Conic Section', 'xy 투영 단면식');
   if (Math.abs(normal[2]) > 1e-9) {
     const zSub = `((${dExact}) - (${aExact})*x - (${bExact})*y) / (${cExact})`;
     eliminatedEq = stripKhicasApprox(giacEvalRaw(`simplify(expand(subst(${surfZero}, z=(${zSub}))))`));
-    projLabel = 'z 소거 단면 방정식';
+    projLabel = t('z-Eliminated Section Conic', 'z 소거 단면 방정식');
   } else if (Math.abs(normal[1]) > 1e-9) {
     const ySub = `((${dExact}) - (${aExact})*x - (${cExact})*z) / (${bExact})`;
     eliminatedEq = stripKhicasApprox(giacEvalRaw(`simplify(expand(subst(${surfZero}, y=(${ySub}))))`));
-    projLabel = 'y 소거 단면 방정식';
+    projLabel = t('y-Eliminated Section Conic', 'y 소거 단면 방정식');
   } else if (Math.abs(normal[0]) > 1e-9) {
     const xSub = `((${dExact}) - (${bExact})*y - (${cExact})*z) / (${aExact})`;
     eliminatedEq = stripKhicasApprox(giacEvalRaw(`simplify(expand(subst(${surfZero}, x=(${xSub}))))`));
-    projLabel = 'x 소거 단면 방정식';
+    projLabel = t('x-Eliminated Section Conic', 'x 소거 단면 방정식');
   }
 
   return {
@@ -1453,7 +1473,7 @@ export function solve3DPlaneIntersection(planeObj, targetObj, params = {}) {
 }
 
 /**
- * Compute Solid of Revolution (x-axis rotation of y = f(x) over [a, b]) + 구분구적법 n-Discs
+ * Compute Solid of Revolution (x-axis rotation of y = f(x) over [a, b]) + Riemann n-Discs
  * Exact Symbolic Volume: V = π * ∫_a^b (f(x))^2 dx
  */
 export function computeSolidOfRevolution(rhsExpr, aExact, bExact, numDiscs = 12, params = {}) {

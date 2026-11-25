@@ -25,6 +25,7 @@ import {
 import { DynamicGraphCanvas } from './canvas-grapher.js';
 import { SpatialGraph3D } from './canvas-3d.js';
 import { SymGeoEventBus, createSymGeoSDK } from './open-api.js';
+import { t, getLang, setLang, toggleLang, applyDomI18n } from './i18n.js';
 
 const CURVE_PALETTE = [
   '#4f46e5',
@@ -40,6 +41,7 @@ const SCENARIO_KEYS = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's1
 
 const SCENARIOS = {
   s1: {
+    titleEn: '① 2D Exact Surd Roots & Conics',
     title: '① 2D 무리수 교점 · 이차곡선',
     viewMode: '2d',
     view: { cx: 0.4, cy: 0.5, scale: 60 },
@@ -51,6 +53,7 @@ const SCENARIOS = {
     autoIntersections: [[0, 1], [1, 2]]
   },
   s2: {
+    titleEn: '② 2D Cubic Extrema, Inflection & Integral',
     title: '② 2D 삼차함수 극점·변곡점·정적분',
     viewMode: '2d',
     view: { cx: 0.9, cy: 0.3, scale: 66 },
@@ -60,6 +63,7 @@ const SCENARIOS = {
     autoIntegrals: [{ idx: 0, a: '-1', b: '1' }]
   },
   s3: {
+    titleEn: '③ 2D Inflection Parity Check (x⁴ vs x⁴−4x³)',
     title: '③ 2D 변곡점 판정 반례 (x⁴ vs x⁴-4x³)',
     viewMode: '2d',
     view: { cx: 1.0, cy: -5.0, scale: 26 },
@@ -69,6 +73,7 @@ const SCENARIOS = {
     ]
   },
   s4: {
+    titleEn: '④ 2D Weierstrass & Non-Smooth Cusps',
     title: '④ 2D 바이어슈트라스 & 첨점 미분불가능',
     viewMode: '2d',
     view: { cx: 0, cy: 0.3, scale: 95 },
@@ -78,6 +83,7 @@ const SCENARIOS = {
     ]
   },
   s5: {
+    titleEn: '⑤ 3D Sphere–Plane Section (Giac + BVH)',
     title: '⑤ 3D 구와 평면의 단면 교원 (Giac + BVH)',
     viewMode: '3d',
     cutaway: false,
@@ -89,6 +95,7 @@ const SCENARIOS = {
     autoSlices3D: [[2, 1]] // plane p1 ∩ sphere s1
   },
   s6: {
+    titleEn: '⑥ 3D Conic Sections (Circle, Ellipse, Parabola, Hyperbola)',
     title: '⑥ 3D 원뿔곡선 단면 유도 (원·타원·포물선·쌍곡선)',
     viewMode: '3d',
     cutaway: false,
@@ -100,6 +107,7 @@ const SCENARIOS = {
     autoSlices3D: [[2, 1]]
   },
   s7: {
+    titleEn: '⑦ 2D↔3D Solid of Revolution & Riemann Discs',
     title: '⑦ 2D↔3D 회전체 & 구분구적법 (미적분 II)',
     viewMode: 'split',
     view: { cx: 2.0, cy: 0.6, scale: 58 },
@@ -110,6 +118,7 @@ const SCENARIOS = {
     autoRevolutions: [{ idx: 0, a: '0', b: '4', numDiscs: 12, showDiscs: true }]
   },
   s8: {
+    titleEn: '⑧ 3D Saddle Surface, CSG Subtraction & GLB',
     title: '⑧ 3D 이변수 안장면 · CSG 입체 빼기 · GLB',
     viewMode: '3d',
     cutaway: false,
@@ -119,6 +128,7 @@ const SCENARIOS = {
     autoCSG: ['sphere_minus_cyl']
   },
   s9: {
+    titleEn: '⑨ Diff. Geometry: Frenet–Serret Triad & Gaussian Curvature K',
     title: '⑨ 대학 미분기하: 공간나선 프레네-세레 틀(T,N,B) & 가우스 곡률 K',
     viewMode: '3d',
     cutaway: false,
@@ -128,6 +138,7 @@ const SCENARIOS = {
     ]
   },
   s10: {
+    titleEn: '⑩ Linear Algebra: 3D Map, Eigenspaces & Jordan Form',
     title: '⑩ 대학 선형대수: 3D 선형변환 · 고유공간 · 조르당 표준형',
     viewMode: '3d',
     cutaway: false,
@@ -139,6 +150,7 @@ const SCENARIOS = {
     ]
   },
   s11: {
+    titleEn: '⑪ Vector Calculus (Curl/Div), Symbolic ODE & Laplace',
     title: '⑪ 대학 벡터해석(Curl·Div) & 상미분방정식·라플라스',
     viewMode: '3d',
     cutaway: false,
@@ -251,7 +263,9 @@ function updateEngineBadge(ms) {
   const el = document.getElementById('engineStatus');
   if (!el) return;
   el.classList.remove('is-loading');
-  el.textContent = ms > 0 ? `Giac CAS (${ms}ms)` : 'Giac CAS 준비됨';
+  el.removeAttribute('data-i18n');
+  if (ms !== undefined && ms > 0) state.lastCasMs = ms;
+  el.textContent = state.lastCasMs > 0 ? `Giac CAS (${state.lastCasMs}ms)` : t('Giac CAS Ready', 'Giac CAS 준비됨');
 }
 
 function showCanvasHint(msg, timeout = 3200) {
@@ -298,7 +312,7 @@ function refreshSymbolicScene(fullSpecialRecompute = true) {
           simplified: obj.rhsExpr,
           forms: {
             exact: {
-              label: '급수식',
+              label: t('Series', '급수식'),
               expr: obj.rhsExpr,
               latex: '\\cos x + \\frac{1}{2}\\cos(5x) + \\frac{1}{4}\\cos(25x) + \\frac{1}{8}\\cos(125x)'
             }
@@ -316,6 +330,9 @@ function refreshSymbolicScene(fullSpecialRecompute = true) {
         ? ana
         : { ...obj.analysis, simplified: ana.simplified, forms: ana.forms };
       obj.evaluator = buildCompiledEvaluator(obj.rhsExpr, paramNames);
+      if (obj.tangentPoint) {
+        obj.tangentPoint.kindLabel = t('Point of Tangency', '접점');
+      }
       if (fullSpecialRecompute && ana.nonInflectionWarnings?.length) {
         eventBus.emit('cas:warning_triggered', {
           label: obj.label,
@@ -384,6 +401,9 @@ function refreshSymbolicScene(fullSpecialRecompute = true) {
         obj.result = computeSolidOfRevolution(fnObj.rhsExpr, obj.aExact, obj.bExact, obj.numDiscs, params);
         totalMs += obj.result.durationMs;
       }
+    } else if (obj.kind === 'cas' && fullSpecialRecompute) {
+      obj.result = evaluateCASCommand(obj.giacExpr, params);
+      totalMs += obj.result.durationMs;
     }
   }
 
@@ -718,6 +738,15 @@ export function addInputExpression(rawText, options = {}) {
 /**
  * Create 3D Symbolic Plane-Surface Intersection Card (Giac + BVH)
  */
+function getCSGLabel(preset) {
+  const names = {
+    sphere_minus_cyl: t('CSG Solid: Sphere − Cylinder (Subtract)', 'CSG 입체: 구 − 원기둥 (차집합)'),
+    box_union_sphere: t('CSG Solid: Box ∪ Sphere (Union)', 'CSG 입체: 정육면체 ∪ 구 (합집합)'),
+    sphere_intersect_box: t('CSG Solid: Sphere ∩ Box (Intersect)', 'CSG 입체: 구 ∩ 정육면체 (교집합)')
+  };
+  return names[preset] || t('CSG Solid', 'CSG 입체');
+}
+
 export function create3DSliceCard(planeId, targetId, silent = false) {
   const plObj = state.objects.find((o) => o.id === Number(planeId) && o.kind === 'plane3d');
   const tgObj = state.objects.find((o) => o.id === Number(targetId));
@@ -727,7 +756,8 @@ export function create3DSliceCard(planeId, targetId, silent = false) {
   const sliceObj = {
     id: state.nextId++,
     kind: 'slice3d',
-    label: `단면(${plObj.label} ∩ ${tgObj.label})`,
+    pairLabel: `${plObj.label} ∩ ${tgObj.label}`,
+    label: `${t('Section', '단면')}(${plObj.label} ∩ ${tgObj.label})`,
     planeId: plObj.id,
     targetId: tgObj.id,
     result: res,
@@ -740,15 +770,20 @@ export function create3DSliceCard(planeId, targetId, silent = false) {
     if (state.viewMode === '2d') setViewMode('3d');
     syncAllViewports();
     renderAlgebraPanel();
-    showCanvasHint(`[${plObj.label} ∩ ${tgObj.label}] 3D 단면 대수 방정식 및 BVH 절단선 생성 완료`);
+    showCanvasHint(
+      t(
+        `[${plObj.label} ∩ ${tgObj.label}] Computed exact symbolic section & BVH contour.`,
+        `[${plObj.label} ∩ ${tgObj.label}] 3D 단면 대수 방정식 및 BVH 절단선 생성 완료`
+      )
+    );
   }
 
-  eventBus.emit('SLICE3D_COMPUTED', { pair: sliceObj.label, type: res.type });
+  eventBus.emit('SLICE3D_COMPUTED', { pair: sliceObj.pairLabel, type: res.type });
   return sliceObj;
 }
 
 /**
- * Create 2D -> 3D Solid of Revolution + 구분구적법 Discs Card
+ * Create 2D -> 3D Solid of Revolution + Riemann Discs Card
  */
 export function createRevolution3D(fnId, aExact = '0', bExact = '3', numDiscs = 12, showDiscs = true, silent = false) {
   const fnObj = state.objects.find((o) => o.id === Number(fnId) && o.kind === 'explicit');
@@ -758,7 +793,7 @@ export function createRevolution3D(fnId, aExact = '0', bExact = '3', numDiscs = 
   const revObj = {
     id: state.nextId++,
     kind: 'revolution3d',
-    label: `회전체(${fnObj.label})`,
+    label: `${t('Revolve', '회전체')}(${fnObj.label})`,
     sourceFnId: fnObj.id,
     fnLabel: fnObj.label,
     color: fnObj.color,
@@ -776,7 +811,12 @@ export function createRevolution3D(fnId, aExact = '0', bExact = '3', numDiscs = 
     if (state.viewMode === '2d') setViewMode('split');
     syncAllViewports();
     renderAlgebraPanel();
-    showCanvasHint(`[${fnObj.label}] x축 회전체 생성 완료! 정확 부피 V = ${res.volExact}`);
+    showCanvasHint(
+      t(
+        `[${fnObj.label}] x-axis solid of revolution created. Exact volume V = ${res.volExact}`,
+        `[${fnObj.label}] x축 회전체 생성 완료! 정확 부피 V = ${res.volExact}`
+      )
+    );
   }
 
   eventBus.emit('REVOLUTION3D_CREATED', { fn: fnObj.label, volumeExact: res.volExact });
@@ -787,11 +827,6 @@ export function createRevolution3D(fnId, aExact = '0', bExact = '3', numDiscs = 
  * Create CSG Boolean Solid (`three-bvh-csg`)
  */
 export function addCSGSolid(preset = 'sphere_minus_cyl', silent = false) {
-  const names = {
-    sphere_minus_cyl: 'CSG 입체: 구 − 원기둥 (차집합)',
-    box_union_sphere: 'CSG 입체: 정육면체 ∪ 구 (합집합)',
-    sphere_intersect_box: 'CSG 입체: 구 ∩ 정육면체 (교집합)'
-  };
   // Replace existing CSG object if present for clean switching
   state.objects = state.objects.filter((o) => o.kind !== 'csg3d');
 
@@ -799,7 +834,7 @@ export function addCSGSolid(preset = 'sphere_minus_cyl', silent = false) {
     id: state.nextId++,
     kind: 'csg3d',
     preset,
-    label: names[preset] || 'CSG 입체',
+    label: getCSGLabel(preset),
     color: '#7c3aed',
     visible: true
   };
@@ -809,7 +844,12 @@ export function addCSGSolid(preset = 'sphere_minus_cyl', silent = false) {
     if (state.viewMode === '2d') setViewMode('3d');
     syncAllViewports();
     renderAlgebraPanel();
-    showCanvasHint(`${csgObj.label} 생성 완료! [.GLB 저장]으로 파워포인트·로블록스에 바로 넣을 수 있습니다.`);
+    showCanvasHint(
+      t(
+        `${csgObj.label} created. Click [Save .GLB] or [.STL] to export the 3D manifold.`,
+        `${csgObj.label} 생성 완료! [.GLB 저장]으로 파워포인트·로블록스에 바로 넣을 수 있습니다.`
+      )
+    );
   }
 
   eventBus.emit('CSG_SOLID_CREATED', { preset });
@@ -854,7 +894,12 @@ export function createSymbolicIntersection(idA, idB, silent = false) {
   if (!silent) {
     syncAllViewports();
     renderAlgebraPanel();
-    showCanvasHint(`[${interObj.label}] 대수적 교점 ${res.points.length}개 계산 완료`);
+    showCanvasHint(
+      t(
+        `[${interObj.label}] Solved ${res.points.length} exact symbolic intersection(s).`,
+        `[${interObj.label}] 대수적 교점 ${res.points.length}개 계산 완료`
+      )
+    );
   }
   eventBus.emit('INTERSECTION_SOLVED', { pair: interObj.label, count: res.points.length });
   return interObj;
@@ -872,7 +917,9 @@ export function createSymbolicTangent(curveId, x0Exact) {
     tangentPoint: tg.point,
     showSpecial: false
   });
-  showCanvasHint(`[${obj.label}] x = ${x0Exact} 접선 작도 완료`);
+  showCanvasHint(
+    t(`[${obj.label}] Constructed exact tangent line at x = ${x0Exact}.`, `[${obj.label}] x = ${x0Exact} 접선 작도 완료`)
+  );
   return created;
 }
 
@@ -898,7 +945,7 @@ export function createSymbolicIntegral(curveId, aExact, bExact, silent = false) 
   if (!silent) {
     syncAllViewports();
     renderAlgebraPanel();
-    showCanvasHint(`[${fnObj.label}] 정적분 = ${res.exact}`);
+    showCanvasHint(t(`[${fnObj.label}] Definite integral = ${res.exact}`, `[${fnObj.label}] 정적분 = ${res.exact}`));
   }
   return intObj;
 }
@@ -1043,10 +1090,14 @@ function updateToolSelectors() {
     plSel.appendChild(o);
   });
 
-  targets3D.forEach((t) => {
+  targets3D.forEach((tg) => {
     const o = document.createElement('option');
-    o.value = String(t.id);
-    o.textContent = `${t.label}`;
+    o.value = String(tg.id);
+    if (tg.kind === 'revolution3d') {
+      o.textContent = `${t('Revolve', '회전체')}(${tg.fnLabel})`;
+    } else {
+      o.textContent = `${tg.label}`;
+    }
     sfSel.appendChild(o);
   });
 }
@@ -1074,7 +1125,7 @@ function renderSliderRow(row, obj) {
 
   const snapBtn = document.createElement('button');
   snapBtn.className = `cas-chip${obj.integerSnap ? ' is-active' : ''}`;
-  snapBtn.textContent = '정수 스냅';
+  snapBtn.textContent = t('Int Snap', '정수 스냅');
   snapBtn.onclick = () => {
     obj.integerSnap = !obj.integerSnap;
     if (obj.integerSnap) obj.value = Math.round(obj.value);
@@ -1178,7 +1229,7 @@ function renderExplicitRow(row, obj) {
 
   const editBtn = document.createElement('button');
   editBtn.className = 'row-icon-btn';
-  editBtn.textContent = '수정';
+  editBtn.textContent = t('Edit', '수정');
   editBtn.onclick = () => {
     const inp = document.getElementById('mathInput');
     if (inp) {
@@ -1220,7 +1271,9 @@ function renderExplicitRow(row, obj) {
       if (Object.keys(obj.analysis.forms).length > 1) {
         const spBtn = document.createElement('button');
         spBtn.className = `cas-chip accent-purple${obj.showSpecial ? ' is-on' : ''}`;
-        spBtn.textContent = obj.showSpecial ? '★ 극점·변곡점 ON' : '☆ 극점·변곡점';
+        spBtn.textContent = obj.showSpecial
+          ? t('★ Extrema·Inflect ON', '★ 극점·변곡점 ON')
+          : t('☆ Extrema·Inflect', '☆ 극점·변곡점');
         spBtn.onclick = () => {
           obj.showSpecial = !obj.showSpecial;
           refreshSymbolicScene(true);
@@ -1231,7 +1284,7 @@ function renderExplicitRow(row, obj) {
       const isTracing = state.traceAnim && state.traceAnim.objId === obj.id;
       const traceBtn = document.createElement('button');
       traceBtn.className = `cas-chip accent-pink${isTracing ? ' is-on' : ''}`;
-      traceBtn.textContent = isTracing ? '⏹ 자취' : '▶ 자취';
+      traceBtn.textContent = isTracing ? t('⏹ Trace', '⏹ 자취') : t('▶ Trace', '▶ 자취');
       traceBtn.onclick = () => togglePointTrace(obj.id);
       chips.appendChild(traceBtn);
 
@@ -1240,7 +1293,7 @@ function renderExplicitRow(row, obj) {
       revBtn.className = 'cas-chip';
       revBtn.style.borderColor = '#93c5fd';
       revBtn.style.color = '#1d4ed8';
-      revBtn.textContent = '🔄 3D 회전체';
+      revBtn.textContent = t('🔄 3D Revolve', '🔄 3D 회전체');
       revBtn.onclick = () => createRevolution3D(obj.id, '0', '3', 12, true);
       chips.appendChild(revBtn);
     }
@@ -1300,7 +1353,7 @@ function renderExplicitRow(row, obj) {
       for (const w of obj.analysis.nonInflectionWarnings || []) {
         const wb = document.createElement('div');
         wb.className = 'sp-warn-box';
-        wb.textContent = `반례 주의 (x = ${w.exactX}): ${w.reason}`;
+        wb.textContent = `${t('Parity Diagnostic', '반례 주의')} (x = ${w.exactX}): ${w.reason}`;
         sub.appendChild(wb);
       }
       row.appendChild(sub);
@@ -1344,7 +1397,7 @@ function renderSurface3DRow(row, obj) {
 
     const pBtn = document.createElement('button');
     pBtn.className = `cas-chip${obj.showPartials ? ' is-active' : ''}`;
-    pBtn.textContent = '편도함수 ∂z/∂x, ∂z/∂y';
+    pBtn.textContent = t('Partials ∂z/∂x, ∂z/∂y', '편도함수 ∂z/∂x, ∂z/∂y');
     pBtn.onclick = () => {
       obj.showPartials = !obj.showPartials;
       renderAlgebraPanel();
@@ -1353,7 +1406,9 @@ function renderSurface3DRow(row, obj) {
 
     const spBtn = document.createElement('button');
     spBtn.className = `cas-chip accent-purple${obj.showSpecial ? ' is-on' : ''}`;
-    spBtn.textContent = obj.showSpecial ? '★ 안장점·극점 ON' : '☆ 안장점·극점';
+    spBtn.textContent = obj.showSpecial
+      ? t('★ Saddle·Extrema ON', '★ 안장점·극점 ON')
+      : t('☆ Saddle·Extrema', '☆ 안장점·극점');
     spBtn.onclick = () => {
       obj.showSpecial = !obj.showSpecial;
       syncAllViewports();
@@ -1363,17 +1418,21 @@ function renderSurface3DRow(row, obj) {
 
     const tpBtn = document.createElement('button');
     tpBtn.className = 'cas-chip';
-    tpBtn.textContent = '╱ (1, 1) 접평면 작도';
+    tpBtn.textContent = t('╱ Tangent Plane (1, 1)', '╱ (1, 1) 접평면 작도');
     tpBtn.onclick = () => {
       const tp = constructTangentPlane3D(obj.rhsExpr, '1', '1', getSliderParams());
       addInputExpression(`tp_${obj.label}: ${tp.planeEqRaw}`, { color: '#d97706' });
-      showCanvasHint(`점 ${tp.pointLatex} 에서의 3D 대수 접평면 생성 완료`);
+      showCanvasHint(
+        t(`Constructed exact 3D tangent plane at ${tp.pointLatex}.`, `점 ${tp.pointLatex} 에서의 3D 대수 접평면 생성 완료`)
+      );
     };
     chips.appendChild(tpBtn);
 
     const kBtn = document.createElement('button');
     kBtn.className = `cas-chip accent-pink${obj.showCurvatureMap ? ' is-on' : ''}`;
-    kBtn.textContent = obj.showCurvatureMap ? '🌈 가우스곡률 K ON' : '🌈 가우스곡률 K';
+    kBtn.textContent = obj.showCurvatureMap
+      ? t('🌈 Gauss K ON', '🌈 가우스곡률 K ON')
+      : t('🌈 Gauss K', '🌈 가우스곡률 K');
     kBtn.onclick = () => {
       obj.showCurvatureMap = !obj.showCurvatureMap;
       syncAllViewports();
@@ -1463,7 +1522,7 @@ function renderPlane3DRow(row, obj) {
     sub.className = 'cas-output-card';
     sub.style.borderLeftColor = obj.color;
     const m = document.createElement('div');
-    renderLatex(`\\text{법선벡터 } ${obj.analysis.normalLatex}`, m);
+    renderLatex(`${t('\\text{Normal } ', '\\text{법선벡터 } ')}${obj.analysis.normalLatex}`, m);
     sub.appendChild(m);
     row.appendChild(sub);
   }
@@ -1505,7 +1564,7 @@ function renderImplicit3DRow(row, obj) {
     box.className = 'cas-output-card';
     box.style.borderLeftColor = obj.color;
     const m = document.createElement('div');
-    renderLatex(`\\text{구 중심 } ${si.centerLatex}, \\quad R = ${si.rLatex}`, m);
+    renderLatex(`${t('\\text{Sphere Center } ', '\\text{구 중심 } ')}${si.centerLatex}, \\quad R = ${si.rLatex}`, m);
     box.appendChild(m);
     row.appendChild(box);
   }
@@ -1526,7 +1585,8 @@ function renderSlice3DRow(row, obj) {
   const title = document.createElement('div');
   title.className = 'alg-math';
   title.style.fontWeight = '700';
-  title.textContent = `${obj.label} — ${obj.result?.summaryTitle || '단면 교선'}`;
+  const dynSliceLbl = obj.pairLabel ? `${t('Section', '단면')}(${obj.pairLabel})` : obj.label;
+  title.textContent = `${dynSliceLbl} — ${obj.result?.summaryTitle || t('Cross-Section', '단면 교선')}`;
   left.appendChild(title);
   head.appendChild(left);
 
@@ -1593,7 +1653,7 @@ function renderRevolution3DRow(row, obj) {
   mathDiv.className = 'alg-math';
   if (obj.result) {
     renderLatex(
-      `V_{\\text{회전체}} = \\pi \\int_{${obj.result.aLatex}}^{${obj.result.bLatex}} \\{${obj.fnLabel}(x)\\}^2 dx = ${obj.result.volLatex}`,
+      `V_{\\text{${t('rev', '회전체')}}} = \\pi \\int_{${obj.result.aLatex}}^{${obj.result.bLatex}} \\{${obj.fnLabel}(x)\\}^2 dx = ${obj.result.volLatex}`,
       mathDiv
     );
   }
@@ -1613,7 +1673,9 @@ function renderRevolution3DRow(row, obj) {
 
     const discToggle = document.createElement('button');
     discToggle.className = `cas-chip${obj.showDiscs ? ' is-active' : ''}`;
-    discToggle.textContent = obj.showDiscs ? `구분구적 원판 ON (n=${obj.numDiscs})` : '구분구적 원판 보기';
+    discToggle.textContent = obj.showDiscs
+      ? t(`Riemann Discs ON (n=${obj.numDiscs})`, `구분구적 원판 ON (n=${obj.numDiscs})`)
+      : t('Show Riemann Discs', '구분구적 원판 보기');
     discToggle.onclick = () => {
       obj.showDiscs = !obj.showDiscs;
       syncAllViewports();
@@ -1644,7 +1706,10 @@ function renderRevolution3DRow(row, obj) {
 
       const sumNote = document.createElement('span');
       sumNote.className = 'slider-minmax';
-      sumNote.textContent = `Vₙ ≈ ${formatCleanNumber(obj.result.discSum, 3)} (정확값 ≈ ${formatCleanNumber(obj.result.volNum, 3)})`;
+      sumNote.textContent = t(
+        `Vₙ ≈ ${formatCleanNumber(obj.result.discSum, 3)} (Exact ≈ ${formatCleanNumber(obj.result.volNum, 3)})`,
+        `Vₙ ≈ ${formatCleanNumber(obj.result.discSum, 3)} (정확값 ≈ ${formatCleanNumber(obj.result.volNum, 3)})`
+      );
 
       ctrl.append(lbl, range, sumNote);
       row.appendChild(ctrl);
@@ -1671,7 +1736,7 @@ function renderCSG3DRow(row, obj) {
   const title = document.createElement('div');
   title.className = 'alg-math';
   title.style.fontWeight = '700';
-  title.textContent = obj.label;
+  title.textContent = obj.preset ? getCSGLabel(obj.preset) : obj.label;
   left.appendChild(title);
   head.appendChild(left);
 
@@ -1714,7 +1779,7 @@ function renderSpaceCurve3DRow(row, obj) {
     box.className = 'cas-output-card';
     const m = document.createElement('div');
     renderLatex(
-      `\\text{곡률 } \\kappa(t) = ${obj.analysis.kappaLatex}, \\quad \\text{열률 } \\tau(t) = ${obj.analysis.tauLatex}`,
+      `\\text{${t('Curvature', '곡률')}} \\; \\kappa(t) = ${obj.analysis.kappaLatex}, \\quad \\text{${t('Torsion', '열률')}} \\; \\tau(t) = ${obj.analysis.tauLatex}`,
       m
     );
     box.appendChild(m);
@@ -1741,7 +1806,7 @@ function renderSpaceCurve3DRow(row, obj) {
     });
     const note = document.createElement('span');
     note.className = 'slider-minmax';
-    note.textContent = '프레네 틀(T·N·B) & 접촉원 이동';
+    note.textContent = t('Frenet (T·N·B) & Osculating Circle', '프레네 틀(T·N·B) & 접촉원 이동');
     ctrl.append(lbl, range, note);
     row.appendChild(ctrl);
   }
@@ -1793,7 +1858,7 @@ function renderMatrix3DRow(row, obj) {
     b2.style.marginLeft = '0';
     b2.style.borderLeftColor = '#059669';
     const m2 = document.createElement('div');
-    renderLatex(`\\text{조르당 표준형 } J = ${obj.analysis.jordanJLatex}`, m2);
+    renderLatex(`\\text{${t('Jordan Form', '조르당 표준형')}} \\; J = ${obj.analysis.jordanJLatex}`, m2);
     b2.appendChild(m2);
     sub.appendChild(b2);
     row.appendChild(sub);
@@ -1802,7 +1867,7 @@ function renderMatrix3DRow(row, obj) {
     ctrl.className = 'ggb-slider-controls';
     const lbl = document.createElement('span');
     lbl.className = 'slider-minmax';
-    lbl.textContent = `변환율 s=${formatCleanNumber(obj.interp, 2)}`;
+    lbl.textContent = `${t('Blend', '변환율')} s=${formatCleanNumber(obj.interp, 2)}`;
     const range = document.createElement('input');
     range.type = 'range';
     range.className = 'ggb-range';
@@ -1812,12 +1877,12 @@ function renderMatrix3DRow(row, obj) {
     range.value = String(obj.interp);
     range.addEventListener('input', () => {
       obj.interp = Number(range.value);
-      lbl.textContent = `변환율 s=${formatCleanNumber(obj.interp, 2)}`;
+      lbl.textContent = `${t('Blend', '변환율')} s=${formatCleanNumber(obj.interp, 2)}`;
       syncAllViewports();
     });
     const note = document.createElement('span');
     note.className = 'slider-minmax';
-    note.textContent = '(1−s)I + sM 연속변형';
+    note.textContent = t('(1−s)I + sM Deformation', '(1−s)I + sM 연속변형');
     ctrl.append(lbl, range, note);
     row.appendChild(ctrl);
   }
@@ -1907,7 +1972,10 @@ function renderIntersectionRow(row, obj) {
   const title = document.createElement('div');
   title.className = 'alg-math';
   title.style.fontWeight = '700';
-  title.textContent = `교점(${obj.label}) — ${obj.points.length}개`;
+  title.textContent = t(
+    `Intersections(${obj.label}) — ${obj.points.length}`,
+    `교점(${obj.label}) — ${obj.points.length}개`
+  );
   left.appendChild(title);
   head.appendChild(left);
   const delBtn = document.createElement('button');
@@ -2004,7 +2072,7 @@ function renderCasRow(row, obj) {
   actions.className = 'alg-actions';
   const approxBtn = document.createElement('button');
   approxBtn.className = 'cas-chip';
-  approxBtn.textContent = obj.showApprox ? '정확해' : '근사';
+  approxBtn.textContent = obj.showApprox ? t('Exact', '정확해') : t('Approx', '근사');
   approxBtn.onclick = () => {
     obj.showApprox = !obj.showApprox;
     renderAlgebraPanel();
@@ -2036,7 +2104,10 @@ function buildValuesTable() {
 
   const explicitObjs = state.objects.filter((o) => o.kind === 'explicit' && o.visible && !o.isTangent);
   if (explicitObjs.length === 0) {
-    wrap.innerHTML = '<p style="color:#64748b; font-size:13px;">표시할 2D 양함수 그래프가 없습니다.</p>';
+    wrap.innerHTML = `<p style="color:#64748b; font-size:13px;">${t(
+      'No visible 2D explicit functions to tabulate.',
+      '표시할 2D 양함수 그래프가 없습니다.'
+    )}</p>`;
     state.tablePoints = [];
     syncAllViewports();
     return;
@@ -2111,7 +2182,7 @@ function appendTutorBubble(role, text, latexBlock = null, actionLabel = null, im
   if (actionLabel) {
     const tag = document.createElement('div');
     tag.className = 'tutor-action-tag';
-    tag.textContent = `⚡ 자동 작도: ${actionLabel}`;
+    tag.textContent = `⚡ ${t('Auto-constructed', '자동 작도')}: ${actionLabel}`;
     div.appendChild(tag);
   }
   const p = document.createElement('div');
@@ -2137,75 +2208,129 @@ function appendTutorBubble(role, text, latexBlock = null, actionLabel = null, im
   wrap.scrollTop = wrap.scrollHeight;
 }
 
+function resetWelcomeGuideBubble() {
+  const wrap = document.getElementById('tutorMessages');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  appendTutorBubble(
+    'tutor',
+    t(
+      '2D planar and 3D spatial symbolic engines are ready. Click a quick-prompt chip above to construct 3D sphere–plane sections, conic slices, solids of revolution, or exact radical intersections.',
+      '2D 평면과 3D 공간기하 대수 엔진이 모두 연결되었습니다! 상단 빠른 질문 버튼을 눌러 3D 구·평면 교원, 원뿔곡선 단면, 회전체·구분구적법 부피를 바로 작도해 보세요.'
+    )
+  );
+}
+
 function handleTutorQuestion(questionText) {
   const q = String(questionText || '').trim();
   if (!q && !state.pastedImageDataUrl) return;
 
-  appendTutorBubble('student', q || '(화면 캡처 질문)', null, null, state.pastedImageDataUrl);
+  const chipLabels = {
+    sphere_slice: t('Show the 3D sphere–plane intersection circle', '구와 평면의 3D 단면 교원을 보여줘'),
+    conic_slice: t('Slice a 3D cone by a plane to derive conic sections', '원뿔을 평면으로 잘라 원뿔곡선을 보여줘'),
+    revolution_solid: t('Show a 3D solid of revolution and Riemann discs', '회전체와 구분구적법 부피를 보여줘'),
+    surd_intersections: t('Construct exact radical intersections of two curves', '두 그래프의 정확한 교점을 작도해줘'),
+    x4_counterexample: t('Why is x = 0 not an inflection point of x⁴?', '왜 x^4은 x=0이 변곡점이 아닌가요?')
+  };
+  const displayQ = chipLabels[q] || q;
+
+  appendTutorBubble('student', displayQ || t('(Screenshot inquiry)', '(화면 캡처 질문)'), null, null, state.pastedImageDataUrl);
   state.pastedImageDataUrl = null;
   document.getElementById('pastePreview').classList.add('is-hidden');
 
-  if (/구와\s*평면|3D\s*구|교원/.test(q)) {
+  if (q === 'sphere_slice' || /sphere|slice|구와\s*평면|3D\s*구|교원/i.test(q)) {
     loadScenario('s5');
     appendTutorBubble(
       'tutor',
-      '3D 공간에 구 x²+y²+z²=9 와 절단 평면 x+y+2z=k 를 작도하고 단면 교원을 붉은 선으로 표시했습니다! 대수창의 슬라이더 k 값을 움직일 때 구의 중심에서 평면까지의 거리 d 와 단면 반지름 r 사이에 어떤 피타고라스 관계식이 성립할까요?',
+      t(
+        'Constructed sphere x²+y²+z²=9 and cutting plane x+y+2z=k in 3D, highlighting their intersection circle in red. As you drag slider k, how does the orthogonal distance d from the center relate to the section radius r by the Pythagorean theorem?',
+        '3D 공간에 구 x²+y²+z²=9 와 절단 평면 x+y+2z=k 를 작도하고 단면 교원을 붉은 선으로 표시했습니다! 대수창의 슬라이더 k 값을 움직일 때 구의 중심에서 평면까지의 거리 d 와 단면 반지름 r 사이에 어떤 피타고라스 관계식이 성립할까요?'
+      ),
       'r = \\sqrt{R^2 - d^2} = \\frac{\\sqrt{30}}{2}, \\quad S = \\frac{15\\pi}{2}',
-      '3D 구·평면 단면 교원 작도'
+      t('3D Sphere–Plane Section', '3D 구·평면 단면 교원 작도')
     );
     return;
   }
 
-  if (/원뿔곡선|원뿔/.test(q)) {
+  if (q === 'conic_slice' || /conic|cone|원뿔곡선|원뿔/i.test(q)) {
     loadScenario('s6');
     appendTutorBubble(
       'tutor',
-      '원뿔 x²+y²=z² 과 기울기 슬라이더 평면 z = mx + 1.5 를 3D로 구성했습니다! 대수창에서 기울기 m 을 0(원) → 0.5(타원) → 1(포물선) → 1.5(쌍곡선)로 바꿔보며 모선의 기울기와 평면 기울기의 관계를 관찰해 보세요.',
-      'm = 1 \\implies -3x + y^2 - \\frac{9}{4} = 0 \\;(\\text{포물선})',
-      '3D 원뿔곡선 단면 실험실'
+      t(
+        'Loaded double cone x²+y²=z² and tilted plane z = mx + 1.5 in 3D. Sweep slope m across 0 (circle) → 0.5 (ellipse) → 1 (parabola) → 1.5 (hyperbola) to compare the plane tilt against the cone generator slope.',
+        '원뿔 x²+y²=z² 과 기울기 슬라이더 평면 z = mx + 1.5 를 3D로 구성했습니다! 대수창에서 기울기 m 을 0(원) → 0.5(타원) → 1(포물선) → 1.5(쌍곡선)로 바꿔보며 모선의 기울기와 평면 기울기의 관계를 관찰해 보세요.'
+      ),
+      `m = 1 \\implies -3x + y^2 - \\frac{9}{4} = 0 \\;(\\text{${t('Parabola', '포물선')}})`,
+      t('3D Conic Section Lab', '3D 원뿔곡선 단면 실험실')
     );
     return;
   }
 
-  if (/회전체|구분구적|부피/.test(q)) {
+  if (q === 'revolution_solid' || /revolve|revolution|riemann|volume|회전체|구분구적|부피/i.test(q)) {
     loadScenario('s7');
     appendTutorBubble(
       'tutor',
-      '2D+3D 동시 연동 화면으로 전환하여 f(x)=√x 의 x축 회전체와 구분구적법 원기둥 원판(n=12)을 생성했습니다! 원판 개수 슬라이더 n 을 점점 키우면 원판 부피 합 Vₙ 이 어떤 대수적 극한값에 가까워지나요?',
+      t(
+        'Switched to coupled 2D+3D view and revolved f(x)=√x around the x-axis with n=12 midpoint Riemann discs. As you increase slider n, to what exact symbolic limit does the disc volume sum Vₙ converge?',
+        '2D+3D 동시 연동 화면으로 전환하여 f(x)=√x 의 x축 회전체와 구분구적법 원기둥 원판(n=12)을 생성했습니다! 원판 개수 슬라이더 n 을 점점 키우면 원판 부피 합 Vₙ 이 어떤 대수적 극한값에 가까워지나요?'
+      ),
       'V = \\pi \\int_0^4 (\\sqrt{x})^2 dx = 8\\pi',
-      '2D↔3D 회전체 및 구분구적 원판 작도'
+      t('2D↔3D Solid of Revolution & Discs', '2D↔3D 회전체 및 구분구적 원판 작도')
     );
     return;
   }
 
-  if (/x\^4|x⁴|반례/.test(q)) {
+  if (q === 'x4_counterexample' || /x\^4|x⁴|inflection|parity|반례/i.test(q)) {
     loadScenario('s3');
     appendTutorBubble(
       'tutor',
-      '2D 변곡점 반례 화면을 열었습니다. g(x)=x⁴ 은 g\'\'(0)=0 이지만 x=0 좌우에서 이계도함수 12x² 의 부호가 모두 양수(+)이므로 오목·볼록이 바뀌지 않습니다. 따라서 변곡점이 아닌 극소점이 됩니다!',
-      'g(x) = x^4 \\implies g\'\'(x) = 12x^2 \\ge 0',
-      '2D 변곡점 반례 비교'
+      t(
+        "Opened the 2D inflection parity comparison. Although g(x)=x⁴ satisfies g''(0)=0, its lowest nonzero derivative at x=0 has even order k*=4 (g''''(0)=24 > 0), so concavity stays positive on both sides—making x=0 a flat local minimum rather than an inflection point.",
+        '2D 변곡점 반례 화면을 열었습니다. g(x)=x⁴ 은 g\'\'(0)=0 이지만 x=0 좌우에서 이계도함수 12x² 의 부호가 모두 양수(+)이므로 오목·볼록이 바뀌지 않습니다. 따라서 변곡점이 아닌 극소점이 됩니다!'
+      ),
+      'g(x) = x^4 \\implies g\'\'(x) = 12x^2 \\ge 0 \\;(k^* = 4)',
+      t('2D Inflection Parity Counterexample', '2D 변곡점 반례 비교')
+    );
+    return;
+  }
+
+  if (q === 'surd_intersections') {
+    loadScenario('s1');
+    appendTutorBubble(
+      'tutor',
+      t(
+        'Solved the polynomial-circle system symbolically in Giac WASM, preserving exact quadratic surds without decimal rounding.',
+        '두 곡선의 연립방정식을 Giac 대수 엔진으로 풀어 근호(√)·분수가 살아 있는 정확한 교점을 찍었습니다!'
+      ),
+      '\\left(\\frac{1\\pm\\sqrt{13}}{2},\\; \\frac{3\\pm\\sqrt{13}}{2}\\right)',
+      t('2D Exact Radical Intersections', '2D 무리수 교점 작도')
     );
     return;
   }
 
   const curves = state.objects.filter((o) => o.kind === 'explicit' || o.kind === 'implicit');
-  if (/교점|연립/.test(q) && curves.length >= 2) {
+  if (/intersect|surd|교점|연립/i.test(q) && curves.length >= 2) {
     setViewMode('2d');
     const inter = createSymbolicIntersection(curves[0].id, curves[1].id);
-    const texList = inter?.points?.map((p) => p.latexCoord).join(',\\; ') || '\\text{실수 교점 없음}';
+    const texList = inter?.points?.map((p) => p.latexCoord).join(',\\; ') || t('\\text{No real intersections}', '\\text{실수 교점 없음}');
     appendTutorBubble(
       'tutor',
-      `두 곡선의 연립방정식을 Giac 대수 엔진으로 풀어 근호(√)·분수가 살아 있는 정확한 교점을 찍었습니다!`,
+      t(
+        'Solved the simultaneous equations symbolically via Giac WASM, preserving exact radicals (√) and rationals.',
+        '두 곡선의 연립방정식을 Giac 대수 엔진으로 풀어 근호(√)·분수가 살아 있는 정확한 교점을 찍었습니다!'
+      ),
       texList,
-      `${curves[0].label} ∩ ${curves[1].label} 교점 표시`
+      `${curves[0].label} ∩ ${curves[1].label}`
     );
     return;
   }
 
   appendTutorBubble(
     'tutor',
-    '상단 빠른 버튼을 누르거나 "구와 평면의 3D 단면 보여줘", "원뿔곡선 절단 보여줘", "회전체와 구분구적법 보여줘", "2D 무리수 교점 작도해줘"처럼 요청해 보세요!'
+    t(
+      'Click one of the quick-prompt chips above or ask for "3D sphere slice", "conic sections", "solid of revolution", or "2D surd intersections".',
+      '상단 빠른 버튼을 누르거나 "구와 평면의 3D 단면 보여줘", "원뿔곡선 절단 보여줘", "회전체와 구분구적법 보여줘", "2D 무리수 교점 작도해줘"처럼 요청해 보세요!'
+    )
   );
 }
 
@@ -2282,17 +2407,41 @@ export function loadScenario(key) {
   renderAlgebraPanel();
   if (state.activePane === 'table') buildValuesTable();
 
-  eventBus.emit('SCENARIO_LOADED', { scenario: key, title: sc.title });
+  eventBus.emit('SCENARIO_LOADED', { scenario: key, title: getLang() === 'ko' ? sc.title : sc.titleEn });
 }
 
 function renderTeacherDashboard() {
   const grid = document.getElementById('studentGrid');
   if (!grid) return;
   const mockStudents = [
-    { code: '1반-03번', alias: '푸른포물선', step: '⑤ 3D 구·평면교원', expr: 'x+y+2z=3 단면 반지름 √30/2 확인', status: '탐구 완료' },
-    { code: '1반-07번', alias: '은빛쌍곡선', step: '⑥ 3D 원뿔곡선단면', expr: 'z = 1.2x + 1.5 (쌍곡선 관찰)', status: '슬라이더 조작 중' },
-    { code: '1반-12번', alias: '초록미분계수', step: '⑦ 회전체·구분구적', expr: 'n=36 원판 부피 수렴 확인', status: '피드백 대기' },
-    { code: '1반-19번', alias: '보라정적분', step: '⑧ 3D CSG·GLB', expr: '구-원기둥 GLB 내보내기 완료', status: '완료' }
+    {
+      code: t('Sec1-03', '1반-03번'),
+      alias: t('BlueParabola', '푸른포물선'),
+      step: t('⑤ 3D Sphere Slice', '⑤ 3D 구·평면교원'),
+      expr: t('Verified r = √30/2 on x+y+2z=3', 'x+y+2z=3 단면 반지름 √30/2 확인'),
+      status: t('Completed', '탐구 완료')
+    },
+    {
+      code: t('Sec1-07', '1반-07번'),
+      alias: t('SilverHyperbola', '은빛쌍곡선'),
+      step: t('⑥ 3D Conic Slice', '⑥ 3D 원뿔곡선단면'),
+      expr: t('z = 1.2x + 1.5 (hyperbola branch)', 'z = 1.2x + 1.5 (쌍곡선 관찰)'),
+      status: t('Exploring slider', '슬라이더 조작 중')
+    },
+    {
+      code: t('Sec1-12', '1반-12번'),
+      alias: t('GreenDerivative', '초록미분계수'),
+      step: t('⑦ 2D↔3D Revolution', '⑦ 회전체·구분구적'),
+      expr: t('Checked n=36 Riemann disc convergence', 'n=36 원판 부피 수렴 확인'),
+      status: t('Awaiting review', '피드백 대기')
+    },
+    {
+      code: t('Sec1-19', '1반-19번'),
+      alias: t('VioletIntegral', '보라정적분'),
+      step: t('⑧ 3D Saddle & CSG', '⑧ 3D CSG·GLB'),
+      expr: t('Exported Sphere − Cylinder .GLB', '구-원기둥 GLB 내보내기 완료'),
+      status: t('Completed', '완료')
+    }
   ];
   grid.innerHTML = '';
   for (const st of mockStudents) {
@@ -2303,7 +2452,7 @@ function renderTeacherDashboard() {
         <span>${state.anonymizeStudents ? st.alias : st.code}</span>
         <span class="stu-status">${st.status}</span>
       </div>
-      <div style="font-size:11.5px; color:#475569;">단계: ${st.step}</div>
+      <div style="font-size:11.5px; color:#475569;">${t('Preset', '단계')}: ${st.step}</div>
       <div style="font-size:11.5px; font-family:Consolas,monospace; background:#fff; padding:4px 6px; border-radius:5px; border:1px solid #e2e8f0;">${st.expr}</div>
     `;
     grid.appendChild(c);
@@ -2328,12 +2477,12 @@ function setToolEverywhere(mode) {
     btn.classList.toggle('is-active', btn.dataset.tool === mode);
   });
   const hints = {
-    move: '드래그하여 이동하고 마우스 휠로 확대·축소합니다.',
-    intersect: '2D 교점을 구할 두 곡선을 차례로 클릭하세요.',
-    special: '극점·변곡점·영점을 표시할 2D 함수 곡선을 클릭하세요.',
-    tangent: '접선을 그을 2D 곡선 위의 점을 클릭하세요.',
-    integral: '정적분 넓이를 색칠할 곡선의 시작점(a)과 끝점(b)을 클릭하세요.',
-    sketch: '2D 평면 위에 원, 직선, 포물선을 자유롭게 그리면 대수 객체로 변환됩니다!'
+    move: t('Drag to pan and scroll the mouse wheel to zoom.', '드래그하여 이동하고 마우스 휠로 확대·축소합니다.'),
+    intersect: t('Click two 2D curves in sequence to solve their exact intersections.', '2D 교점을 구할 두 곡선을 차례로 클릭하세요.'),
+    special: t('Click a 2D curve to inspect symbolic roots, extrema, and inflections.', '극점·변곡점·영점을 표시할 2D 함수 곡선을 클릭하세요.'),
+    tangent: t('Click a point on a 2D curve to construct its exact tangent line.', '접선을 그을 2D 곡선 위의 점을 클릭하세요.'),
+    integral: t('Click lower bound (a) and upper bound (b) on a 2D curve to shade its definite integral.', '정적분 넓이를 색칠할 곡선의 시작점(a)과 끝점(b)을 클릭하세요.'),
+    sketch: t('Draw a freehand circle, line, or parabola on the 2D plane to convert it into an algebraic object.', '2D 평면 위에 원, 직선, 포물선을 자유롭게 그리면 대수 객체로 변환됩니다!')
   };
   showCanvasHint(hints[mode] || '');
 }
@@ -2381,15 +2530,18 @@ function bindUI() {
     const norm = normalizeMathInput(raw);
     const cls = classifyUserInput(raw, getSliderParams());
     const map = {
-      slider: '슬라이더',
-      explicit: '2D 함수',
-      implicit: '2D 음함수·도형',
-      surface3d: '3D 이변수곡면',
-      plane3d: '3D 평면 (BVH 절단)',
-      implicit3d: '3D 이차곡면·구',
-      cas: 'CAS 대수연산'
+      slider: t('Slider', '슬라이더'),
+      explicit: t('2D Function', '2D 함수'),
+      implicit: t('2D Implicit', '2D 음함수·도형'),
+      surface3d: t('3D Surface', '3D 이변수곡면'),
+      plane3d: t('3D Plane (BVH)', '3D 평면 (BVH 절단)'),
+      implicit3d: t('3D Quadric', '3D 이차곡면·구'),
+      spacecurve3d: t('3D Space Curve', '3D 공간곡선'),
+      matrix3d: t('3D Matrix', '3D 행렬변환'),
+      vectorfield3d: t('3D Vector Field', '3D 벡터장'),
+      cas: t('CAS Command', 'CAS 대수연산')
     };
-    previewKind.textContent = map[cls?.kind] || '수식';
+    previewKind.textContent = map[cls?.kind] || t('Expr', '수식');
     const tex = norm
       .replace(/\*/g, ' \\cdot ')
       .replace(/sqrt\(([^()]+)\)/g, '\\sqrt{$1}')
@@ -2487,7 +2639,7 @@ function bindUI() {
     const pId = document.getElementById('pl3dSelect').value;
     const sId = document.getElementById('surf3dSelect').value;
     if (!pId || !sId || pId === sId) {
-      showCanvasHint('절단 평면과 대상 3D 곡면을 각각 선택해 주세요.');
+      showCanvasHint(t('Please select both a cutting plane and a 3D target surface.', '절단 평면과 대상 3D 곡면을 각각 선택해 주세요.'));
       return;
     }
     create3DSliceCard(Number(pId), Number(sId));
@@ -2516,8 +2668,14 @@ function bindUI() {
     syncAllViewports();
     showCanvasHint(
       graph3D.cutawayEnabled
-        ? '✂ 단면 잘라보기 ON: 절단 평면 위쪽 입체를 잘라내어 내부 단면을 보여줍니다.'
-        : '단면 잘라보기 OFF: 전체 입체와 절단 평면을 함께 표시합니다.'
+        ? t(
+            '✂ Cutaway ON: Clipped half-space above the cutting plane to expose internal cross-section.',
+            '✂ 단면 잘라보기 ON: 절단 평면 위쪽 입체를 잘라내어 내부 단면을 보여줍니다.'
+          )
+        : t(
+            'Cutaway OFF: Displaying full 3D manifold alongside the cutting plane.',
+            '단면 잘라보기 OFF: 전체 입체와 절단 평면을 함께 표시합니다.'
+          )
     );
   };
 
@@ -2615,14 +2773,47 @@ function bindUI() {
     collapseBtn.textContent = collapsed ? '▶' : '◀';
   };
 
-  // Classroom Header Utilities
+  // Classroom Header Utilities (Language Toggle, Mute, Presentation Zoom, Fullscreen)
   const muteBtn = document.getElementById('muteBtn');
+  const syncDynamicButtonLabels = () => {
+    if (muteBtn) muteBtn.textContent = state.isMuted ? t('🔇 Muted', '🔇 음소거') : t('🔊 Sound', '🔊 효과음');
+    const anonBtn = document.getElementById('anonToggleBtn');
+    if (anonBtn) anonBtn.textContent = state.anonymizeStudents ? t('Anonymize ON', '익명화 ON') : t('Show Codes', '코드네임 보기');
+    const pauseBtn = document.getElementById('pauseClassBtn');
+    if (pauseBtn) {
+      const paused = pauseBtn.classList.contains('is-active');
+      pauseBtn.textContent = paused ? t('▶ Resume Screen', '▶ 일시정지 해제') : t('⏸ Pause Screen', '⏸ 화면 일시정지');
+    }
+    const fbBtn = document.getElementById('approveFeedbackBtn');
+    if (fbBtn) fbBtn.textContent = t('✓ Send AI Feedback', '✓ AI 피드백 일괄 검토·전송');
+  };
+
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  if (langToggleBtn) {
+    langToggleBtn.onclick = () => {
+      const next = toggleLang();
+      syncDynamicButtonLabels();
+      updatePreview();
+      for (const obj of state.objects) {
+        if (obj.kind === 'slice3d' && obj.pairLabel) obj.label = `${t('Section', '단면')}(${obj.pairLabel})`;
+        else if (obj.kind === 'revolution3d') obj.label = `${t('Revolve', '회전체')}(${obj.fnLabel})`;
+        else if (obj.kind === 'csg3d' && obj.preset) obj.label = getCSGLabel(obj.preset);
+      }
+      refreshSymbolicScene(true);
+      renderTeacherDashboard();
+      const tm = document.getElementById('tutorMessages');
+      if (tm && tm.children.length <= 1) resetWelcomeGuideBubble();
+      eventBus.emit('ui:lang_switch', { lang: next });
+    };
+  }
+
   muteBtn.onclick = () => {
     state.isMuted = !state.isMuted;
-    muteBtn.textContent = state.isMuted ? '🔇 음소거' : '🔊 효과음';
+    syncDynamicButtonLabels();
     muteBtn.classList.toggle('is-active', !state.isMuted);
     if (!state.isMuted) playSnapTone(660);
   };
+  syncDynamicButtonLabels();
   const presBtn = document.getElementById('presModeBtn');
   presBtn.onclick = () => {
     const on = document.body.classList.toggle('presentation-mode');
@@ -2669,21 +2860,23 @@ function bindUI() {
   });
   document.getElementById('anonToggleBtn').onclick = (e) => {
     state.anonymizeStudents = !state.anonymizeStudents;
-    e.currentTarget.textContent = state.anonymizeStudents ? '익명화 ON' : '코드네임 보기';
+    e.currentTarget.textContent = state.anonymizeStudents ? t('Anonymize ON', '익명화 ON') : t('Show Codes', '코드네임 보기');
     renderTeacherDashboard();
   };
   document.getElementById('pauseClassBtn').onclick = (e) => {
     const paused = e.currentTarget.classList.toggle('is-active');
-    e.currentTarget.textContent = paused ? '▶ 일시정지 해제' : '⏸ 화면 일시정지';
+    e.currentTarget.textContent = paused ? t('▶ Resume Screen', '▶ 일시정지 해제') : t('⏸ Pause Screen', '⏸ 화면 일시정지');
   };
   document.getElementById('approveFeedbackBtn').onclick = (e) => {
-    e.currentTarget.textContent = '✓ 전송 완료!';
-    setTimeout(() => { e.currentTarget.textContent = '✓ AI 피드백 일괄 검토·전송'; }, 1400);
+    const btn = e.currentTarget;
+    btn.textContent = t('✓ Sent!', '✓ 전송 완료!');
+    setTimeout(() => { btn.textContent = t('✓ Send AI Feedback', '✓ AI 피드백 일괄 검토·전송'); }, 1400);
   };
   document.getElementById('copyLogBtn').onclick = (e) => {
+    const btn = e.currentTarget;
     navigator.clipboard?.writeText(JSON.stringify(eventBus.getHistory(), null, 2));
-    e.currentTarget.textContent = '복사됨!';
-    setTimeout(() => { e.currentTarget.textContent = 'JSON 복사'; }, 1200);
+    btn.textContent = t('Copied!', '복사됨!');
+    setTimeout(() => { btn.textContent = t('Copy JSON', 'JSON 복사'); }, 1200);
   };
   document.getElementById('clearLogBtn').onclick = () => {
     eventBus.clear();
@@ -2712,6 +2905,12 @@ function exposeSDK() {
     exportGLB: (name) => graph3D?.exportGLB(name),
     exportSTL: (name) => graph3D?.exportSTL(name),
     loadScenario: (key) => loadScenario(key),
+    getLanguage: () => getLang(),
+    setLanguage: (lng) => {
+      const target = lng === 'ko' ? 'ko' : 'en';
+      if (target !== getLang()) document.getElementById('langToggleBtn')?.click();
+      return getLang();
+    },
     getStateSnapshot: () => ({
       version: '3.0.0',
       viewMode: state.viewMode,
@@ -2748,7 +2947,9 @@ async function boot() {
       onRequestIntegral: (id, aEx, bEx) => createSymbolicIntegral(id, aEx, bEx),
       onSketchRecognized: (eqStr, shapeName) => {
         addInputExpression(eqStr);
-        showCanvasHint(`✍ 손글씨 ${shapeName} 인식 완료 → [${eqStr}] 생성!`);
+        showCanvasHint(
+          t(`✍ Recognized ${shapeName} → Created [${eqStr}]`, `✍ 손글씨 ${shapeName} 인식 완료 → [${eqStr}] 생성!`)
+        );
       },
       onSelectCurve: (id) => {
         state.selectedCardId = id;
@@ -2766,23 +2967,21 @@ async function boot() {
     }
   );
 
+  applyDomI18n();
   bindUI();
   exposeSDK();
 
-  appendTutorBubble(
-    'tutor',
-    '2D 평면과 3D 공간기하 대수 엔진이 모두 연결되었습니다! 상단 빠른 질문 버튼을 눌러 3D 구·평면 교원, 원뿔곡선 단면, 회전체·구분구적법 부피를 바로 작도해 보세요.'
-  );
+  resetWelcomeGuideBubble();
 
   try {
     const res = await initGiacEngine('../node_modules/@basthon/xcas-wasm/src/index.js');
+    state.lastCasMs = res.initMs;
     eventBus.emit('ENGINE_INITIALIZED', { engine: 'Giac C++ WASM + Three.js BVH', initMs: res.initMs });
-    // Boot directly into Scenario 5 (3D Sphere ∩ Plane Cross-Section) so the user immediately sees the new 3D + Giac CAS integration in action!
     loadScenario('s5');
   } catch (err) {
     console.error('Giac WASM load error:', err);
     const st = document.getElementById('engineStatus');
-    if (st) st.textContent = 'WASM 로드 오류 (서버 실행 필요)';
+    if (st) st.textContent = t('WASM Load Error (Run via HTTP Server)', 'WASM 로드 오류 (서버 실행 필요)');
   }
 }
 

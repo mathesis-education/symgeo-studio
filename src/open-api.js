@@ -33,7 +33,7 @@ export class SymGeoEventBus {
       id: this.history.length + 1,
       sessionId: this.sessionId,
       timestamp: new Date().toISOString(),
-      timeLabel: new Date().toLocaleTimeString('ko-KR', { hour12: false }),
+      timeLabel: new Date().toLocaleTimeString('en-GB', { hour12: false }),
       type,
       payload
     };
@@ -110,7 +110,9 @@ export function createSymGeoSDK(bindings) {
     exportGLB,
     exportSTL,
     loadScenario,
-    getStateSnapshot
+    getStateSnapshot,
+    getLanguage,
+    setLanguage
   } = bindings;
 
   const normalizeMode = (mode) => {
@@ -140,6 +142,8 @@ export function createSymGeoSDK(bindings) {
     addCSG,
     exportGLB,
     exportSTL,
-    loadScenario
+    loadScenario,
+    getLanguage: () => (typeof getLanguage === 'function' ? getLanguage() : 'en'),
+    setLanguage: (lang) => (typeof setLanguage === 'function' ? setLanguage(lang) : 'en')
   };
 }
